@@ -1,7 +1,7 @@
 ## トレロのリンク
 *　作業を終えたら必ずトレロで報告してください。
 
-* https://example.com
+* https://trello.com/b/wqxj0FHP/%E3%82%BF%E3%82%B9%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%88
 
 ## プルリク前確認
 
