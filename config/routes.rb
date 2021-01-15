@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 #####################菅野さんエリア##################################################################################
   namespace :customer do
     resources :users
+
   end
 
 
