@@ -7,5 +7,10 @@ Rails.application.routes.draw do
     resources :item_image, only:[:show]
   end
 #####################菅野さんエリア##################################################################################
+  namespace :customer do
+    resources :users
+
+  end
+
 
 end
