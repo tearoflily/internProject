@@ -2,6 +2,7 @@ class Employee::ItemsController <  Employee::MainController
   before_action :setItem, only: [ :show, :edit, :update, :destoroy ]
 
   def index
+    @items = Item.all.descendingOrder
   end
 
   def new
@@ -10,8 +11,9 @@ class Employee::ItemsController <  Employee::MainController
 
   def create
     @item = Item.new(item_parameters)
+    @item.image = @item.imageSet(item_parameters[:image])
     if @item.save
-      redirect_to employee_items_url, notice: "#{@item.name}を登録しました。"
+      redirect_to employee_items_url,  info: "#{@item.name}を登録しました。"
     else
       render :new
     end
@@ -33,10 +35,12 @@ class Employee::ItemsController <  Employee::MainController
 
 private
   def item_parameters
-    params.require(:item).permit( :path, :name, :category, :info )
+    params.require(:item).permit( :image, :name, :category, :info )
   end
 
   def setItem
     @item = Item.find( params[:id] )
   end
+
+ 
 end
