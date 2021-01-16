@@ -14,7 +14,9 @@ class Item < ApplicationRecord
 
   #画像の設定
   def imageSet(param)
-    image = param.read
+    if param
+      image = param.read
+    end
   end
   
 end

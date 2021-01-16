@@ -13,7 +13,7 @@ class Employee::ItemsController <  Employee::MainController
     @item = Item.new(item_parameters)
     @item.image = @item.imageSet(item_parameters[:image])
     if @item.save
-      redirect_to employee_items_url, notice: "#{@item.name}を登録しました。"
+      redirect_to employee_items_url,  info: "#{@item.name}を登録しました。"
     else
       render :new
     end

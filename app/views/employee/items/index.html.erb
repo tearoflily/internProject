@@ -5,7 +5,17 @@
   <div class="row">
     <div class="col-md-10 offset-1">
       <%= link_to '新規登録', new_employee_item_path, class: 'btn btn-primary btn-lg mb-1' %>
-      <%= render 'employee/items/PC/index', {items: @items} %>
+
+      <!-- pcの場合-->
+      <div class="items-pc">
+         <%= render 'employee/items/PC/index', {items: @items} %>
+      </div>
+
+       <!-- phoneの場合-->
+       <div class="items-phone">
+         <%= render 'employee/items/Phone/index', {items: @items} %>
+      </div>
+    
     </div>
   </div>
 </div>
