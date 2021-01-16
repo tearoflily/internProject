@@ -1,0 +1,2 @@
+module Employee::ItemImageHelper
+end
