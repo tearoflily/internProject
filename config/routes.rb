@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   get 'top/show'
   root 'top#show'
 #####################植松エリア##################################################################################
-
-
-
+  namespace :employee do
+    resources :items
+  end
 #####################菅野さんエリア##################################################################################
   namespace :customer do
     resources :users

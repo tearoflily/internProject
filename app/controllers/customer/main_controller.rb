@@ -1,7 +1,5 @@
 class Customer::MainController < ApplicationController
 
-	def customer
+	layout 'customer'
 
-	end
-	
 end
