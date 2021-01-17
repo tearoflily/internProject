@@ -1,34 +1,38 @@
-<h1>スマホ表示まだ未作成</h1>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th class="bg-dark text-white font-weight-bold text-center">商品リスト</th>
-    </tr>
-  </thead>
-  <tbody>
-  　<% items.each do |item| %>
-    <tr>
-      <td>
-        <table style="width:100%;" class="mb-3">
-          <tbody>
-            <tr>
-              <td rowspan="3" class="w-25"><%= image_tag(employee_item_image_path(item.id),size:'80') %></td>
-            </tr>
-            <tr>
-              <th class="bg-dark text-white font-weight-bold w-25">商品名</th>
-              <td class="font-weight-bold text-center align-middle"><%= item.name %></td>
-            </tr>
-             <tr>
-              <th class="bg-dark text-white font-weight-bold">カテゴリー</th>
-              <td class="font-weight-bold text-center w-25 align-middle"><%= I18n.t("enums.item.status.#{item.category}") %></td>
-            </tr>
-          </tbody>
-        </table>
-        <%= link_to '編集', "#", class: 'btn btn-primary btn-lg mr-3' %>
-        <%= link_to '加工法編集', "#", class: 'btn btn-primary btn-lg mr-3' %>
-        <%= link_to '削除', "#", class: 'btn btn-danger btn-lg' %>
-      </td>
-    </tr>
-   <% end %>
-  </tbody>
-</table>
+<%= link_to '新規登録', new_employee_item_path, class: 'btn btn-success btn-block mt-5' %>
+<% if items.count >0 %>  
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="bg-dark text-white font-weight-bold text-center">商品リスト</th>
+      </tr>
+    </thead>
+    <tbody>
+    　<% items.each do |item| %>
+      <tr>
+        <td>
+          <table style="width:100%;" class="mb-3">
+            <tbody>
+              <tr>
+                <td rowspan="3" class="w-25"><%= image_tag(employee_item_image_path(item.id),size:'80') %></td>
+              </tr>
+              <tr>
+                <th class="bg-dark text-white font-weight-bold w-25">商品名</th>
+                <td class="font-weight-bold text-center align-middle"><%= item.name %></td>
+              </tr>
+              <tr>
+                <th class="bg-dark text-white font-weight-bold">カテゴリー</th>
+                <td class="font-weight-bold text-center w-25 align-middle"><%= I18n.t("enums.item.status.#{item.category}") %></td>
+              </tr>
+            </tbody>
+          </table>
+          <%= link_to '編集', edit_employee_item_path(item), class: 'btn btn-primary btn-lg mr-3' %>
+          <%= link_to '加工法編集', "#", class: 'btn btn-primary btn-lg mr-3' %>
+          <%= link_to '削除', "#", class: 'btn btn-danger btn-lg' %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+ <% else %> 
+   <div class="p-5 bg-secondary text-center text-white font-weight-bold">まだ登録商品がありません。</div>
+ <% end %>

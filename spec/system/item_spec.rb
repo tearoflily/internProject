@@ -18,6 +18,19 @@ describe "商品検証", type: :system do
         click_on '登録する'
         expect(page).to have_content  'いわしを登録しました。'
       end
+
+      it "名前空欄時バリデーション起動" do
+        fill_in "item[name]",	with: "" 
+        click_on '登録する'
+        expect(page).to have_content  '商品名を入力してください'
+      end
+
+      it "同じ名前登録時バリデーション起動" do
+        fill_in "item[name]",	with: "さば" 
+        click_on '登録する'
+        expect(page).to have_content  '商品名はすでに存在します'
+      end
+      
     end
   end
 end

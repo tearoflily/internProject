@@ -1,2 +1,14 @@
-<h1>Employee::Items#edit</h1>
-<p>Find me in app/views/employee/items/edit.html.erb</p>
+<%= provide(:title, '新規商品登録') %>
+
+<div class="text-center font-weight-bold mb-3">
+    <h1><%="#{@item.name}編集" %></h1>
+</div>
+ <!-- pcの場合-->
+<div class="items-pc">
+ <%= render 'employee/items/PC/form', {item: @item } %>
+</div>
+
+<!-- phoneの場合-->
+<div class="items-phone">
+ <%= render 'employee/items/Phone/form', {item: @item} %>
+</div>

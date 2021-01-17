@@ -25,6 +25,11 @@ class Employee::ItemsController <  Employee::MainController
 
 
   def update
+    if @item.update_attributes(item_parameters)
+      redirect_to employee_items_url,  info: "#{@item.name}を編集しました。"
+    else
+      render :edit
+    end
   end
 
   def destroy

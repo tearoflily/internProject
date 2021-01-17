@@ -3,4 +3,12 @@
 <div class="text-center font-weight-bold mb-3">
     <h1>新規商品登録</h1>
 </div>
-<%= render 'form', {item: @item } %>
+ <!-- pcの場合-->
+<div class="items-pc">
+ <%= render 'employee/items/PC/form', {item: @item } %>
+</div>
+
+<!-- phoneの場合-->
+<div class="items-phone">
+ <%= render 'employee/items/Phone/form', {item: @item} %>
+</div>
