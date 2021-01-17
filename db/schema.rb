@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(version: 2021_01_16_152236) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "name_kana"
-    t.string "tellnumber"
-    t.string "email"
-    t.boolean "employee"
+    t.string "name", null: false
+    t.string "name_kana", null: false
+    t.string "tellnumber", null: false
+    t.string "email", null: false
+    t.boolean "employee", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
