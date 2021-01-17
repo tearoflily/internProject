@@ -1,0 +1,14 @@
+
+.items-phone{
+    display: none;
+}
+
+/**************************スマートフォン***********************************************************************************************/
+@media screen and (max-width:767px){
+    .items-phone{
+        display: block;
+    }
+    .items-pc{
+        display: none;
+    }
+}

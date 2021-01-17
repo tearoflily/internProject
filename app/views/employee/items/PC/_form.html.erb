@@ -1,0 +1,43 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-3 bg-lignt p-5 shadow">
+       <%= @item.errorCheck %>
+      <%= form_with model: [:employee, item],  local: true do |f| %>
+
+        <div class="form-group">
+          <%= f.label Item.human_attribute_name(:path) %>
+          <div class="input-group">
+            <label class="input-group-btn">
+                <span class="btn btn-success">
+                  ファイル選択
+                  <%= f.file_field :image, style: 'display:none' %>
+                </span>
+            </label>
+           <input type="text" class="form-control" readonly="">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label Item.human_attribute_name(:name) %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label Item.human_attribute_name(:category) %>
+          <%= f.select :category, Item.statuses.keys.map {|k| [I18n.t("enums.item.status.#{k}"), k]},{}, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label Item.human_attribute_name(:info) %>
+          <%= f.text_area :info, rows: 5,  class: 'form-control' %>
+        </div>
+
+        <div class="mt-5">
+          <%= f.submit nil, class: 'btn btn-primary btn-block' %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

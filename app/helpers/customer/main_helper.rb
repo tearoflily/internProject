@@ -1,0 +1,2 @@
+module Customer::MainHelper
+end
