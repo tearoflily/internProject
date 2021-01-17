@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 p-5">
+        <%= image_tag(employee_item_image_path(item.id) ,style:'width:100%') %>
+      
+        <table class="table table-bordered" style="table-layout:fixed;width:100%;">
+          <tbody>
+            <tr>
+              <th class="bg-dark text-white font-weight-bold text-center w-25">商品名</th>
+              <td class="font-weight-bold text-center w-25 align-middle"><%= item.name %></td>
+            </tr>
+            <tr>
+              <th class="bg-dark text-white font-weight-bold text-center w-25">カテゴリー</th>
+              <td class="font-weight-bold text-center w-25 align-middle"><%= I18n.t("enums.item.status.#{item.category}") %></td>
+            </tr>
+            <tr>
+              <th class="bg-dark text-white font-weight-bold text-center w-25">加工法</th>
+              <td class="font-weight-bold text-center w-25 align-middle"></td>
+          　</tr>
+            <tr>
+              <th colspan="2" class="bg-dark text-white font-weight-bold text-center w-25">説明</th>
+          　</tr>
+             <tr>
+              <td colspan="2" class="font-weight-bold text-center w-25 align-middle" style="word-wrap:break-word;"><%= item.info %></td>
+          　</tr>
+          </tbody>
+        </table>
+        <%= link_to '戻る', employee_items_path, class:'btn btn-secondary btn-block mt-2' %>
+    </div>
+  
+  </div>
+</div>

@@ -13,7 +13,7 @@
     <% items.each do |item| %>
       <tr>
         <td><%= image_tag(employee_item_image_path(item.id),size:'80') %></td>
-        <td class="font-weight-bold text-center w-25 align-middle"><%= item.name %></td>
+        <td class="font-weight-bold text-center w-25 align-middle"><%= link_to item.name,[:employee, item] %></td>
         <td class="font-weight-bold text-center align-middle"><%= I18n.t("enums.item.status.#{item.category}") %></td>
         <td class="text-center align-middle">
           <%= link_to '編集', edit_employee_item_path(item), class: 'btn btn-primary btn-lg mr-3' %>

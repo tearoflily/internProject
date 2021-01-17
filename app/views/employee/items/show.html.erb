@@ -1,2 +1,14 @@
-<h1>Employee::Items#show</h1>
-<p>Find me in app/views/employee/items/show.html.erb</p>
+<%= provide(:title, "#{@item.name}詳細") %>
+<div class="text-center font-weight-bold mt-4">
+  <h1><%= "#{@item.name}詳細" %></h1>
+</div>
+
+<!-- pcの場合-->
+<div class="items-pc">
+    <%= render 'employee/items/PC/show', {item: @item} %>
+</div>
+
+<!-- phoneの場合-->
+<div class="items-phone">
+    <%= render 'employee/items/Phone/show', {item: @item} %>
+</div>
