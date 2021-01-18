@@ -2,6 +2,7 @@
 // All this logic will automatically be available in application.js.
 document.addEventListener('turbolinks:load',function(){
     $('.js-searchable').select2({
-        allowClear: true
+        width:300,
+        allowClear: true,
       });
   });

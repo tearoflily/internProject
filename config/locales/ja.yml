@@ -10,6 +10,13 @@ ja:
         octopassquid: たこ、いか
         seaweeds: 海藻
         others: その他
+    processing:
+      status:
+        sasimi: 刺身
+        kirimi: 切り身
+        nimono: 煮物用
+        sioyaki: 塩焼き用
+        flay: フライ、天ぷら用
   activerecord:
     errors:
       messages:

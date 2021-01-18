@@ -1,17 +1,15 @@
 // Place all the styles related to the employee::processings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.processings-phone{
-    display: none;
-}
 
+.processings{
+  background-color: #f0f0f0;
+}
 /**************************スマートフォン***********************************************************************************************/
 @media screen and (max-width:767px){
-    .processings-phone{
-        display: block;
+    .processings{
+       margin-left: -1%;
+       background-color: #fff;
     }
-    
-    .processings-pc{
-        display: none;
-    }
+
 }

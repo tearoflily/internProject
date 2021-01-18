@@ -3,12 +3,4 @@
     <h1><%= "#{@item.name}加工法登録" %></h1>
 </div>
 
-<!-- pcの場合-->
-<div class="processings-pc">
-    <%= render 'employee/processings/PC/new', {item: @item} %>
-</div>
-
-<!-- phoneの場合-->
-<div class="processings-phone">
-    <%= render 'employee/processings/Phone/new', {item: @item} %>
-</div>
+<%= render 'employee/processings/new', {item: @item} %>
