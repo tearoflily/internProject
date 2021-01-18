@@ -26,7 +26,7 @@
             </tbody>
           </table>
           <%= link_to '編集', edit_employee_item_path(item), class: 'btn btn-primary btn-lg mr-3' %>
-          <%= link_to '加工法編集', "#", class: 'btn btn-primary btn-lg mr-3' %>
+          <%= link_to '加工法編集', new_employee_processing_path(params:{item_id: item}), class: 'btn btn-primary btn-lg mr-3' %>
           <%= link_to '削除', [:employee,item], data:{confirm: '削除しますか？' }, method: :delete, id: "delete_button#{item.id}", class: 'btn btn-danger btn-lg' %>
         </td>
       </tr>

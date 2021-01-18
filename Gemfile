@@ -21,6 +21,7 @@ gem 'bootstrap'
 gem 'mini_racer'
 gem 'rails-i18n'
 gem 'enum_help'
+gem 'select2-rails'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
