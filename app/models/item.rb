@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+  has_many 
   validates :name, presence: true, uniqueness: true, length: {maximum: 10}
   scope  :descendingOrder,-> { order(id: :DESC)}
  

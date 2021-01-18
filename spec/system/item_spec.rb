@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe "商品検証", type: :system do
   let!(:item){ FactoryBot.create(:item)}   
+  let!(:item2){ FactoryBot.create(:item, name: '金目鯛')}
 
   describe "新規登録検証" do
     before do
@@ -33,4 +34,57 @@ describe "商品検証", type: :system do
       
     end
   end
+  ###############################################################################
+  describe "商品編集検証" do
+    before do
+   
+      visit edit_employee_item_path(item2)
+    end
+    it "新規登録画面が表示される。" do
+      expect(page).to have_content '金目鯛編集' 
+    end
+
+    context "商品編集処理" do
+      it "無事編集される" do
+        fill_in "item[info]",	with: "上品な味がします。" 
+        click_on '更新する'
+        expect(page).to have_content  '金目鯛を編集しました。'
+      end
+
+      it "名前空欄時バリデーション起動" do
+        fill_in "item[name]",	with: "" 
+        click_on '更新する'
+        expect(page).to have_content  '商品名を入力してください'
+      end
+
+      it "同じ名前登録時バリデーション起動" do
+        fill_in "item[name]",	with: "さば" 
+        click_on '更新する'
+        expect(page).to have_content  '商品名はすでに存在します'
+      end
+    end
+  end
+ ###############################################################################
+  describe "商品詳細画面" do
+      before do
+        visit employee_item_path(item2)
+      end
+      it "詳細画面が表示される。" do
+        expect(page).to have_content '金目鯛詳細' 
+      end
+  end 
+   ###############################################################################
+   describe "削除機能" do
+      before do
+        visit employee_items_path
+      end
+      it "削除される。" do
+        click_on "delete_button#{item.id}"
+        expect{
+          expect(page.accept_confirm).to eq "削除しますか？"
+          expect(page).to have_content "削除しました。"
+          }
+      end
+   end 
+
 end

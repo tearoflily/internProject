@@ -1,0 +1,14 @@
+<%= provide(:title, '商品加工') %>
+<div class="text-center font-weight-bold mt-4">
+    <h1><%= "#{@item.name}加工法登録" %></h1>
+</div>
+
+<!-- pcの場合-->
+<div class="items-pc">
+    <%= render 'employee/items/PC/processing', {item: @item} %>
+</div>
+
+<!-- phoneの場合-->
+<div class="items-phone">
+    <%= render 'employee/items/Phone/processing', {item: @item} %>
+</div>
