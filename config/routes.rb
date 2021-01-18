@@ -7,9 +7,6 @@ Rails.application.routes.draw do
     resources :item_image, only:[:show]
     resources :processings, only:[:new, :create]
   end
-  namespace :employee do
-    get 'processings/new'
-  end
 #####################菅野さんエリア##################################################################################
   namespace :customer do
     resources :users
