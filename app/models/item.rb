@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  has_many 
+  has_many :processings, dependent: :destroy
   validates :name, presence: true, uniqueness: true, length: {maximum: 10}
   scope  :descendingOrder,-> { order(id: :DESC)}
  
