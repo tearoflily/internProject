@@ -1,5 +1,7 @@
 class Processing < ApplicationRecord
   belongs_to :item
+  scope :findItem, ->(item_id) { where(item_id: item_id)}
+  # Ex:- scope :active, -> {where(:active => true)}
   enum status:{
     sasimi:          0, #刺身
     kirimi:          1, #切り身
