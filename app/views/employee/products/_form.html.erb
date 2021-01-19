@@ -6,7 +6,7 @@
         <div class="form-group">
           <%= f.label Product.human_attribute_name(:name) %><br>
           <%= f.select :name,
-              [["アジ","アジ"],["秋刀魚","秋刀魚"],["イワシ","イワシ"]],
+              Item.itemNames,
               {},class: 'js-searchable',
               id: 'product-name-select'
           %>
