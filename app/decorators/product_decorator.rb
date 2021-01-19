@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ItemDecorator
+module ProductDecorator
   #新規登録時エラーがあった場合の処理
   def errorCheck
     html = ""
@@ -13,8 +13,4 @@ module ItemDecorator
     end
     return html.html_safe
   end
-  
-
-
-      
 end

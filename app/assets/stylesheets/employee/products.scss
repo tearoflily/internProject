@@ -1,0 +1,27 @@
+// Place all the styles related to the employee::products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.products-phone{
+    display: none;
+}
+.products-new{
+  margin: 0 auto;
+  margin-top: 1%;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  padding: 5% 6%;
+}
+
+
+/**************************スマートフォン***********************************************************************************************/
+@media screen and (max-width:767px){
+    .products-phone{
+        display: block;
+    }
+    .products-pc{
+        display: none;
+    }
+    .products-new{
+       padding: 10%;
+    }
+}
