@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :items
     resources :item_image, only:[:show]
     resources :processings, only:[:new, :create, :destroy]
+    resources :products, except:[:show]
   end
 #####################菅野さんエリア##################################################################################
   namespace :customer do

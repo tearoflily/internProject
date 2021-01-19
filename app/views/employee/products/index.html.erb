@@ -1,0 +1,12 @@
+<%= provide(:title, '店頭商品一覧') %>
+<div class="text-center font-weight-bold mt-4"><h1>店頭商品管理</h1></div>
+
+<!-- pcの場合-->
+<div class="products-pc">
+  <%= render 'employee/products/PC/index', {produdcts: @products} %>
+</div>
+
+<!-- phoneの場合-->
+<div class="products-phone">
+  <%= render 'employee/products/Phone/index', {products: @products} %>
+</div>
