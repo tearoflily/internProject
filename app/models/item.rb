@@ -20,5 +20,14 @@ class Item < ApplicationRecord
       image = param.read
     end
   end
+
+   #関連加工法名検索
+   def processNames
+     array = []
+     processings.each do |process|
+       array.push(process.name)
+     end
+     return array
+   end
   
 end

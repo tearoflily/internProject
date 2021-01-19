@@ -4,4 +4,4 @@ FactoryBot.define do
       category{ 1 }
       info{ 'おいしいさば' }
     end
-  end
+end
