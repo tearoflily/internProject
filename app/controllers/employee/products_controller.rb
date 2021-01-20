@@ -25,9 +25,6 @@ class Employee::ProductsController < Employee::MainController
     end
   end
 
-  def edit
-  end
-
   def destroy
     Product.find( params[:id] ).destroy
     redirect_to employee_products_path, danger: "削除しました。"
