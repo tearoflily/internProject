@@ -18,12 +18,19 @@
         <tbody>
           <% products.each do |product| %>
             <tr>
-              <td class="font-weight-bold text-center w-50"><%= product.name %></td>
-              <td class="font-weight-bold text-center text-danger"><%= product.price %></td>
-              <td class="font-weight-bold text-center"><%= product.stock %></td>
-              <td class="font-weight-bold text-center"><%= product.total %></td>
-              <td>
-                <%= link_to '削除', '#', class: 'btn btn-danger btn-block btn-sm'%>
+              <td class="font-weight-bold text-center w-50">
+                <%= product.name %><br>
+                <%= product.createProcessTable %>
+              </td>
+              <td class="font-weight-bold text-center text-danger align-middle"><%= product.price %></td>
+              <td class="font-weight-bold text-center align-middle"><%= product.stock %></td>
+              <td class="font-weight-bold text-center align-middle"><%= product.total %></td>
+              <td class ="align-middle">
+                <%= link_to '削除', [:employee, product], 
+                   data:{confirm: '削除してよろしいでしょうか？'},
+                   method: :delete,
+                   class: 'btn btn-danger btn-block btn-lg '
+                %>
               </td>
             </tr>
           <% end %>

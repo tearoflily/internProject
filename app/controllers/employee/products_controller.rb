@@ -27,6 +27,13 @@ class Employee::ProductsController < Employee::MainController
 
   def edit
   end
+
+  def destroy
+    Product.find( params[:id] ).destroy
+    redirect_to employee_products_path, danger: "削除しました。"
+  end
+
+
 private
   def product_parameters
     params.require(:product).permit( :name, :price, :stock )

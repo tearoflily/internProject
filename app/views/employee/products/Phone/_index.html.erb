@@ -28,6 +28,10 @@
                   <td class="font-weight-bold text-center w-50"><%= product.price %></td>
                 </tr>
                  <tr>
+                  <th class="bg-dark text-white text-center font-weight-bold align-middle">加工法</th>
+                  <td class="font-weight-bold text-center w-50"><%= product.createProcessTablePhone %></td>
+                </tr>
+                 <tr>
                   <th class="bg-dark text-white text-center font-weight-bold">在庫</th>
                   <td class="font-weight-bold text-center w-50"><%= product.stock %></td>
                 </tr>
@@ -37,7 +41,11 @@
                 </tr>
                  <tr>
                   <td colspan="2">
-                    <%= link_to '削除', '#', class: 'btn btn-danger btn-block btn-sm'%>
+                     <%= link_to '削除', [:employee, product], 
+                      data:{confirm: '削除してよろしいでしょうか？'},
+                      method: :delete,
+                      class: 'btn btn-danger btn-block btn-lg '
+                    %>
                   </td>
                 </tr>
               </tbody>
