@@ -29,5 +29,24 @@ class Item < ApplicationRecord
      end
      return array
    end
+
+   #商品の名前配列化(店頭商品セレクトで使用)
+   def self.itemNames
+     array = []
+     all.each do |item|
+       array << item.name
+     end
+     return array
+   end
+
+   #商品の加工法をすべて文字列化(店頭商品で使用)
+   def itemProcesses
+    str = ''
+    processings.all.each do |process|
+      str += process.name + ','
+    end
+    return str
+   end
+   
   
 end
