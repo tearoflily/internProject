@@ -1,5 +1,5 @@
 class Employee::ItemsController <  Employee::MainController
-  before_action :setItem, only: [ :show, :edit, :update, :destoroy ]
+  before_action :setItem, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @items = Item.all.descendingOrder
@@ -33,6 +33,8 @@ class Employee::ItemsController <  Employee::MainController
   end
 
   def destroy
+    @item.destroy
+    redirect_to employee_items_url,  danger: "削除しました。"
   end
 
   def show

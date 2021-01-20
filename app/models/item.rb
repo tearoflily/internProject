@@ -1,4 +1,6 @@
 class Item < ApplicationRecord
+
+  has_many :processings, dependent: :destroy
   validates :name, presence: true, uniqueness: true, length: {maximum: 10}
   scope  :descendingOrder,-> { order(id: :DESC)}
  
@@ -18,5 +20,33 @@ class Item < ApplicationRecord
       image = param.read
     end
   end
+
+   #関連加工法名検索
+   def processNames
+     array = []
+     processings.each do |process|
+       array.push(process.name)
+     end
+     return array
+   end
+
+   #商品の名前配列化(店頭商品セレクトで使用)
+   def self.itemNames
+     array = []
+     all.each do |item|
+       array << item.name
+     end
+     return array
+   end
+
+   #商品の加工法をすべて文字列化(店頭商品で使用)
+   def itemProcesses
+    str = ''
+    processings.all.each do |process|
+      str += process.name + ','
+    end
+    return str
+   end
+   
   
 end

@@ -9,4 +9,5 @@ document.addEventListener('turbolinks:load',function(){
     input.parent().parent().next(':text').val(label);
   });
   
+  
 });

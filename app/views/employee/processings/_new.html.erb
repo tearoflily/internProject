@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-3  p-5 mt-3  processings">
+      <%= form_with url: employee_processings_path({params:{item_id: item.id}}),  local: true do |f| %>
+
+        <div class="form-group">
+          <%= f.label '商品の加工方法を選択してください。(複数可)' %><br>
+          <%= f.select :name,
+              Processing.statuses.keys.map {|k| [I18n.t("enums.processing.status.#{k}"), k]},
+              {},{multiple: true, class: 'js-searchable'}  
+          %>
+        </div>
+
+        <div class="mt-2">
+          <%= f.submit '追加', class: 'btn btn-primary btn-block' %>
+        </div>
+      <% end %>
+    </div>
+</div>
+
+<!--加工法リスト-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-2 process-list ">
+      <div class="text-center">
+        <h2>【登録加工法一覧】</h2>
+      </div>
+      <% if @processings.count > 0 %>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="bg-dark text-white font-weight-bold w-75 ">加工法</th>
+              <th class="bg-dark text-white font-weight-bold "></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @processings.each do |process| %>
+              <tr>
+                <td class="font-weight-bold"><%= I18n.t("enums.processing.status.#{process.name}")%></td>
+                <td>
+                    <%= link_to '削除', [:employee, process],
+                        data:{confirm: '削除してもよろしいでしょうか？'},
+                        method: :delete,
+                        class: 'btn btn-danger btn-block' 
+                    %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <div class="bg-secondary p-5 text-center text-white font-weight-bold">まだ登録されてません。</div>
+      <% end%>
+    </div>
+</div
+

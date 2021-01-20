@@ -10,6 +10,13 @@ ja:
         octopassquid: たこ、いか
         seaweeds: 海藻
         others: その他
+    processing:
+      status:
+        sasimi: 刺身
+        kirimi: 切り身
+        nimono: 煮物用
+        sioyaki: 塩焼き用
+        flay: フライ、天ぷら用
   activerecord:
     errors:
       messages:
@@ -19,6 +26,7 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       item: 商品
+      product: 店頭商品
     attributes:
       item:
         id: id
@@ -26,6 +34,11 @@ ja:
         name: 商品名
         category: カテゴリー
         info: 商品情報
+      product:
+        id: id
+        name: 商品名
+        price: 価格
+        stock: 在庫
   date:
     abbr_day_names:
     - 日

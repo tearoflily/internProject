@@ -1,0 +1,15 @@
+<%= provide(:title, '店頭商品編集') %>
+
+<div class="text-center font-weight-bold mb-3">
+    <h1>店頭商品編集</h1>
+</div>
+
+<!-- pcの場合-->
+<div class="products-pc">
+   <%= render 'employee/products_change/PC/index', {products: @products} %>
+</div>
+
+<!-- phoneの場合-->
+<div class="products-phone">
+   <%= render 'employee/products_change/Phone/index', {products: @products} %>
+</div>
