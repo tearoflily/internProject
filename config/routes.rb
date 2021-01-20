@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
   get 'top/show'
   root 'employee/items#index'
+  
+  get    '/login', to: 'sessions#new'
+  post   '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 #####################植松エリア##################################################################################
   namespace :employee do
     resources :items
