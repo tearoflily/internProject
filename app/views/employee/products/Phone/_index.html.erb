@@ -11,7 +11,44 @@
         </tbody>
       </table>
      <!--/ボタンエリア-->
-
+     <% if products.count > 0%>
+       <table mt-1">
+        <tbody>
+          <% products.each do |product| %>
+           <tr>
+            <td>【<%= product.name %>】</td>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th class="bg-dark text-white text-center font-weight-bold">商品名</th>
+                  <td class="font-weight-bold text-center w-50"><%= product.name %></td>
+                </tr>
+                <tr>
+                  <th class="bg-dark text-white text-center font-weight-bold">価格</th>
+                  <td class="font-weight-bold text-center w-50"><%= product.price %></td>
+                </tr>
+                 <tr>
+                  <th class="bg-dark text-white text-center font-weight-bold">在庫</th>
+                  <td class="font-weight-bold text-center w-50"><%= product.stock %></td>
+                </tr>
+                 <tr>
+                  <th class="bg-dark text-white text-center font-weight-bold">合計</th>
+                  <td class="font-weight-bold text-center w-50"><%= product.total %></td>
+                </tr>
+                 <tr>
+                  <td colspan="2">
+                    <%= link_to '削除', '#', class: 'btn btn-danger btn-block btn-sm'%>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+           </tr>
+          <% end %>
+        </tbody>
+       </table>
+      <% else %>
+        <div class="bg-secondary p-5 text-center text-white font-weight-bold">まだ店頭商品が登録されてません。</div>
+      <% end %>
 
     </div>
   </div>
