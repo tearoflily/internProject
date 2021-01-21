@@ -9,5 +9,13 @@ class Product < ApplicationRecord
     price * stock
   end
   
- 
+  def self.stock_price_update(params)
+    params.each do |id, item|
+      product = find id
+      product.price = item[:price]
+      product.stock = item[:stock]
+      product.save 
+    end
+  end
+
 end

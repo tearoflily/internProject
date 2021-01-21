@@ -25,9 +25,15 @@ class Employee::ProductsController < Employee::MainController
     end
   end
 
+  def update
+    Product.stock_price_update(status_change_parameter)
+    redirect_to employee_products_path, info: "編集しました。" 
+  end
+  
+
   def destroy
     Product.find( params[:id] ).destroy
-    redirect_to employee_products_path, danger: "削除しました。"
+    redirect_to employee_products_path, danger: "削除しました。" 
   end
 
 
@@ -35,6 +41,11 @@ private
   def product_parameters
     params.require(:product).permit( :name, :price, :stock )
   end
+
+  def status_change_parameter
+    params.require(:product).permit(products: [:price, :stock])[:products]
+  end
+  
   
   
 end
