@@ -7,7 +7,7 @@ document.addEventListener('turbolinks:load', function(){
         var num = price.id.split('price')[1];
         var stock = document.getElementById('stock' + num);
         var total = document.getElementById('total' + num);
-        var textContent = Number(price.value) * Number(stock.value);
+        total.textContent = Number(price.value) * Number(stock.value);
 
         var pstock = document.getElementById('P-stock' + num);
         var ptotal = document.getElementById('P-total' + num);
