@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 p-3">
+   
+     <% if products.count > 0%>
+      <%= form_with scope: :product, url:employee_products_path, local:true, method: :patch do  |f| %>
+        <table class="table table-bordered  mt-1">
+          <thead>
+            <tr>
+              <th class="bg-dark text-white text-center font-weight-bold">商品</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% products.each do |product| %>
+              <%= f.fields_for 'products[]', product do |af| %>
+              <tr>
+                <table class="table table-bordered">
+                  <tbody>
+                    <tr>
+                        <tr>
+                          <td>
+                            <strong>商品名:</strong>
+                            <strong style="color:blue;"><%= product.name %></strong>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>価格:</strong>
+                            <%= af.number_field :price, min: 0, step: 1, value: product.price, class:"phone-product-form" %>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>在庫:</strong>
+                            <%= af.number_field :stock, min: 0, step: 1, value: product.stock, class:"phone-product-form" %>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>合計金額:</strong>
+                            <strong style="color:red;"><%= product.total %></strong>
+                          </td>
+                      </tr>
+                    </tr>
+                  </tbody>
+                </table>
+              </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+        <%= f.submit '編集', class: 'btn btn-primary btn-block' %>
+        <%= link_to '戻る', employee_products_path,  class: "btn btn-secondary btn-block" %>
+      <% end %>
+  
+      <% else %>
+        <div class="bg-secondary p-5 text-center text-white font-weight-bold">まだ店頭商品が登録されてません。</div>
+      <% end %>
+    
+    </div>
+  </div>
+</div>
