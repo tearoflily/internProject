@@ -14,19 +14,19 @@
           </tr>
         </thead>
         <tbody>
-          <% products.each do |product| %>
+          <% products.each_with_index do |product, i| %>
             <%= f.fields_for 'products[]', product do |af| %>
             <tr>
               <td class="font-weight-bold text-center">
                 <%= product.name %><br>
               </td>
               <td class="font-weight-bold text-center text-danger align-middle">
-                <%= af.number_field :price, min: 0, step: 1, value: product.price, class:'form-control' %>
+                <%= af.number_field :price, min: 0, step: 1, value: product.price, class:'form-control product-price-field', id:"price#{i}" %>
               </td>
               <td class="font-weight-bold text-center align-middle">
-                <%= af.number_field :stock, min: 0, step: 1, value: product.stock, class:'form-control' %>
+                <%= af.number_field :stock, min: 0, step: 1, value: product.stock, class:'form-control product-stock-field', id:"stock#{i}" %>
               </td>
-              <td class="font-weight-bold text-center align-middle"><%= product.total %></td>
+              <td class="font-weight-bold text-center align-middle" id="total<%= i %>"><%= product.total %></td>
             </tr>
            <% end %>
           <% end %>

@@ -11,7 +11,7 @@
             </tr>
           </thead>
           <tbody>
-            <% products.each do |product| %>
+            <% products.each_with_index do |product, i| %>
               <%= f.fields_for 'products[]', product do |af| %>
               <tr>
                 <table class="table table-bordered">
@@ -26,19 +26,19 @@
                         <tr>
                           <td>
                             <strong>価格:</strong>
-                            <%= af.number_field :price, min: 0, step: 1, value: product.price, class:"phone-product-form" %>
+                            <%= af.number_field :price, min: 0, step: 1, value: product.price, class:"phone-product-form product-price-field", id:"P-price#{i}" %>
                           </td>
                         </tr>
                         <tr>
                           <td>
                             <strong>在庫:</strong>
-                            <%= af.number_field :stock, min: 0, step: 1, value: product.stock, class:"phone-product-form" %>
+                            <%= af.number_field :stock, min: 0, step: 1, value: product.stock, class:"phone-product-form product-stock-field", id:"P-stock#{i}"  %>
                           </td>
                         </tr>
                         <tr>
                           <td>
                             <strong>合計金額:</strong>
-                            <strong style="color:red;"><%= product.total %></strong>
+                            <strong style="color:red;" id="P-total<%= i %>"><%= product.total %></strong>
                           </td>
                       </tr>
                     </tr>
