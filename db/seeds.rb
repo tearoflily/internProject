@@ -34,6 +34,7 @@ end
       price: 100,
       process: '刺し身',
       num: 5,
+      order_date: Date.today + 1,
       order_time: Time.local(
         Time.now.year,
         Time.now.month,
@@ -49,6 +50,7 @@ end
       price: 100,
       process: '刺し身',
       num: 5,
+      order_date: Date.today,
       order_time: Time.local(
         Time.now.year,
         Time.now.month,

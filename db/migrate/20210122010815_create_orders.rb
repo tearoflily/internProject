@@ -6,6 +6,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string :process
       t.integer :num, null:false
       t.integer :status, null:false, default: 1
+      t.date :order_date, null:false
       t.datetime :order_time, null:false
       t.references :user, foreign_key: true
 

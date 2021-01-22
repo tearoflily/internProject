@@ -5,6 +5,11 @@ class Order < ApplicationRecord
   validates :num, presence: true, :numericality => { :greater_than => 0 } 
   validates :order_time, presence: true
 
-  scope :timeSort, -> { order(order_time: :asc)}
+  scope :timeSort, -> { where(order_date: Date.today ).order(order_time: :asc)}
+
+  #合計金額
+  def total
+    num.to_i * price.to_i
+  end
  
 end
