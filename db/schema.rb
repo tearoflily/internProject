@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_01_22_010815) do
     t.string "process"
     t.integer "num", null: false
     t.integer "status", default: 1, null: false
+    t.date "order_date", null: false
     t.datetime "order_time", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
