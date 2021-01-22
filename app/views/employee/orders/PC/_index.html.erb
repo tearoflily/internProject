@@ -24,7 +24,7 @@
       <tr>
         <td class="text-center align-middle ">
           <h4 class="font-weight-bold"><%= l order.order_time, format: :tim %><h4>
-          <div class="<%= order.orderStatusView %>"><%= I18n.t("enums.order.status.#{order.status}")  %>
+          <div class="<%= order.orderStatusView %>"><%= I18n.t("enums.order.status.#{order.status}")  %></div>
         </td>
         <td class="text-center align-middle"><%= order.name %></td>
         <td class="text-center font-weight-bold align-middle">
