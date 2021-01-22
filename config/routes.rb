@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       patch :update, on: :collection
     end
     resources :products_change, only:[:index, :create]
+    resources :orders, except: [:new, :create]
   end
 #####################菅野さんエリア##################################################################################
   namespace :customer do
