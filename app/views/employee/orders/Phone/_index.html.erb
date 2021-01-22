@@ -4,7 +4,11 @@
    <tbody>
      <% orders.each do |order| %>
       <tr>
-        <td><h4 style="color:red"><span style="color:black">受け取り:</span><%= l order.order_time, format: :tim %></h4></td>
+        <td>
+          <h4 style="color:red"><span style="color:black">受け取り:</span><%= l order.order_time, format: :tim %>
+            <span class="<%= order.orderStatusView %> ml-2"><%= I18n.t("enums.order.status.#{order.status}")  %></span>
+          </h4>
+        </td>
       </tr>
       <tr>
         <table class="table table-bordered mb-5">
