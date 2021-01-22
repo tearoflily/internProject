@@ -1,3 +1,37 @@
 <% provide(:title, 'Sign up') %>
+<% provide(:class_text, 'signup') %>
+<% provide(:button_text, '新規作成') %>
 <h1>ユーザー登録</h1>
 
+<div class="new-signup">
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_with(url: login_path, local: true) do |f| %>
+
+        <%= f.label :name, "名前", class: "label-#{yield(:class_text)}" %>
+        <%= f.text_field :name, class: "form-control" %>
+
+        <%= f.label :name_kana, "名前（カナ）", class: "label-#{yield(:class_text)}" %>
+        <%= f.text_field :name_kana, class: "form-control" %>
+       
+        <%= f.label :tellnumber, "電話番号", class: "label-#{yield(:class_text)}" %>
+        <%= f.telephone_field :tel_number, placeholder: "090-0000-0000", class: "form-control" %>
+
+        <%= f.label :email, class: "label-#{yield(:class_text)}" %>
+        <%= f.email_field :email, placeholder: "email@email.jp", class: "form-control" %>
+
+        <%= f.label :password, "パスワード", class: "label-#{yield(:class_text)}" %>
+        <%= f.password_field :password, class: "form-control" %>
+
+        <%= f.label :password_confirmation, "パスワード確認", class: "label-#{yield(:class_text)}" %>
+        <%= f.password_field :password_confirmation, class: "form-control" %>
+
+      <div class="center">
+        <%= f.submit yield(:button_text), class: "btn btn-success btn-#{yield(:class_text)} newbutt" %>
+        <%= link_to "戻る", login_path, class: "btn btn btn-info return" %>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
