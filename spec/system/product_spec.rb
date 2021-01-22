@@ -43,7 +43,39 @@ describe "店頭商品機能検証", type: :system do
       expect(page).to have_content "在庫は0より大きい値にしてください" 
     end
   end
+
+
+  describe "削除機能" do
+    before do
+      visit employee_products_path
+    end
+    it "削除される。" do
+      click_on "delete-product#{product.id}"
+      expect{
+        expect(page.accept_confirm).to eq "削除しますか？"
+        expect(page).to have_content "削除しました。"
+        }
+    end  
+  end
+
+  describe "価格在庫編集機能検証" do
+    before do
+      visit employee_products_change_index_path
+    end
+    it "ページ表示確認" do
+      expect(page).to have_content '店頭商品編集'  
+    end
+    it "編集動作確認" do
+      fill_in "product[products][#{product.id}][price]",	with: "500" 
+      fill_in "product[products][#{product.id}][stock]",	with: "5" 
+      click_on "編集"
+      expect(page).to have_content '編集しました。'  
+    end
+    
+    
+  end
+  
+  
   
  
-  
 end

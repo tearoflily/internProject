@@ -29,7 +29,8 @@
                 <%= link_to '削除', [:employee, product], 
                    data:{confirm: '削除してよろしいでしょうか？'},
                    method: :delete,
-                   class: 'btn btn-danger btn-block btn-lg '
+                   class: 'btn btn-danger btn-block btn-lg ',
+                   id: "delete-product#{product.id}"
                 %>
               </td>
             </tr>
