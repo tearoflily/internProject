@@ -17,6 +17,11 @@ ja:
         nimono: 煮物用
         sioyaki: 塩焼き用
         flay: フライ、天ぷら用
+    order:
+      status:
+        in_order: 依頼中
+        processed: 加工済み
+        delivery: 受け渡し済み
   activerecord:
     errors:
       messages:
