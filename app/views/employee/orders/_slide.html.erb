@@ -1,0 +1,40 @@
+
+<table class="table teble-borderd">
+  <tbody>
+    <% orders.each_with_index do |order, i| %>
+      <tr>
+        <th class="bg-secondary text-center text-white">
+          <span class="mr-3"><%= "商品:#{order.name}" %></span>
+          <span class="mr-3"><%= "加工法:#{order.process}" %></span>
+          <span><%= l order.order_time, format: :tim %></span>
+          <button class="bt" id="<%= "bt#{i}" %>">編集</button>
+        </th>
+      </tr>
+
+      <tr class="slide-tr" id="<%= "tr#{i}" %>">
+         <td>
+          <%= form_with model: order, url: employee_order_path(order), method: :patch do |f| %>
+            <% if order.status == 'in_order' %>
+                <%= f.submit "加工済みに変更", :name => 'processed', class: 'btn btn-warning btn-block btn-lg' %>
+                <%= f.submit "受け渡し済みに変更", :name => 'delivery', class: 'btn btn-danger btn-block btn-lg' %>
+            <% elsif order.status == 'processed' %>
+                <%= f.submit "申請中に変更", :name => 'in_order', class: 'btn btn-primary btn-block btn-lg' %>
+                <%= f.submit "受け渡し済みに変更", :name => 'delivery', class: 'btn btn-danger btn-block btn-lg' %>
+            <% else %>
+                <%= f.submit "申請中に変更", :name => 'in_order', class: 'btn btn-primary btn-block btn-lg' %>
+                <%= f.submit "加工済みに変更", :name => 'processed', class: 'btn btn-warning btn-block btn-lg' %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+<table>
+<script>
+  document.querySelectorAll(".bt").forEach(function(bt){
+    var i = bt.id.split('bt')[1];
+    bt.addEventListener('click', function(){
+      $("#tr" + i).slideToggle();
+    })
+  });   
+</script>

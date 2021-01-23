@@ -31,6 +31,12 @@ class Order < ApplicationRecord
       self.save
     end
   end
+
+  #モーダル内のボタン当該オーダー以外を検索
+  def self.otherOrders(order)
+    where(user_id: order.user_id).where.not(id: order.id)
+  end
+  
   
  
 end
