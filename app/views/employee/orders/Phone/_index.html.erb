@@ -5,13 +5,11 @@
      <% orders.each do |order| %>
       <tr>
         <td>
-          <h4 style="color:red"><span style="color:black">受け取り:</span><%= l order.order_time, format: :tim %>
-            <span class="<%= order.orderStatusView %> ml-2"><%= I18n.t("enums.order.status.#{order.status}")  %></span>
-          </h4>
+          <h4 style="color:red"><span style="color:black">受け取り:</span><%= l order.order_time, format: :tim %></h4>
         </td>
       </tr>
       <tr>
-        <table class="table table-bordered mb-5">
+        <table class="table table-bordered mb-3">
           <tbody>
             <tr>
               <th class="bg-dark text-white font-weight-bold text-center align-middle">商品名</th>
@@ -20,7 +18,9 @@
 
             <tr>
               <th class="bg-dark text-white font-weight-bold text-center align-middle">お客様名</th>
-              <td colspan="3" class="text-center align-middle"><%= order.user.name %></td>
+              <td colspan="3" class="text-center align-middle">
+                <%= link_to order.user.name, employee_order_path(order.user) %>
+              </td>
             </tr>
 
             <tr>
@@ -39,11 +39,14 @@
               <th class="bg-dark text-white font-weight-bold text-center align-middle">依頼加工</th>
               <td colspan="3" class="text-center align-middle"><%= order.process %></td>
             </tr>
-
-
-
           </tbody>
         </table>
+      </tr>
+      <tr>
+        <td>
+           <p class="text-success font-weight-bold">変更はこちらのボタンで。</p>
+           <%= link_to I18n.t("enums.order.status.#{order.status}"), edit_employee_order_path(order.user), class: "#{order.orderStatusView} btn-block mb-3" %>
+        </td>
       </tr>
      <% end %>
    </tbody>

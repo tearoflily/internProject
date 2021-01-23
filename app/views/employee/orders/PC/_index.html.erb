@@ -1,7 +1,7 @@
 <% if orders.count >0 %>  
  
-
-  <table class="table table-bordered">
+  <p class="text-success font-weight-bold mt-3">状況変更する場合は各注文リストのボタンおしてください。</p>
+  <table class="table table-bordered ">
     <thead>
       <tr>
         <th rowspan="2" class="bg-dark text-white font-weight-bold text-center align-middle">
@@ -23,9 +23,9 @@
     <% orders.each do |order| %>
       <tr>
         <td class="text-center align-middle ">
-          <h4 class="font-weight-bold"><%= l order.order_time, format: :tim %><h4>
-          <div class="<%= order.orderStatusView %>"><%= I18n.t("enums.order.status.#{order.status}")  %>
-        </td>
+          <h4 class="font-weight-bold"><%= l order.order_time, format: :tim %>
+          <%= link_to I18n.t("enums.order.status.#{order.status}"), edit_employee_order_path(order), remote: true, class:"#{order.orderStatusView} ml-3" %>
+        </td></h4>
         <td class="text-center align-middle"><%= order.name %></td>
         <td class="text-center font-weight-bold align-middle">
            <%= link_to order.user.name, employee_order_path(order.user),remote: true %>
