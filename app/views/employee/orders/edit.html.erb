@@ -1,2 +1,3 @@
-<h1>Employee::Orders#edit</h1>
-<p>Find me in app/views/employee/orders/edit.html.erb</p>
+<%= provide(:title, "#{@order.name}注文状況変更") %>
+ <%= render 'edit', {order: @order} %>
+ <%= link_to '戻る', employee_orders_path, class: 'btn btn-secondary btn-block mt-3' %>
