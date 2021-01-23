@@ -24,7 +24,7 @@
       <tr>
         <td class="text-center align-middle ">
           <h4 class="font-weight-bold"><%= l order.order_time, format: :tim %>
-          <%= link_to I18n.t("enums.order.status.#{order.status}"), edit_employee_order_path(order), remote: true, class:"#{order.orderStatusView} ml-3" %>
+          <%= link_to I18n.t("enums.order.status.#{order.status}"), edit_employee_order_path(order.id), remote: true, class:"#{order.orderStatusView} ml-3" %>
         </td></h4>
         <td class="text-center align-middle"><%= order.name %></td>
         <td class="text-center font-weight-bold align-middle">

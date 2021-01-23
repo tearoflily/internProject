@@ -13,10 +13,24 @@ class Order < ApplicationRecord
     delivery:        3, #渡済み
   }
 
-
   #合計金額
   def total
     num.to_i * price.to_i
   end
+
+  #ステータス更新
+  def statusUpdate(key)
+    if key == 'in_order'
+      self.status = 'in_order'
+      self.save
+    elsif key == 'processed'
+      self.status = 'processed'
+      self.save
+    elsif key == 'delivery'
+      self.status = 'delivery'
+      self.save
+    end
+  end
+  
  
 end
