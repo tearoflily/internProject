@@ -5,20 +5,26 @@
     <%= order.user.DeliveryOrderCheck %>
 </div>
 <!--ボタン選択されたオーダーの表示エリア-->
-<div>
+<div class="mb-3">
     <p class="h3 font-weight-bold  mt-5"><%= "【#{order.name}】状況更新"%></p>
     <div class="border-top"></div>
     <%= form_with model: order, url: employee_order_path(order), method: :patch do |f| %>
-    <% if order.status == 'in_order' %>
-        <%= f.submit "加工済みに変更", :name => 'processed', class: 'btn btn-warning btn-block btn-lg' %>
-        <%= f.submit "受け渡し済みに変更", :name => 'delivery', class: 'btn btn-danger btn-block btn-lg' %>
-    <% elsif order.status == 'processed' %>
-        <%= f.submit "申請中に変更", :name => 'in_order', class: 'btn btn-primary btn-block btn-lg' %>
-        <%= f.submit "受け渡し済みに変更", :name => 'delivery', class: 'btn btn-danger btn-block btn-lg' %>
-    <% else %>
-         <%= f.submit "申請中に変更", :name => 'in_order', class: 'btn btn-primary btn-block btn-lg' %>
-        <%= f.submit "加工済みに変更", :name => 'processed', class: 'btn btn-warning btn-block btn-lg' %>
-    <% end %>
+        <% if order.status == 'in_order' %>
+            <%= f.submit "加工済みに変更", :name => 'processed', class: 'btn btn-warning btn-block btn-lg' %>
+            <%= f.submit "受け渡し済みに変更", :name => 'delivery', class: 'btn btn-danger btn-block btn-lg' %>
+        <% elsif order.status == 'processed' %>
+            <%= f.submit "申請中に変更", :name => 'in_order', class: 'btn btn-primary btn-block btn-lg' %>
+            <%= f.submit "受け渡し済みに変更", :name => 'delivery', class: 'btn btn-danger btn-block btn-lg' %>
+        <% else %>
+            <%= f.submit "申請中に変更", :name => 'in_order', class: 'btn btn-primary btn-block btn-lg' %>
+            <%= f.submit "加工済みに変更", :name => 'processed', class: 'btn btn-warning btn-block btn-lg' %>
+        <% end %>
     <% end %>
 </div>
 <!--/ボタン選択されたオーダーの表示エリア-->
+<div class="mt-4 mb-3 h4 font-weight-bold text-center">
+  <%= "【#{order.user.name}さんその他の注文商品】" %>
+</div>
+<p class="text-primary font-weight-bold">必要に応じて開閉して編集してください。</p>
+
+<%= render 'slide', {orders: Order.otherOrders(order)} %>
