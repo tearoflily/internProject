@@ -13,6 +13,7 @@
 
       <tr class="slide-tr" id="<%= "tr#{i}" %>">
          <td>
+         <p id=<%="modal-title-#{i}" %>>【状況変更ボタンおしてください】</p>
           <%= form_with model: order, url: employee_order_path(order), method: :patch do |f| %>
             <% if order.status == 'in_order' %>
                 <%= f.submit "加工済みに変更", :name => 'processed', class: 'btn btn-warning btn-block btn-lg' %>
