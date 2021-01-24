@@ -8,6 +8,10 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
 
 
+  scope :customerUsers, -> { where(employee: false).order(id: :asc)}
+  scope :employeeUsesrs, -> { where(employee: true).order(id: :asc)}
+
+ 
   #本日のデータ全体
   def todayOrder
     orders.where(order_date: Date.today)

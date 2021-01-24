@@ -1,0 +1,20 @@
+<%= provide(:title, '会員一覧') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- pcの場合-->
+      <div class="employee-users-pc">
+         <%= render 'employee/users/PC/customer_index', {customers: @customer_users} %>
+         <%= render 'employee/users/PC/employee_index', {employees: @employee_users} %>
+      </div>
+
+       <!-- phoneの場合-->
+       <div class="employee-users-phone">
+         <%= render 'employee/users/Phone/customer_index', {customers: @customer_users} %>
+         <%= render 'employee/users/Phone/employee_index', {employees: @employee_users} %>
+      </div>
+    
+    </div>
+  </div>
+</div>
