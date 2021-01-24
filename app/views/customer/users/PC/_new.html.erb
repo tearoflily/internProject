@@ -20,6 +20,12 @@
 
           <%= f.label :password_confirmation, "パスワード確認", class: "label-#{yield(:class_text)}" %>
           <%= f.password_field :password_confirmation, class: "form-control" %>
+          
+          <% if @user.employee %>
+            <%= f.hidden_field :employee, value:true %>
+          <% else %>
+            <%= f.hidden_field :employee, value:false %>
+          <% end %>
 
       </div>
       <div class="center">
