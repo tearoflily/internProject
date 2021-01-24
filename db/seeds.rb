@@ -19,7 +19,7 @@
 end
   12.times do |i|
     User.create!(
-      name: "顧客#{i + 1}",
+      name: "ｺｷｬｸ#{i + 1}",
       name_kana: "顧客#{i}",
       tellnumber: "080-1000-000#{i}",
       email: "mails#{i}@example.com",

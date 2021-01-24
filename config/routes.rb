@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   get 'top/show'
   root 'employee/items#index'
 #####################植松エリア##################################################################################
@@ -12,6 +11,7 @@ Rails.application.routes.draw do
     end
     resources :products_change, only:[:index, :create]
     resources :orders, except: [:new, :create]
+    resources :users
   end
 #####################菅野さんエリア##################################################################################
   namespace :customer do

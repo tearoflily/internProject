@@ -1,0 +1,37 @@
+<div class="text-center font-weight-bold mt-4 mb-2"><h1>お客様一覧</h1></div>
+
+<% if customers.count >0 %>  
+<div class="bg-white shadow p-4 mb-5">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th colspan="2" class="bg-primary text-white font-weight-bold text-center w-50">お客様名</th>
+        <th rowspan="2" class="bg-primary text-white font-weight-bold text-center align-middle">メールアドレス</th>
+        <th rowspan="2" class="bg-primary text-white font-weight-bold text-center align-middle">電話番号</th>
+        <th rowspan="2" class="bg-primary text-white font-weight-bold text-center"></th>
+      </tr>
+      <tr>
+         <th class="bg-primary text-white font-weight-bold text-center">名前</th>
+         <th class="bg-primary text-white font-weight-bold text-center">かな</th>
+      </tr>
+    </thead>  
+    <tbody>
+      <% customers.each do |customer| %>
+        <tr>
+          <td class="font-weight-bold text-center"><%= customer.name %></td>
+          <td class="font-weight-bold text-center"><%= customer.name_kana %></td>
+          <td class="font-weight-bold text-center"><%= customer.email %></td>
+          <td class="font-weight-bold text-center">
+          　<a href="tel:<%= customer.tellnumber %>"><%= customer.tellnumber %></a>
+          </td>
+          <td>
+               <%= link_to '削除', [:employee, customer], data:{confirm: '削除しますか？' }, method: :delete, id: "delete_customer_button#{customer.id}", class: 'btn btn-danger btn-lg' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+ <% else %> 
+   <div class="p-5 bg-secondary text-center text-white font-weight-bold">まだお客様が登録されてません。</div>
+ <% end %>

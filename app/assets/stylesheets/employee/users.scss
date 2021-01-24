@@ -1,0 +1,20 @@
+// Place all the styles related to the employee::users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.employee-users-phone{
+    display: none;
+}
+
+
+/**************************スマートフォン***********************************************************************************************/
+@media screen and (max-width:767px){
+    .employee-users-phone{
+        display: block;
+    }
+    .employee-users-pc{
+        display: none;
+    }
+    .products-new{
+       padding: 10%;
+    }
+}
