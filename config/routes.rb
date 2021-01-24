@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :orders, except: [:new, :create]
   end
 #####################菅野さんエリア##################################################################################
+  get '/signup', to: 'customer/users#new' 
+  
   namespace :customer do
     resources :users
   end

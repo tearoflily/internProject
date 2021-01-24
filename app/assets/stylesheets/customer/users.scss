@@ -2,4 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /* ユーザー情報テーブル */
-@import 'customer';
+
+.new-signup{
+  margin: auto;
+  .newform{
+    padding: 40px;
+    background-color: #e6e6fa;
+    input[type="text"] {
+      width: 80%;
+    }
+    input[type="telephone"] {
+      width: 80%;
+    }
+    input[type="email"] {
+      width: 80%;
+    }
+    input[type="password"] {
+      width: 80%;
+    }
+  }
+  .center{
+    margin: 10px;
+    text-align: center;
+  }
+}
+

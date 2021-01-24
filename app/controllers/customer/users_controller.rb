@@ -6,7 +6,7 @@ class Customer::UsersController < Customer::MainController
 	end
 	
 	def show
-		
+		@user = User.find(params[:id])
 	end
 
 	def new
@@ -19,10 +19,9 @@ class Customer::UsersController < Customer::MainController
 
   def create
     @user = User.new(user_params)
-		if @user.save
-			log_in @user
-			flash[:success] = '新規作成に成功しました。'
-      redirect_to @user
+    if @user.save
+      flash[:success] = '新規作成に成功しました。'
+      redirect_to top_show_path
     else
       render :new
     end
@@ -43,7 +42,7 @@ class Customer::UsersController < Customer::MainController
   private
 
     def user_params
-      params.require(:user).permit(:name, :name_kana, :tellnumber, :email, :password, :password_confirmation, :employee)
+      params.permit(:name, :name_kana, :phone_number, :email, :password, :password_confirmation, :employee)
 		end
 
 		def set_user
