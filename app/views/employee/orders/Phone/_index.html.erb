@@ -45,7 +45,7 @@
       <tr>
         <td>
            <p class="text-success font-weight-bold">変更はこちらのボタンで。</p>
-           <%= link_to I18n.t("enums.order.status.#{order.status}"), edit_employee_order_path(order.user), class: "#{order.orderStatusView} btn-block mb-3" %>
+           <%= link_to I18n.t("enums.order.status.#{order.status}"), edit_employee_order_path(order.id), class: "#{order.orderStatusView} btn-block mb-3" %>
         </td>
       </tr>
      <% end %>
