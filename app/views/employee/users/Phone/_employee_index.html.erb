@@ -1,0 +1,58 @@
+<div class="border-top"></div>
+<div class="text-center font-weight-bold mt-2 mb-2"><h1>お従業員一覧</h1></div>
+<% if employees.count >0 %>  
+<div class="bg-white p-4 mb-5 w-100">
+   <%= link_to '新規従業員登録', "#", class: "btn btn-primary mt-2" %>
+   <div class="border-top mb-2 mt-1"></div>
+  <table class="table table-bordered w-100">
+    <tbody>
+      <% employees.each do |employee| %>
+      <h5><%= "【従業員名:#{employee.name}】" %></h5>
+      <table class="table table-bordered mb-5 w-100">
+        <tr>
+         <tr>
+             <th rowspan="5" class="bg-success text-white font-weight-bold text-center  align-middle">従業員名</th>
+         </tr>
+
+         <tr>
+           <th class="bg-success text-white font-weight-bold text-center">名前</th>
+         </tr>
+
+         <tr>
+           <td class="font-weight-bold text-center"><%= employee.name %></td>
+         </tr>
+
+         <tr>
+           <th class="bg-success text-white font-weight-bold text-center">かな</th>
+         </tr>
+
+         <tr>
+             <td class="font-weight-bold text-center"><%= employee.name_kana %></td>
+         </tr>
+
+         <tr>
+           <th class="bg-success text-white font-weight-bold text-center align-middle">メールアドレス</th>
+            <td class="font-weight-bold text-center"><%= employee.email %></td>
+         </tr>
+
+         <tr>
+            <th class="bg-success text-white font-weight-bold text-center align-middle">電話番号</th>
+             <td class="font-weight-bold text-center">
+          　   <a href="tel:<%= employee.tellnumber %>"><%= employee.tellnumber %></a>
+             </td>
+         </tr>
+
+          <tr>
+            <td colspan="2">
+              <%= link_to '削除', [:employee, employee], data:{confirm: '削除しますか？' }, method: :delete, id: "delete_customer_button#{employee.id}", class: 'btn btn-danger btn-block' %>
+            </td>
+          </tr>
+        </tr>
+       </table>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+ <% else %> 
+   <div class="p-5 bg-secondary text-center text-white font-weight-bold">まだお客様が登録されてません。</div>
+ <% end %>
