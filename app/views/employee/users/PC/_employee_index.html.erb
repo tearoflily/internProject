@@ -13,7 +13,7 @@
       </tr>
       <tr>
          <th class="bg-success text-white font-weight-bold text-center">名前</th>
-         <th class="bg-success text-white font-weight-bold text-center">かな</th>
+         <th class="bg-success text-white font-weight-bold text-center">カナ</th>
       </tr>
     </thead>  
     <tbody>
@@ -26,7 +26,7 @@
           　<a href="tel:<%= employee.tellnumber %>"><%= employee.tellnumber %></a>
           </td>
           <td>
-               <%= link_to '削除', [:employee, employee], data:{confirm: '削除しますか？' }, method: :delete, id: "delete_customer_button#{employee.id}", class: 'btn btn-danger btn-lg' %>
+               <%= link_to '削除', [:employee, employee], data:{confirm: '削除しますか？' }, method: :delete, id: "delete_user_employee_button#{employee.id}", class: 'btn btn-danger btn-lg' %>
           </td>
         </tr>
       <% end %>
