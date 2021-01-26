@@ -29,6 +29,8 @@ class Item < ApplicationRecord
     self.info = params[:info]
     self.save
   end
+
+  
   
 
    #関連加工法名検索
