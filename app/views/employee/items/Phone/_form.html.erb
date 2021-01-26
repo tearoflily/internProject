@@ -5,13 +5,14 @@
        <%= @item.errorCheck %>
       <%= form_with model: [:employee, item],  local: true do |f| %>
 
-        <div class="form-group">
+        <div class="form-group file-group-phone">
           <%= f.label Item.human_attribute_name(:path) %>
+          <div class="tooltips-phone mb-3" id="tooltips">画像ファイルを選択してください。</div>
           <div class="input-group">
             <label class="input-group-btn">
                 <span class="btn btn-success">
                   ファイル選択
-                  <%= f.file_field :image, style: 'display:none' %>
+                  <%= f.file_field :image, style: 'display:none', id:'item-file-form', class: 'item-file-form-phone' %>
                 </span>
             </label>
            <input type="text" class="form-control" readonly="">
@@ -34,7 +35,7 @@
         </div>
 
         <div class="mt-5">
-          <%= f.submit nil, class: 'btn btn-primary btn-block' %>
+          <%= f.submit nil, class: 'btn btn-primary btn-block item-submit-phone', id:'item-submit' %>
           <%= link_to '戻る', employee_items_path, class: 'btn btn-secondary btn-block' %>
         </div>
 
