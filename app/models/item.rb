@@ -21,6 +21,16 @@ class Item < ApplicationRecord
     end
   end
 
+  #画像ファイル付きのupdate
+  def includeImageUpdate(params)
+    self.image = self.imageSet(params[:image])
+    self.name = params[:name]
+    self.category = params[:category]
+    self.info = params[:info]
+    self.save
+  end
+  
+
    #関連加工法名検索
    def processNames
      array = []
