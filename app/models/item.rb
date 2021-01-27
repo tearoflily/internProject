@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+  
 
   has_many :processings, dependent: :destroy
   validates :name, presence: true, uniqueness: true, length: {maximum: 10}
@@ -18,6 +19,13 @@ class Item < ApplicationRecord
   def imageSet(param)
     if param
       image = param.read
+      #rmagicによる画像サイズ等調整
+      set_image = Magick::Image.from_blob(image).first  
+      rmagick_image = set_image.resize_to_fit(300)
+      rmagick_image.auto_orient!
+      rmagick_image.strip!
+      rmagick_image.write('public/make.jpg')
+      self.image = File.open('public/make.jpg').read
     end
   end
 
