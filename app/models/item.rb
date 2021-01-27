@@ -1,6 +1,4 @@
 class Item < ApplicationRecord
-  
-
   has_many :processings, dependent: :destroy
   validates :name, presence: true, uniqueness: true, length: {maximum: 10}
   scope  :descendingOrder,-> { order(id: :DESC)}
@@ -31,7 +29,7 @@ class Item < ApplicationRecord
 
   #画像ファイル付きのupdate
   def includeImageUpdate(params)
-    self.image = self.imageSet(params[:image])
+    self.image = self.imageSet(params[:image]) unless params[:image].nil?
     self.name = params[:name]
     self.category = params[:category]
     self.info = params[:info]

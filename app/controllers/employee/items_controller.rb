@@ -25,8 +25,6 @@ class Employee::ItemsController <  Employee::MainController
 
 
   def update
-    @item.image = nil
-    @item.save
     if @item.includeImageUpdate(item_parameters)  #=>モデルでupdete定義
       redirect_to employee_items_url,  info: "#{@item.name}を編集しました。"
     else
