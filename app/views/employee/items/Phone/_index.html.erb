@@ -16,18 +16,18 @@
                 <td rowspan="3" class="w-25"><%= image_tag(employee_item_image_path(item.id),size:'80') %></td>
               </tr>
               <tr>
-                <th class="bg-dark text-white font-weight-bold w-25">商品名</th>
+                <th class="bg-dark text-white font-weight-bold w-25 align-middle">商品名</th>
                 <td class="font-weight-bold text-center w-25 align-middle"><%= link_to item.name,[:employee, item] %></td>
               </tr>
               <tr>
-                <th class="bg-dark text-white font-weight-bold">カテゴリー</th>
+                <th class="bg-dark text-white font-weight-bold align-middle" style="font-size:9px">カテゴリー</th>
                 <td class="font-weight-bold text-center w-25 align-middle"><%= I18n.t("enums.item.status.#{item.category}") %></td>
               </tr>
             </tbody>
           </table>
-          <%= link_to '編集', edit_employee_item_path(item), class: 'btn btn-primary btn-lg mr-3' %>
-          <%= link_to '加工法編集', new_employee_processing_path(params:{item_id: item}), class: 'btn btn-primary btn-lg mr-3' %>
-          <%= link_to '削除', [:employee,item], data:{confirm: '削除しますか？' }, method: :delete, id: "delete_button#{item.id}", class: 'btn btn-danger btn-lg' %>
+          <%= link_to '編集', edit_employee_item_path(item), class: 'btn btn-primary  item-index-button' %>
+          <%= link_to '加工法編集', new_employee_processing_path(params:{item_id: item}), class: 'btn btn-primary item-index-process-button' %>
+          <%= link_to '削除', [:employee,item], data:{confirm: '削除しますか？' }, method: :delete, id: "delete_button#{item.id}", class: 'btn btn-danger item-index-button' %>
         </td>
       </tr>
     <% end %>
