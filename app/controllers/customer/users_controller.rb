@@ -10,7 +10,7 @@ class Customer::UsersController < Customer::MainController
 	end
 
 	def new
-		@user = User.new
+    @user = User.new
 	end
 
 	def edit
@@ -20,8 +20,7 @@ class Customer::UsersController < Customer::MainController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = '新規作成に成功しました。'
-      redirect_to top_show_path
+      redirect_to top_show_path, success: '新規作成に成功しました。'
     else
       render :new
     end
@@ -37,12 +36,13 @@ class Customer::UsersController < Customer::MainController
 	end
 
 	def destroy
-	end
+  end
+  
 
   private
 
     def user_params
-      params.permit(:name, :name_kana, :phone_number, :email, :password, :password_confirmation, :employee)
+      params.permit(:name, :name_kana, :tellnumber, :email, :password, :password_confirmation, :employee)
 		end
 
 		def set_user

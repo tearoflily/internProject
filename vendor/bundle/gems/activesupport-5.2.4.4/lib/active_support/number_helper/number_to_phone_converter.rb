@@ -5,13 +5,13 @@ module ActiveSupport
     class NumberToPhoneConverter < NumberConverter #:nodoc:
       def convert
         str = country_code(opts[:country_code]).dup
-        str << convert_to_phone_number(number.to_s.strip)
+        str << convert_to_tellnumber(number.to_s.strip)
         str << phone_ext(opts[:extension])
       end
 
       private
 
-        def convert_to_phone_number(number)
+        def convert_to_tellnumber(number)
           if opts[:area_code]
             convert_with_area_code(number)
           else
