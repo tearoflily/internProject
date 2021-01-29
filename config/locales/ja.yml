@@ -44,6 +44,14 @@ ja:
         name: 商品名
         price: 価格
         stock: 在庫
+      user:
+        id: ID
+        name: 名前
+        name_kana: 名前（カナ）
+        tellnumber: 電話番号
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
   date:
     abbr_day_names:
     - 日

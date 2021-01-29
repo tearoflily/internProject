@@ -1,0 +1,24 @@
+<% provide(:title, @user.name) %>
+
+<div class="customer_showpage">
+  <div class="user_info">
+    <h1>お客様情報確認</h1>
+    <p>ご登録いただいている内容は、以下の通りです。</p>
+
+    <p>お客様ID:<%= @user.id %></p>
+    <p>お名前:<%= @user.name %>様</p>
+    <p>お名前（カナ）:<%= @user.name_kana%></p>
+    <p>電話番号：<%= @user.tellnumber%></p>
+    <p>メールアドレス：<%= @user.email%></p>
+
+    <%= link_to "変更する", edit_customer_user_path, class: "btn btn-info" %>
+  <div>
+  <div class="current_orders">
+    <h1>現在受付中のご注文</h1>
+  </div>
+
+  <div class="history_orders">
+    <h1>ご注文履歴</h1>
+  </div>
+
+</div>

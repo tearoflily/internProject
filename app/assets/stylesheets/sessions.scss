@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /* ログインフォーム */
 
-
 .loginpage{
   margin: auto;
   width: 90%;
@@ -23,5 +22,13 @@
   .center{
     text-align: center;
   }
-
 }
+
+.checkbox-login {
+  width: auto;
+  margin-left: 25px;
+  span {
+    font-weight: normal;
+  }
+}
+
