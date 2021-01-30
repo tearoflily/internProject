@@ -3,8 +3,15 @@
     <div class="col-md-12 shadow bg-light p-3">
        <%= link_to '商品追加', new_employee_product_path,  class: "btn btn-primary btn-lg" %>
        <%= link_to '編集', employee_products_change_index_path,  class: "btn btn-primary btn-lg" %>
+       <%= link_to 'リセット', employee_product_path('reset'), 
+            data:{confirm: '削除してよろしいでしょうか？'},
+            method: :delete,
+            class: 'btn btn-danger btn  btn-lg',
+            id: "delete-product-reset"
+        %>
 
        <% if products.count > 0%>
+       <form name="form1">
        <table class="table table-bordered mt-1">
         <thead>
           <tr>
@@ -12,7 +19,8 @@
             <th class="bg-dark text-white text-center font-weight-bold">価格</th>
             <th class="bg-dark text-white text-center font-weight-bold">在庫</th>
             <th class="bg-dark text-white text-center font-weight-bold">合計金額</th>
-              <th class="bg-dark text-white text-center font-weight-bold"></th>
+            <th class="bg-dark text-white text-center font-weight-bold"></th>
+            <th class="bg-dark text-white text-center font-weight-bold">削除</th>
           </tr>
         </thead>
         <tbody>
@@ -33,10 +41,18 @@
                    id: "delete-product#{product.id}"
                 %>
               </td>
+              <td class="text-center">
+                <input type="checkbox" value="<%= product.id %>" id="check-product<%= product.id %>" class="product-checkbox" />
+              </td>
             </tr>
           <% end %>
         </tbody>
        </table>
+
+        <div class="text-right">
+          <input type="submit" value="チェック済み商品削除" id="product-checkPc-delete" class="btn btn-danger" />
+        </div>
+       </form>
       <% else %>
         <div class="bg-secondary p-5 text-center text-white font-weight-bold">まだ店頭商品が登録されてません。</div>
       <% end %>
