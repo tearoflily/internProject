@@ -2,7 +2,7 @@ class Employee::ItemsController <  Employee::MainController
   before_action :setItem, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @items = Item.all.descendingOrder
+    @items = Item.all.descendingOrder.page(params[:page]).per(2)
   end
 
   def new
