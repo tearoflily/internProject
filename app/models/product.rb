@@ -18,4 +18,13 @@ class Product < ApplicationRecord
     end
   end
 
+  #チェックリストの店頭商品削除
+  def self.checkListDestroy(params)
+    params.each do |param_id|
+      product = find param_id
+      product.destroy
+    end
+  end
+  
+
 end

@@ -32,7 +32,13 @@ class Employee::ProductsController < Employee::MainController
   
 
   def destroy
-    Product.find( params[:id] ).destroy
+    if params[:id] == 'reset'
+      Product.destroy_all
+    elsif params[:id] == 'checklist' && params[:data].present?
+       Product.checkListDestroy(params[:data])
+    else
+      Product.find( params[:id] ).destroy
+    end
     redirect_to employee_products_path, danger: "削除しました。" 
   end
 
