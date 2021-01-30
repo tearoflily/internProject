@@ -20,7 +20,7 @@ class Customer::UsersController < Customer::MainController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to top_show_path, success: '新規作成に成功しました。'
+      redirect_to top_show_path, success: '新規登録に成功しました。'
     else
       render :new
     end
@@ -42,7 +42,7 @@ class Customer::UsersController < Customer::MainController
   private
 
     def user_params
-      params.permit(:name, :name_kana, :tellnumber, :email, :password, :password_confirmation, :employee)
+      params.require(:user).permit(:name, :name_kana, :tellnumber, :email, :password, :password_confirmation, :employee)
 		end
 
 		def set_user

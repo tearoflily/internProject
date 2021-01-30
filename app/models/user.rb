@@ -1,10 +1,12 @@
 class User < ApplicationRecord
   has_many :orders, dependent: :destroy
   validates :name, presence: true
+  validates :name_kana, presence: true
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: true 
   
-  validates :tellnumber, presence: true, format: {with: /\A[0-9-]{,14}\z/}
+  validates :tellnumber, presence: true, format: {with: /\A0[5789]0[-]?\d{4}[-]?\d{4}\z/}
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
