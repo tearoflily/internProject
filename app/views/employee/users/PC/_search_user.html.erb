@@ -1,0 +1,8 @@
+<form class="form-inline mb-1">
+    <%= search_form_for q, url: employee_users_path do |f| %>
+    <%= f.label :name, "名前検索",class:"mr-2 font-weight-bold" %>
+    <%= f.search_field :name_cont, class: 'form-control w-25 bg-light', value: '',placeholder:'名前一部でも検索できます。' %>
+
+    <%= f.submit "検索", name: user,  class: 'btn btn-primary' %>
+    <% end %>
+</form>

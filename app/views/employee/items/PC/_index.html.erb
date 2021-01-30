@@ -1,6 +1,19 @@
 
 <div class="col-md-10 offset-1">
-<%= link_to '新規登録', new_employee_item_path, class: 'btn btn-primary btn-lg mb-1' %>
+<table class="item-pagination-aria">
+ <tbody>
+   <tr>
+    <td>
+      <%= link_to '新規登録', new_employee_item_path, class: 'btn btn-primary btn-lg' %>
+    </td>
+    
+      <td>
+        <%= paginate items,  theme: 'twitter-bootstrap-4' %>
+      </td>
+   </tr>
+ </tbody>
+</table>
+
 <% if items.count >0 %>  
   <table class="table table-bordered">
     <thead>
