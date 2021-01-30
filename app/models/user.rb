@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  attr_accessor :remember_token
+  before_save { self.email = email.downcase }
+  
   has_many :orders, dependent: :destroy
   validates :name, presence: true
   validates :name_kana, presence: true
