@@ -52,6 +52,19 @@
 	width: 35%;
 	margin-right: 2%;
 }
+.item-pagination-aria{
+	list-style: none;
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 40px;
+	margin-bottom: -1%;
+	
+}
+.item-pagination-aria nav{
+	margin-top: 2%;
+	margin-left: -1%;
+}
+
 
 /**************************スマートフォン***********************************************************************************************/
 @media screen and (max-width:767px){
@@ -60,5 +73,11 @@
     }
     .items-pc{
         display: none;
-    }
+	}
+	.pagination-phone-area nav{
+		width: 100%;
+		display: block;
+		margin-top: 3%;
+		margin-bottom: -7%;
+	}
 }

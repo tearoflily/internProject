@@ -1,4 +1,9 @@
 <%= link_to '新規登録', new_employee_item_path, class: 'btn btn-success btn-block mt-5' %>
+
+<div class="pagination-phone-area">
+    <%= paginate items,  theme: 'twitter-bootstrap-4' %>
+</div>
+
 <% if items.count >0 %>  
   <table class="table table-bordered">
     <thead>

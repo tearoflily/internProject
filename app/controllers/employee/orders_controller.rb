@@ -1,7 +1,7 @@
 class Employee::OrdersController <  Employee::MainController
  before_action :set_order, only:[:edit, :update]
   def index
-    @orders = Order.all.timeSort
+    @orders = Order.all.timeSort.page(params[:page]).per(2)
   end
 
   def edit

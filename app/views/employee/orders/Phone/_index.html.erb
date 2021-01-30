@@ -1,5 +1,6 @@
 <% if orders.count >0 %>  
 <div class="order-phone-info">受け取り時間が早い順に配置されてます。</div>
+  <%= paginate orders,  theme: 'twitter-bootstrap-4' %>
   <table>
    <tbody>
      <% orders.each do |order| %>

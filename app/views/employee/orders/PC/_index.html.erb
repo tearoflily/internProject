@@ -1,6 +1,8 @@
 <% if orders.count >0 %>  
  
-  <p class="text-success font-weight-bold mt-3">状況変更する場合は各注文リストのボタンおしてください。</p>
+  <p class="text-success font-weight-bold mt-3">状況変更する場合は各注文リストのボタンおしてください。
+   <%= paginate orders,  theme: 'twitter-bootstrap-4' %>
+  </p>
   <table class="table table-bordered ">
     <thead>
       <tr>
