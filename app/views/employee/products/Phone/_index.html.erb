@@ -2,21 +2,36 @@
   <div class="row">
     <div class="col-md-12 p-3">
     <!--ボタンエリア-->
-      <table class="w-100">
+      <table class="w-100 mb-2">
         <tbody>
           <tr>
             <td class="w=50"><%= link_to '商品追加', new_employee_product_path,  class: "btn btn-primary btn-block" %></td>
             <td class="w-50"><%= link_to '編集', employee_products_change_index_path,  class: "btn btn-primary btn-block" %></td>
           </tr>
+          <tr>
+            <td colspan="2">
+              <%= link_to 'リセット', employee_product_path('reset'), 
+                  data:{confirm: '削除してよろしいでしょうか？'},
+                  method: :delete,
+                  class: 'btn btn-danger btn-block btn-lg ',
+                  id: "delete-product-reset"
+               %>
+            </td>
+          </tr>
         </tbody>
       </table>
      <!--/ボタンエリア-->
      <% if products.count > 0%>
+      <form name="form1">
        <table mt-1">
         <tbody>
           <% products.each do |product| %>
            <tr>
-            <td>【<%= product.name %>】</td>
+            <td>
+              【<%= product.name %>】&emsp;
+               <input type="checkbox" value="<%= product.id %>" id="check-product-phone<%= product.id %>" class="product-checkbox-phone" />
+               削除
+            </td>
             <table class="table">
               <tbody>
                 <tr>
@@ -46,7 +61,7 @@
                       method: :delete,
                       class: 'btn btn-danger btn-block btn-lg ',
                       id: "delete-product#{product.id}"
-                    %>
+                     %>
                   </td>
                 </tr>
               </tbody>
@@ -55,6 +70,8 @@
           <% end %>
         </tbody>
        </table>
+         <input type="submit" value="チェック済み商品削除" id="product-checkPhone-delete" class="btn btn-danger btn-block" />
+       </form>
       <% else %>
         <div class="bg-secondary p-5 text-center text-white font-weight-bold">まだ店頭商品が登録されてません。</div>
       <% end %>
