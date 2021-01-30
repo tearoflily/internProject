@@ -1,5 +1,5 @@
 current directory: /Users/suganochikako/人工インターン/internProject/vendor/bundle/gems/rmagick-4.1.2/ext/RMagick
-/Users/suganochikako/.rbenv/versions/2.6.3/bin/ruby -I /Users/suganochikako/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20210131-15634-1vbfrlq.rb extconf.rb
+/Users/suganochikako/.rbenv/versions/2.6.3/bin/ruby -I /Users/suganochikako/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20210131-16282-1oej7go.rb extconf.rb
 checking for brew... yes
 checking for Ruby version >= 2.3.0... yes
 checking for pkg-config... yes
