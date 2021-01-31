@@ -3,11 +3,19 @@
 <% provide(:button_text, '新規作成') %>
 
 <div class="new_signup">
-  <h1>新規登録</h1>
+  <h1 class="center">新規登録</h1>
 
   <!-- pcの場合-->
-  <div class="items-pc">
-      <%= render 'customer/users/PC/new' %>
+  <div class="signup-pc">
+    <%= render 'customer/users/PC/new' %>
   </div>
 
+  <!-- phoneの場合-->
+  <%
+=begin%>
+ <div class="signup-phone">
+    <%= render 'customer/users/Phone/new' %>
+  </div> 
+<%
+=end%>
 </div>

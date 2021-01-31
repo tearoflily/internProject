@@ -2,7 +2,8 @@
 
 module UserDecorator
   def check_decorator
-    
+    if user.errors.any?
+    end 
   end
 
   #申請中のレコードある場合view表示(モーダル)
