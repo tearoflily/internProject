@@ -3,25 +3,27 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /* ユーザー情報テーブル */
 
+//ヘッダー//
+
+.customer_header{
+  #logo{
+    color: #ffffff;
+    font-weight: bold;
+  }
+  a{
+    color: #fff;
+  }
+}
+
+//新規登録//
 .new_signup{
   margin: auto;
   .newform{
     padding: 40px;
     background-color: #e6e6fa;
-    input[type="text"] {
-      width: 80%;
-    }
-    input[type="email"] {
-      width: 80%;
-    }
-    input[type="tel"]{
-      width: 80%;
-    }
-    input[type="password"] {
-      width: 80%;
-    }
+
     form{
-      margin-left: 80px;
+      margin-left: 0px;
       margin-top: -10px;
     }
     label{
@@ -42,8 +44,24 @@
   }
 }
 
+.error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    border: red;
+  }
+}
+
+
 .alert-danger {
-  width: 80%;
+
   border-color: #ee82ee;
   background-color: #ee82ee;
 }

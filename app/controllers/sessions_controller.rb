@@ -3,10 +3,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(id_number: params[:session][:id_number])
-    if user && user.authenticate(params[:session][:password])
+    user = User.find_by(email: session_params[:email].dawncase)
+    if user && user.authenticate(session_params[:password])
       log_in user
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+      session_params[:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to user
     else
       flash.now[:danger] = '認証に失敗しました。'

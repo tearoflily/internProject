@@ -1,10 +1,14 @@
 <header class="navbar navbar-fixed-top navbar-inverse bg-dark">
-  <div class="container">
-    <%= link_to "お魚屋さん", top_show_path, id: "logo" %>
+  <div class="container"> 
+    <div class="customer_header">
+      <%= link_to "お魚屋さん", top_show_path, id: "logo" %>
+    </div>
     <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Log in", login_path %></li>
-      </ul>
+      <div class="customer_header">
+        <ul class="nav navbar-nav text-white navbar-right">
+          <li><%= link_to "ログイン", login_path %></li>
+        </ul>
+      </div>
     </nav>
   </div>
 </header>
