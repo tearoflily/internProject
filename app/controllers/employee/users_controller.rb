@@ -30,7 +30,7 @@ class Employee::UsersController < Employee::MainController
 
   def destroy
     User.find( params[:id] ).destroy
-    redirect_to employee_users_path, danger: '削除しました。'
+    redirect_to employee_users_url, danger: '削除しました。'
   end
   
 end
