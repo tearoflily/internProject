@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   get 'top/show'
   root 'employee/items#index'
 #####################植松エリア##################################################################################
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
       patch :update, on: :collection
     end
     resources :products_change, only:[:index, :create]
+    resources :product_sales_amounts, only:[ :show]
     resources :orders, except: [:new, :create]
     resources :users
   end

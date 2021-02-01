@@ -1,0 +1,38 @@
+<% if graphDatas.count > 0 %>
+ <%= column_chart graphDatas  %>
+<% else %>
+<% end %>
+<%= link_to '戻る', employee_item_path(@item), class: 'btn btn-secondary btn-block  mb-1' %>
+<%= link_to '前月', employee_product_sales_amount_path(@item, params:{month: @month.prev_month}), class: 'btn btn-primary btn-block mb-1' %>
+<% if @month < Date.today.beginning_of_month %>
+  <%= link_to '今月へ', employee_product_sales_amount_path(@item), class: 'btn btn-primary btn-block mb-3' %>
+<% end %>
+
+<% if orders.count >0 %>  
+  <div class="text-center mt-3"><h5><%= "【今月売上合計#{ @current_month_sales}円】" %></h5></div>
+  <table class="table table-bordered ">
+    <thead>
+      <tr>
+        <th class="bg-dark text-white font-weight-bold text-center align-middle">日付</th>
+        <th class="bg-dark text-white font-weight-bold text-center align-middle">曜日</th>
+        <th class="bg-dark text-white font-weight-bold text-center align-middle">売上</th>
+        <th class="bg-dark text-white font-weight-bold text-center align-middle">本日売上<br/>構成比</th>
+        <th class="bg-dark text-white font-weight-bold text-center align-middle">今月売上構成比</th>
+      </tr>
+
+    </thead>  
+    <tbody>
+      <% graphDatas.each do |order| %>
+       <tr>
+         <td class="text-center align-middle "><%= l order[0], format: :short %></td>
+         <td class="text-center align-middle "><%= Order.week_set(order[0]) %></td>
+         <td class="text-center align-middle "><%= order[1] %></td>
+         <td class="text-center align-middle "><%= (order[1].to_f / Order.todaySales(order[0]).to_f * 100).to_i %>%</td>
+        <td class="text-center align-middle "><%= (order[1].to_f / @current_month_sales.to_f * 100).to_i %>%</td>
+       </tr>
+      <% end %>
+    </tbody>
+  </table>
+ <% else %> 
+   <div class="p-5 bg-secondary text-center text-white font-weight-bold">まだ注文がありません。</div>
+ <% end %>

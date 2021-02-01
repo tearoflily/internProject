@@ -1,0 +1,23 @@
+<%= provide(:title, "#{@item.name}売上管理") %>
+
+<div class="text-center font-weight-bold mb-3">
+    <h1><%= "#{@item.name}売上管理" %></h1>
+    <h4><%= "【#{@month.strftime("%-m月")}売上】" %></h4>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="w-100">
+      <!-- pcの場合-->
+      <div class="employee-order-sales-item-pc">
+         <%= render 'employee/product_sales_amounts/PC/show',{orders: @orders, graphDatas: @graphDatas} %>
+      </div>
+
+       <!-- phoneの場合-->
+       <div class="employee-order-sales-item-phone">
+         <%= render 'employee/product_sales_amounts/Phone/show',{orders: @orders, graphDatas: @graphDatas}  %>
+      </div>
+    
+    </div>
+  </div>
+</div> 

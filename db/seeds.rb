@@ -60,3 +60,37 @@ end
       user_id: 6
     )
   end
+  8.times do |i|
+    Order.create(
+      name: 'さんま',
+      price: 100,
+      process: '刺し身',
+      num: 5,
+      status: 'delivery',
+      order_date: Date.today.beginning_of_month.prev_month + i,
+      order_time: Time.local(
+        Time.now.year,
+        Time.now.month,
+        Time.now.day,
+        Time.now.hour + i,
+        30,0),
+      user_id: 6
+    )
+  end
+  8.times do |i|
+    Order.create(
+      name: 'さんま',
+      price: 100,
+      process: '刺し身',
+      num: 5,
+      status: 'delivery',
+      order_date: Date.today + i,
+      order_time: Time.local(
+        Time.now.year,
+        Time.now.month,
+        Time.now.day ,
+        Time.now.hour + i,
+        30,0),
+      user_id: 6
+    )
+  end
