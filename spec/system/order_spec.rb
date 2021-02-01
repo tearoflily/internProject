@@ -27,14 +27,10 @@ describe "オーダー検証", type: :system do
         process: '刺し身',
         num: 5,
         order_date: Date.today,
-        order_time: Time.local(
-          Time.now.year,
-          Time.now.month,
-          Time.now.day,
-          Time.now.hour ,
-          30,0),
-          user_id: user.id
+        order_time: DateTime.now,
+        user_id: user.id
       )
+     
       18.times do |i|
         Order.create(
           name: "食品#{i}",
@@ -46,7 +42,16 @@ describe "オーダー検証", type: :system do
           user_id: user2.id
         )
       end
-      @order5 = Order.last
+      Order.create(
+        name: 'いなだ',
+        price: 100,
+        process: '刺し身',
+        num: 5,
+        order_date: Date.today,
+        order_time: DateTime.now,
+        user_id: user.id
+      )
+      @order5 = Order.first
   end
 
 
@@ -65,7 +70,7 @@ describe "オーダー検証", type: :system do
     
     it "注文状況変更モーダル表示" do
       click_on "edit-modal#{@order5.id}"
-      expect(page).to have_content "申請中17件"  
+      expect(page).to have_content "申請中2件"  
     end
 
     it "更新される" do
@@ -76,7 +81,7 @@ describe "オーダー検証", type: :system do
     
     it "アコーディオンの表示" do
       click_on "edit-modal#{@order5.id}"
-      click_on "bt0"
+      click_on "編集"
       expect(page).to have_content "【状況変更ボタンおしてください】" 
       
     end
