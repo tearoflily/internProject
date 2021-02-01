@@ -4,7 +4,7 @@ class Employee::ProductSalesAmountsController < Employee::MainController
     @item = Item.find( params[:id] )
     @month = params[:month].present? ?Date.parse(params[:month]) : Date.today
     @orders = Order.saleByProduct(@item.name, @month)
-    @graphDatas = Order.dayTotal(@orders)
+    @graphDatas = Order.dayTotal(@orders, params[:month])
     @current_month_sales = Order.currentMonthSales(@orders)
   end
 end
