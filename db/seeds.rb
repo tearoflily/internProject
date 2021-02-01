@@ -10,7 +10,7 @@
   User.create!(
     name: "従業員#{i + 1}",
     name_kana: "ジュウギョウイン#{i}",
-    tellnumber: "080-0000-000#{i}",
+    tellnumber: "080-0000-0008",
     email: "mail#{i}@example.com",
     employee: true,
     password: 'password',
@@ -21,7 +21,7 @@ end
     User.create!(
       name: "ｺｷｬｸ#{i + 1}",
       name_kana: "顧客#{i}",
-      tellnumber: "080-1000-000#{i}",
+      tellnumber: "080-1000-0009",
       email: "mails#{i}@example.com",
       employee: false,
       password: 'password',
