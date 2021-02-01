@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  namespace :employee do
+    get 'sales_managements/index'
+  end
   get 'top/show'
   root 'employee/items#index'
 #####################植松エリア##################################################################################
