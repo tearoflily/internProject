@@ -13,7 +13,7 @@ describe "売上検証", type: :system do
       order_date: Date.today, order_time:DateTime.now, user_id: user.id
   )}
   let!(:order2){ FactoryBot.create(
-      :order, name: 'いなだ', price: 500, process: '刺し身', num: 1, status:  delivery,
+      :order, name: 'いなだ', price: 500, process: '刺し身', num: 1, status:  :delivery,
       order_date: Date.today + 1, order_time:DateTime.now, user_id: user.id
   )}
   describe "ページが表示される" do

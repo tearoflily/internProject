@@ -4,7 +4,7 @@ FactoryBot.define do
       price{ 100 }
       num{ 3 }
       status{ 'in_order'}
-      seles_date{ Date.today }
+      order_date{ Date.today }
       order_time{ DateTime.now }
       user
     end
