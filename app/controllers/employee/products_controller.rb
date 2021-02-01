@@ -19,7 +19,7 @@ class Employee::ProductsController < Employee::MainController
        stock: product_parameters[:stock]
     )
     if @product.save
-      redirect_to employee_products_path, info: "店頭商品#{@product.name}を登録しました。"
+      redirect_to employee_products_url, info: "店頭商品#{@product.name}を登録しました。"
     else
       render :new
     end
@@ -27,7 +27,7 @@ class Employee::ProductsController < Employee::MainController
 
   def update
     Product.stock_price_update(status_change_parameter)
-    redirect_to employee_products_path, info: "編集しました。" 
+    redirect_to employee_products_url, info: "編集しました。" 
   end
   
 
@@ -39,7 +39,7 @@ class Employee::ProductsController < Employee::MainController
     else
       Product.find( params[:id] ).destroy
     end
-    redirect_to employee_products_path, danger: "削除しました。" 
+    redirect_to employee_products_url, danger: "削除しました。" 
   end
 
 

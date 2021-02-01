@@ -27,8 +27,8 @@
          <td class="text-center align-middle "><%= l order[0], format: :short %></td>
          <td class="text-center align-middle "><%= Order.week_set(order[0]) %></td>
          <td class="text-center align-middle "><%= order[1] %></td>
-         <td class="text-center align-middle "><%= (order[1].to_f / Order.todaySales(order[0]).to_f * 100).to_i %>%</td>
-        <td class="text-center align-middle "><%= (order[1].to_f / @current_month_sales.to_f * 100).to_i %>%</td>
+          <td class="text-center align-middle "><%= "#{(order[1].to_f / Order.todaySales(order[0]).to_f * 100).to_i}%" if order[1].present? %></td>
+         <td class="text-center align-middle "><%= "#{(order[1].to_f / @current_month_sales.to_f * 100).to_i}%" if order[1].present? %></td>
        </tr>
       <% end %>
     </tbody>
