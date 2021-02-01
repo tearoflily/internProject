@@ -49,12 +49,14 @@ class Order < ApplicationRecord
   #同じ日付の合計金額
 
    def self.dayTotal(datas)
-     days = []                              #=>日付配列
+    first_day = Date.today.beginning_of_month
+    last_day =  last_day = first_day.end_of_month
+
+     list_days = []                              #=>日付配列
      array = []                             #=>最終的に返す配列
-     datas.each do |data|
-       days << data.order_date
-     end
-     list_days = days.uniq                  
+     (first_day .. last_day).each do |date|
+       list_days << date
+     end             
 
      list_days.each do |day|
        child_array = []                     #=>日別の配列
@@ -65,7 +67,7 @@ class Order < ApplicationRecord
         end
        end 
        child_array << day
-       child_array << total_price
+       child_array << total_price unless total_price == 0
        array << child_array
      end
      return array
