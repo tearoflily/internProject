@@ -58,16 +58,22 @@ class Order < ApplicationRecord
        list_days << date
      end             
 
+     progress_sum = 0;                           #=>進捗計算用
      list_days.each do |day|
        child_array = []                          #=>日別の配列
        total_price = 0
+       total_num = 0
        datas.each do |data|
         if day == data.order_date
            total_price += data.total
+           total_num  += data.num.to_i
+           progress_sum += data.total
         end
        end 
        child_array << day
        child_array << total_price unless total_price == 0
+       child_array << total_num  unless total_num == 0
+       child_array << progress_sum unless  total_price ==0
        array << child_array
      end
      return array

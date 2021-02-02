@@ -1,0 +1,43 @@
+
+<% if datas.count > 0 %>
+ <%= column_chart datas  %>
+<% end %>
+
+<%= link_to '前月', employee_sales_managements_index_path(params:{month: @month.prev_month}), class: 'btn btn-primary w-25  ml-2 mb-3 mt-3' %>
+<% if @month < Date.today.beginning_of_month %>
+  <%= link_to '今月へ', employee_sales_managements_index_path, class: 'btn btn-primary w-25 ml-3 mb-3 mt-3' %>
+<% end %>
+
+<% if datas.count >0 %>  
+  <div class="text-center mt-3"><h5><%= "【今月売上合計#{ @current_month_sales}円】" %></h5></div>
+  <table class="table table-bordered ">
+    <thead>
+      <tr>
+        <th rowspan="2" class="bg-dark text-white font-weight-bold text-center align-middle">日付</th>
+        <th rowspan="2" class="bg-dark text-white font-weight-bold text-center align-middle">曜日</th>
+        <th colspan="4" class="bg-dark text-white font-weight-bold text-center align-middle">売上実績</th>
+      </tr>
+      <tr>
+        <th class="bg-dark text-white font-weight-bold text-center align-middle">日割</th>
+        <th class="bg-dark text-white font-weight-bold text-center align-middle">点数</th>
+        <th class="bg-dark text-white font-weight-bold text-center align-middle">累計</th>
+        <th class="bg-dark text-white font-weight-bold text-center align-middle">比率</th>
+      </tr>
+
+    </thead>  
+    <tbody>
+      <% datas.each do |order| %>
+       <tr>
+         <td class="text-center align-middle "><%= l order[0], format: :short %></td>
+         <td class="text-center align-middle "><%= Order.week_set(order[0]) %></td>
+         <td class="text-center align-middle text-danger font-weight-bold "><%= order[1] %></td>
+         <td class="text-center align-middle "><%= "#{order[2]}" if order[2].present? %></td>
+         <td class="text-center align-middle  text-danger font-weight-bold "><%= order[3] %></td>
+         <td class="text-center align-middle "><%= "#{(order[1].to_f / @current_month_sales.to_f * 100).to_i}%" if order[1].present? %></td>
+       </tr>
+      <% end %>
+    </tbody>
+  </table>
+ <% else %> 
+   <div class="p-5 bg-secondary text-center text-white font-weight-bold">まだ売上データがありません。</div>
+ <% end %>
