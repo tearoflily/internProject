@@ -46,33 +46,38 @@ class Order < ApplicationRecord
     where(user_id: order.user_id).where.not(id: order.id)
   end
 
-  #同じ日付の合計金額
+  #グラフデータ(商品別)
 
    def self.dayTotal(datas,params)
     first_day = params.present? ?Date.parse(params).beginning_of_month : Date.today.beginning_of_month
     last_day =  last_day = first_day.end_of_month
 
      list_days = []                              #=>日付配列
-     array = []                             #=>最終的に返す配列
+     array = []                                  #=>最終的に返す配列
      (first_day .. last_day).each do |date|
        list_days << date
      end             
 
+     progress_sum = 0;                           #=>進捗計算用
      list_days.each do |day|
-       child_array = []                     #=>日別の配列
+       child_array = []                          #=>日別の配列
        total_price = 0
+       total_num = 0
        datas.each do |data|
         if day == data.order_date
            total_price += data.total
+           total_num  += data.num.to_i
+           progress_sum += data.total
         end
        end 
        child_array << day
        child_array << total_price unless total_price == 0
+       child_array << total_num  unless total_num == 0
+       child_array << progress_sum unless  total_price ==0
        array << child_array
      end
      return array
    end
-   
 
   #商品別月別算出
   
@@ -82,7 +87,15 @@ class Order < ApplicationRecord
     where(name: param_name, status: :delivery).where(order_date: first_day .. last_day).order(order_date: :ASC)  
   end
 
-   #商品別月別売上合計
+   #全商品オーダー月別算出
+
+   def self.saleAllproduct(param_date)
+      first_day =param_date.present? ?Date.parse(param_date).beginning_of_month : Date.today.beginning_of_month 
+      last_day = first_day.end_of_month
+      where(status: :delivery).where(order_date: first_day .. last_day).order(order_date: :ASC)  
+   end
+
+   #商品別月別売上合計(saleByProduct, saleAllproduct元に)
   
    def self.currentMonthSales(orders)
     total = 0
@@ -90,15 +103,15 @@ class Order < ApplicationRecord
     return total
    end
 
-  #本日売上
+  #本日商品別売上
   def self.todaySales(day)
     total = 0
     orders = where(status: :delivery).where(order_date: day).order(order_date: :DESC) 
     orders.map{|order| total += order.total.to_i}
     return total
   end
-  
 
  
+  
   
 end
