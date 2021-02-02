@@ -34,6 +34,19 @@ describe "従業員ユーザー検証", type: :system do
             expect(page).to have_content "削除しました。"
             } 
     end
+    it "新規登録ができること" do
+      User.create(name:"山田 太郎", name_kana:"ヤマダ タロウ",tellnumber: "050-5555-5555", email:"yamada@email.com",password:"password", password_confirmation: "password", employee: "true")
+        #ユーザー新規作成ページへ移動
+        visit new_employee_user_path
+        fill_in "user_name", with: "山田 太郎"
+        fill_in "user_name_kana", with: "ヤマダ タロウ"
+        fill_in "user_tellnumber", with: "050-5555-5555"
+        fill_in "user_email", with: "syamada@email.com"
+        fill_in "user_password", with: "password"
+        fill_in "user_password_confirmation", with: "password"
+        click_button '新規作成'
+        expect(page).to have_content "新規登録に成功しました。"
+      end
     
   end 
 

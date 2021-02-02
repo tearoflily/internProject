@@ -1,12 +1,13 @@
 <% provide(:title, "Edit") %>
 <% provide(:class_text, 'user--edit') %>
 <% provide(:button_text, '更新') %>
- <h1>お客様情報の更新</h1>
+<div class="user_info_edit">
+ <h1 class="center">登録情報の更新</h1>
 
   <div class="row">
       <div class="col-md-8 offset-2">
         <div class="editform">
-          <%= form_with(model: @user, local: true) do |f| %>
+          <%= form_with(model: @user, url: customer_user_path, local: true) do |f| %>
             <%= render 'shared/error_messages', object: @user %>
 
             <div class="col-md-8 offset-2">
@@ -17,10 +18,10 @@
             <%= f.text_field :name_kana, class: "form-control" %>
           
             <%= f.label :tellnumber, "電話番号", class: "label-#{yield(:class_text)}" %>
-            <%= f.telephone_field :tellnumber, placeholder: "090-0000-0000", class: "form-control" %>
+            <%= f.telephone_field :tellnumber, class: "form-control" %>
 
             <%= f.label :email, class: "label-#{yield(:class_text)}" %>
-            <%= f.email_field :email, placeholder: "email@email.jp", class: "form-control" %>
+            <%= f.email_field :email, class: "form-control" %>
 
             <%= f.label :password, "パスワード", class: "label-#{yield(:class_text)}" %>
             <%= f.password_field :password, class: "form-control" %>
@@ -37,3 +38,4 @@
 
     </div>
   </div>
+</div>
