@@ -25,6 +25,24 @@ class Employee::UsersController < Employee::MainController
   def edit
   end
 
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to employee_items_url, success: '新規登録に成功しました。'
+    else
+      render :new
+    end
+  end
+
+	def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+　		redirect_to @user, success: "ユーザー情報を更新しました。"
+    else
+      render :edit      
+    end
+	end
+
   def show
   end
 
