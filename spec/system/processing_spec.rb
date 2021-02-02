@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "商品加工検証", type: :system do
+RSpec.describe "商品加工検証", type: :system do
   let!(:item){ FactoryBot.create(:item)}
 
   describe "ページアクセス確認" do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "オーダー検証", type: :system do
+RSpec.describe "オーダー検証", type: :system do
   before do
       
     user =User.create(
