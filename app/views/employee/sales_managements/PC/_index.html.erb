@@ -1,15 +1,14 @@
-<%= link_to '戻る', employee_item_path(@item), class: 'btn btn-secondary btn-lg ml-3 mr-1 mb-3' %>
-<%= link_to '前月', employee_product_sales_amount_path(@item, params:{month: @month.prev_month}), class: 'btn btn-primary btn-lg ml-3 mb-3' %>
+
+<% if datas.count > 0 %>
+ <%= column_chart datas  %>
+<% end %>
+
+<%= link_to '前月', employee_sales_managements_index_path(params:{month: @month.prev_month}), class: 'btn btn-primary w-25  ml-2 mb-3 mt-3' %>
 <% if @month < Date.today.beginning_of_month %>
-  <%= link_to '今月へ', employee_product_sales_amount_path(@item), class: 'btn btn-primary btn-lg ml-3 mb-3' %>
+  <%= link_to '今月へ', employee_sales_managements_index_path, class: 'btn btn-primary w-25 ml-3 mb-3 mt-3' %>
 <% end %>
 
-<% if graphDatas.count > 0 %>
- <%= column_chart graphDatas  %>
-<% else %>
-<% end %>
-
-<% if orders.count >0 %>  
+<% if datas.count >0 %>  
   <div class="text-center mt-3"><h5><%= "【今月売上合計#{ @current_month_sales}円】" %></h5></div>
   <table class="table table-bordered ">
     <thead>
@@ -23,7 +22,7 @@
 
     </thead>  
     <tbody>
-      <% graphDatas.each do |order| %>
+      <% datas.each do |order| %>
        <tr>
          <td class="text-center align-middle "><%= l order[0], format: :short %></td>
          <td class="text-center align-middle "><%= Order.week_set(order[0]) %></td>
