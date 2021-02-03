@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "従業員ユーザー検証", type: :system do
+RSpec.describe "従業員ユーザー検証", type: :system do
   let(:customer1){FactoryBot.create(:user)}
   let!(:customer2){ FactoryBot.create(
       :user, name: "次郎", name_kana: "ジロウ", email: "jiro@example.com", tellnumber: "090-1111-1111", employee:false

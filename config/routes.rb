@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  
-  namespace :employee do
-    get 'sales_managements/index'
-  end
+ 
   get 'top/show'
   root 'employee/items#index'
 #####################植松エリア##################################################################################
@@ -16,6 +13,8 @@ Rails.application.routes.draw do
     resources :products_change, only:[:index, :create]
     resources :product_sales_amounts, only:[ :show]
     resources :orders, except: [:new, :create]
+    resources :sales_managements, only: [ :index ]
+    resources :product_sales_numbers, only: [ :show ]
     resources :users
   end
 #####################菅野さんエリア##################################################################################

@@ -4,6 +4,7 @@
         <%= image_tag(employee_item_image_path(item.id) ,style:'width:100%') %>
         <%= link_to '戻る', employee_items_path, class:'btn btn-secondary mt-2 mb-2 w-25' %>
         <%= link_to "#{item.name}売上確認", employee_product_sales_amount_path(item.id), class:'btn btn-primary mt-2 mb-2' %>
+        <%= link_to "#{item.name}販売数確認",employee_product_sales_number_path(item.id), class:'btn btn-primary mt-2 mb-2' %>
         <table class="table table-bordered" style="table-layout:fixed;width:100%;">
           <tbody>
             <tr>

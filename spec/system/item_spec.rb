@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "商品検証", type: :system do
+RSpec.describe "商品検証", type: :system do
   let!(:item){ FactoryBot.create(:item)}   
   let!(:item2){ FactoryBot.create(:item, name: '金目鯛')}
 
