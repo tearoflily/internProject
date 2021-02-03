@@ -1,0 +1,20 @@
+<%= provide(:title, "#{@item.name}売上数管理票") %>
+<div class="text-center font-weight-bold mt-4"><h2><%= "#{@item.name}販売数管理表" %></h2></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+    
+      <!-- pcの場合-->
+      <div class="orders-pc">
+         <%= render 'employee/product_sales_numbers/PC/show'%>
+      </div>
+
+       <!-- phoneの場合-->
+       <div class="orders-phone">
+         <%= render 'employee/product_sales_numbers/Phone/show' %>
+      </div>
+    
+    </div>
+  </div>
+</div>

@@ -60,7 +60,7 @@ RSpec.describe "売上検証", type: :system do
   ##############################売上速報ページ##################################################################################
   describe "個別商品売上ページが表示される" do
     before do
-       visit employee_sales_managements_index_path
+       visit employee_sales_managements_path
     end 
     it "表示される" do
        expect(page).to have_content '店頭商品売上推移表' 
