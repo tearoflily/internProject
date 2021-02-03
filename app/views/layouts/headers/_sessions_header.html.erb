@@ -1,14 +1,24 @@
 <header class="navbar navbar-fixed-top navbar-inverse bg-dark">
-  <div class="container"> 
+  <div class="container">
     <div class="customer_header">
       <%= link_to "お魚屋さん", top_show_path, id: "logo" %>
     </div>
     <nav>
+    <% if logged_in? %>
+       <div class="customer_header">
+          <ul class="custom_header">
+            <li><%= link_to "お買い物かご", "#" %></li>
+            <li><%= link_to "マイページ", customer_user_path(current_user) %></li>
+            <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+          </ul>
+      </div>   
+    <% else %>
       <div class="customer_header">
-        <ul class="nav navbar-nav text-white navbar-right">
-          <li><%= link_to "ログイン", login_path %></li>
-        </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="custom_header"><%= link_to "ログイン", login_url %></li>
+          </ul>
       </div>
+    <% end %>
     </nav>
   </div>
 </header>
