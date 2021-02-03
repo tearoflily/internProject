@@ -1,0 +1,27 @@
+// Place all the styles related to the employee::product_sales_numbers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.orders-phone{
+    display: none;
+}
+.slide-tr{
+    display: none;
+}
+
+/**************************スマートフォン***********************************************************************************************/
+@media screen and (max-width:767px){
+    .orders-phone{
+        display: block;
+    }
+    .orders-pc{
+        display: none;
+    }
+    .order-phone-info{
+        color: darkblue;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 10%;
+        margin-bottom: 11%;
+    }
+    
+}

@@ -26,6 +26,7 @@
           </tbody>
         </table>
         <%= link_to "#{item.name}売上確認", employee_product_sales_amount_path(item.id), class:'btn btn-primary btn-block mb-2' %>
+        <%= link_to "#{item.name}販売数確認",employee_product_sales_number_path(item.id), class:'btn btn-primary btn-block mb-2' %>
         <%= link_to '戻る', employee_items_path, class:'btn btn-secondary btn-block mt-2' %>
     </div>
   

@@ -3,9 +3,9 @@
  <%= column_chart datas  %>
 <% end %>
 
-<%= link_to '前月', employee_sales_managements_index_path(params:{month: @month.prev_month}), class: 'btn btn-primary w-25  ml-2 mb-3 mt-3' %>
+<%= link_to '前月', employee_sales_managements_path(params:{month: @month.prev_month}), class: 'btn btn-primary w-25  ml-2 mb-3 mt-3' %>
 <% if @month < Date.today.beginning_of_month %>
-  <%= link_to '今月へ', employee_sales_managements_index_path, class: 'btn btn-primary w-25 ml-3 mb-3 mt-3' %>
+  <%= link_to '今月へ', employee_sales_managements_path, class: 'btn btn-primary w-25 ml-3 mb-3 mt-3' %>
 <% end %>
 
 <% if datas.count >0 %>  
