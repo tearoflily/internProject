@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /* ユーザー情報テーブル */
 
-//ヘッダー//
+//*****ヘッダー*****//
 
 .customer_header{
   #logo{
@@ -13,12 +13,52 @@
   a{
     color: #fff;
   }
+  .custom_header{
+    li{
+      display: inline;
+      padding-right:10px;
+    }
+  }
 }
 
-//新規登録//
+//*****新規登録*****//
 .new_signup{
   margin: auto;
   .newform{
+    padding: 40px;
+    background-color: #e6e6fa;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+
+    form{
+      margin-left: 0px;
+      margin-top: -10px;
+    }
+    label{
+      margin-bottom: 0px;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    .btn{
+      margin-right: 20px;
+    }
+  }
+  .center{
+    margin: 20px 10px 10px 10px;
+    text-align: center;
+  }
+  h1{
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  input::placeholder {
+    color: #dcdcdc;
+  }
+}
+
+//*****ユーザー情報変更*****//
+.user_info_edit{
+  margin: auto;
+  .editform{
     padding: 40px;
     background-color: #e6e6fa;
 
@@ -44,24 +84,26 @@
   }
 }
 
-.error_explanation {
-  color: red;
-  ul {
+.signin_check{
+  .error_explanation {
     color: red;
-    margin: 0 0 30px 0;
+    ul {
+      color: red;
+      margin: 0 0 30px 0;
+    }
+    .alert-danger {
+      border-color: #ee82ee;
+      background-color: #ee82ee;
+    }
+  }
+
+  .field_with_errors { 
+    .form-control {
+      @extend.is-invalid;
+      input:irequired{
+        border: solid 1px red;
+      }
+    }
   }
 }
 
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    border: red;
-  }
-}
-
-
-.alert-danger {
-
-  border-color: #ee82ee;
-  background-color: #ee82ee;
-}
