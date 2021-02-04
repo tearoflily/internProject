@@ -104,11 +104,43 @@ class Order < ApplicationRecord
    end
 
   #本日商品別売上
+
   def self.todaySales(day)
     total = 0
     orders = where(status: :delivery).where(order_date: day).order(order_date: :DESC) 
     orders.map{|order| total += order.total.to_i}
     return total
+  end
+
+  #各商品の売上数量 saleByProduct使用
+  
+  def self.salesCountArray(datas)
+    sasimi_count = kirimi_count = nimono_conunt = sioyaki_count = flay_count = 0
+    item_count = [sasimi_count, kirimi_count, nimono_conunt, sioyaki_count, flay_count]
+    
+
+    array = [["刺身"],["切り身"],["煮物"],["塩焼き"],["フライ"]]
+    datas.each do |data|
+      case data.process
+      when 'sasimi'
+        item_count[0] += 1
+      when 'kirimi'
+        item_count[1] += 1
+      when 'nimono'
+        item_count[2] += 1
+      when 'sioyaki'
+        item_count[3] += 1
+      when 'flay'
+        item_count[4] += 1
+      else
+      end
+    end
+
+    array.each_with_index do |item, i|
+      item << item_count[i]
+    end
+  
+    return array
   end
 
  
