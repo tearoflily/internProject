@@ -24,6 +24,7 @@ class Employee::UsersController < Employee::MainController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def create
@@ -38,7 +39,7 @@ class Employee::UsersController < Employee::MainController
 	def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-　		redirect_to @user, success: "ユーザー情報を更新しました。"
+      edirect_to @user, success: "従業員情報を更新しました。"
     else
       render :edit      
     end
