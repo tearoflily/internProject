@@ -9,23 +9,23 @@ RSpec.describe "売上検証", type: :system do
   let!(:item){ FactoryBot.create(:item, name: 'いなだ', category: ' bigger')}
 
   let!(:order1){ FactoryBot.create(
-      :order, name: 'いなだ', price: 500, process: '刺し身', num: 5, status: :delivery,
+      :order, name: 'いなだ', price: 500, process: 'sasimi', num: 5, status: :delivery,
       order_date: Date.today, order_time:DateTime.now, user_id: user.id
   )}
   let!(:order2){ FactoryBot.create(
-      :order, name: 'いなだ', price: 500, process: '刺し身', num: 1, status:  :delivery,
+      :order, name: 'いなだ', price: 500, process: 'kirimi', num: 1, status:  :delivery,
       order_date: Date.today + 1, order_time:DateTime.now, user_id: user.id
   )}
   let!(:order3){ FactoryBot.create(
-    :order, name: 'さば', price: 200, process: '刺し身', num: 5, status: :delivery,
+    :order, name: 'さば', price: 200, process: 'sioyaki', num: 5, status: :delivery,
     order_date: Date.today, order_time:DateTime.now, user_id: user.id
   )}
  let!(:order4){ FactoryBot.create(
-    :order, name: 'さば', price: 200, process: '刺し身', num: 1, status:  :delivery,
+    :order, name: 'さば', price: 200, process: 'nimono', num: 1, status:  :delivery,
     order_date: Date.today + 1, order_time:DateTime.now, user_id: user.id
   )}
   let!(:order5){ FactoryBot.create(
-    :order, name: 'さば', price: 200, process: '刺し身', num: 1, status:  :delivery,
+    :order, name: 'さば', price: 200, process: 'flay', num: 1, status:  :delivery,
     order_date: Date.today + 2, order_time:DateTime.now, user_id: user.id
   )}
   ###################################################################################################
@@ -85,9 +85,30 @@ RSpec.describe "売上検証", type: :system do
             click_on "前月"
             expect(page).to have_content '今月へ' 
         end
-        
     end
     
  end
-  ##############################################################################################################################################
+  ################################販売数検証##############################################################################################################
+  describe "個別商品数ページが表示される" do
+    before do
+       visit employee_product_sales_number_path(item.id)
+    end 
+    it "表示される" do
+       expect(page).to have_content 'いなだ販売数管理表' 
+    end
+    
+    context "内容が表示されているか" do
+        it "表示される" do
+            expect(page).to have_content '【今月売上点数6点】' 
+        end
+    end
+    context "前月ボタンでページ移動できるか" do
+        it "前月の表示がなされている" do
+            click_on "前月"
+            expect(page).to have_content '今月へ' 
+        end
+    end
+    
+  end
+
 end
