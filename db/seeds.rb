@@ -9,7 +9,7 @@
 4.times do |i|
   User.create!(
     name: "従業員#{i + 1}",
-    name_kana: "ジュウギョウイン#{i}",
+    name_kana: "ジュウギョウイン#{i +1}",
     tellnumber: "080-0000-0008",
     email: "mail#{i}@example.com",
     employee: true,
@@ -19,8 +19,8 @@
 end
   12.times do |i|
     User.create!(
-      name: "ｺｷｬｸ#{i + 1}",
-      name_kana: "顧客#{i}",
+      name: "顧客#{i}"
+      name_kana: ,"ｺｷｬｸ#{i + 1}",
       tellnumber: "080-1000-0009",
       email: "mails#{i}@example.com",
       employee: false,
