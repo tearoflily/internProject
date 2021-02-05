@@ -29,7 +29,7 @@ class Customer::UsersController < Customer::MainController
 	def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-　		redirect_to @user, success: "ユーザー情報を更新しました。"
+      redirect_to customer_user_url(@user), success: "お客様情報を更新しました。"
     else
       render :edit      
     end
@@ -43,7 +43,9 @@ class Customer::UsersController < Customer::MainController
 
     def user_params
       params.require(:user).permit(:name, :name_kana, :tellnumber, :email, :password, :password_confirmation, :employee)
-		end
+    end
+    
+    def 
 
 		def set_user
       @user = User.find(params[:id])
