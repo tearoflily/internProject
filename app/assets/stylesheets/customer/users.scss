@@ -61,6 +61,7 @@
   .editform{
     padding: 40px;
     background-color: #e6e6fa;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
 
     form{
       margin-left: 0px;
@@ -69,6 +70,10 @@
     label{
       margin-bottom: 0px;
       margin-top: 15px;
+      font-weight: bold;
+    }
+    .btn{
+      margin-right: 20px;
     }
   }
   .center{
@@ -105,5 +110,43 @@
       }
     }
   }
+}
+
+//*****お客様情報ページ*****//
+.customer_showpage,.employee_showpage{
+  margin: auto;
+  .user_info{
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #e6e6fa;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5); 
+    .info_detail{
+      margin-top: 10px;
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 5px 5px #778899; 
+      tr,td{
+        border: 2px double #f5f5f5;
+      }
+    }
+      .btn{
+        margin-top:20px;
+      }
+    }
+  }
+  .current_orders{
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #e6e6fa;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);    
+  }
+  .history_orders{
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #e6e6fa;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);    
+  }
+  .center{
+    text-align: center;
 }
 
