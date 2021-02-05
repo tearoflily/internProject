@@ -50,7 +50,7 @@ end
     price: 100,
     process: 'kirimi',
     num: 5,
-    order_date: Date.today + 1,
+    order_date: Date.today+1,
     order_time: Time.local(
       Time.now.year,
       Time.now.month,
@@ -125,21 +125,21 @@ end
         30,0),
       user_id: 6
     )
-    8.times do |i|
-      Order.create(
-        name: 'さんま',
-        price: 100,
-        process: 'sasimi',
-        num: 5,
-        status: 'delivery',
-        order_date: Date.today + i,
-        order_time: Time.local(
-          Time.now.year,
-          Time.now.month,
-          Time.now.day ,
-          Time.now.hour + 1,
-          30,0),
-        user_id: 6
-      )
-    end
+  end
+  8.times do |i|
+    Order.create(
+      name: 'さんま',
+      price: 100,
+      process: 'sasimi',
+      num: 5,
+      status: 'delivery',
+      order_date: Date.today + i,
+      order_time: Time.local(
+        Time.now.year,
+        Time.now.month,
+        Time.now.day ,
+        Time.now.hour + 1,
+        30,0),
+      user_id: 6
+    )
   end
