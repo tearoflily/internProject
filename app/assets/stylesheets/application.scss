@@ -16,4 +16,9 @@
 .employee-main{
     margin-top: 8%;
 }
+@media screen and (max-width: 767px){
+  .employee-main{
+      margin-top: 15%;
+  }
+}
 
