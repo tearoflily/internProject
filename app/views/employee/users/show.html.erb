@@ -1,9 +1,9 @@
- <% provide(:title, @user.name) %>
+<% provide(:title, @user.name) %>
 
 <div class="employee_showpage">
   <div class="col-md-10 offset-1">
     <div class="user_info">
-      <h1 class="center">お客様情報確認</h1>
+      <h1 class="center">従業員情報確認</h1>
       <h4 class="center">ご登録いただいている内容は、以下の通りです。</h4>
         <div class="col-md-8 offset-2">
           <table class="info_detail">
@@ -26,6 +26,6 @@
           </table>
         </div>
         <div class="center">
-          <%= link_to "変更する", edit_customer_user_path, class: "btn btn-info" %>
+          <%= link_to "変更する", edit_employee_user_path, class: "btn btn-info" %>
         </div>
     </div>

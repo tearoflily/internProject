@@ -1,7 +1,7 @@
 <% provide(:title, "Edit") %>
 <% provide(:class_text, 'user--edit') %>
 <% provide(:button_text, '更新') %>
-<div class="user_info_edit">
+<div class="employee_info_edit">
  <h1 class="center">登録情報の更新</h1>
 
   <div class="row">
@@ -31,7 +31,7 @@
       </div>
         <div class="center">
           <%= f.submit "更新", class: "btn btn-primary btn-lg btn-#{yield(:class_text)}" %>
-          <%= link_to "戻る", customer_user_path(current_user), class: "btn btn btn-success btn-lg return" %>
+          <%= link_to "戻る", employee_user_path(current_user), class: "btn btn btn-success btn-lg return" %>
         </div>
         </div>
         <% end %>
