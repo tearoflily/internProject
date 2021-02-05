@@ -112,7 +112,7 @@ class Order < ApplicationRecord
     return total
   end
 
-  #各商品の売上数量 saleByProduct使用
+  #各商品の売上数量グラフ用 saleByProduct使用
   
   def self.salesCountArray(datas)
     sasimi_count = kirimi_count = nimono_conunt = sioyaki_count = flay_count = 0
@@ -123,15 +123,15 @@ class Order < ApplicationRecord
     datas.each do |data|
       case data.process
       when 'sasimi'
-        item_count[0] += 1
+        item_count[0] += data.num.to_i
       when 'kirimi'
-        item_count[1] += 1
+        item_count[1] += data.num.to_i
       when 'nimono'
-        item_count[2] += 1
+        item_count[2] += data.num.to_i
       when 'sioyaki'
-        item_count[3] += 1
+        item_count[3] += data.num.to_i
       when 'flay'
-        item_count[4] += 1
+        item_count[4] += data.num.to_i
       else
       end
     end
@@ -142,8 +142,56 @@ class Order < ApplicationRecord
   
     return array
   end
+#各商品の売上数量 saleByProduct使用
 
- 
+ def self.salesQuantityTable(datas, params)
+  first_day =params.beginning_of_month 
+  last_day = first_day.end_of_month
+  hash_array = []
+  (first_day .. last_day).each do |day|
+    hash = {}
+    hash[:day] =  day
+    sasimi_count = kirimi_count = nimono_conunt = sioyaki_count = flay_count = 0
+    item_count = [sasimi_count, kirimi_count, nimono_conunt, sioyaki_count, flay_count]
+
+    datas.map do |data|
+      if day == data.order_date
+        case data.process
+        when 'sasimi'
+          item_count[0] += data.num.to_i
+        when 'kirimi'
+          item_count[1] += data.num.to_i
+        when 'nimono'
+          item_count[2] += data.num.to_i
+        when 'sioyaki'
+          item_count[3] += data.num.to_i
+        when 'flay'
+          item_count[4] += data.num.to_i
+        else
+        end
+      end
+     
+    end
+    hash[:sasimi] = item_count[0]
+    hash[:kirimi] = item_count[1]
+    hash[:nimono] = item_count[2]
+    hash[:sioyaki] =item_count[3]
+    hash[:flay] = item_count[4]
+    total = 0
+    item_count.map{|count| total += count }
+    hash[:total] = total
+    hash_array << hash
+  end
+  return hash_array
+ end
+
+#前売上数量 saleByProduct使用
+
+ def self.totalNumber(datas)
+   total = 0
+   datas.map{|data| total +=  data.num.to_i }
+   return total
+ end
   
   
 end

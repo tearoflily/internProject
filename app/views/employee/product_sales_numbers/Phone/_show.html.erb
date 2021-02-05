@@ -1,0 +1,51 @@
+
+<% if @graphDatas.count > 0 %>
+ <%= bar_chart @graphDatas  %>
+<% else %>
+<% end %>
+
+
+<% if  @table_datas.count >0 %>  
+  <div class="text-center mt-3"><h5><%= "【今月売上点数#{  @total_numbers}点】" %></h5></div>
+
+  <%= link_to '戻る', employee_item_path(@item), class: 'btn btn-secondary  btn-block mb-2' %>
+    <%= link_to '前月', employee_product_sales_number_path(@item, params:{month: @month.prev_month}), class: 'btn btn-primary btn-block mb-2' %>
+    <% if @month < Date.today.beginning_of_month %>
+    <%= link_to '今月へ', employee_product_sales_number_path(@item), class: 'btn btn-primary btn-block  mb-2' %>
+    <% end %>
+
+  <table class="table table-bordered ">
+    <thead>
+      <tr>
+        <th rowspan="2" class="bg-dark text-white font-weight-bold text-center align-middle">日付</th>
+        <th rowspan="2" class="bg-dark text-white font-weight-bold text-center align-middle">曜日</th>
+        <th colspan="5" class="bg-dark text-white font-weight-bold text-center align-middle">各種売上数量</th>
+        <th rowspan="2" class="bg-dark text-white font-weight-bold text-center align-middle">合計</th>
+      </tr>
+      <tr>
+        <th class="bg-dark text-white font-weight-bold text-center align-middle item-th">刺身</th>
+        <th class="bg-dark text-white font-weight-bold text-center align-middle item-th">切身</th>
+        <th class="bg-dark text-white font-weight-bold text-center align-middle item-th">煮物</th>
+        <th class="bg-dark text-white font-weight-bold text-center align-middle item-th">塩焼</th>
+        <th class="bg-dark text-white font-weight-bold text-center align-middle item-th">揚物</th>
+      </tr>
+
+    </thead>  
+    <tbody>
+      <%  @table_datas.each do |order| %>
+       <tr>
+         <td class="text-center align-middle "><%=  l order[:day], format: :short %></td>
+         <td class="text-center align-middle "><%= Order.week_set(order[:day]) %></td>
+         <td class="text-center align-middle "><%= order[:sasimi] %></td>
+         <td class="text-center align-middle "><%= order[:kirimi]  %></td>
+         <td class="text-center align-middle "><%= order[:nimono] %></td>
+         <td class="text-center align-middle "><%= order[:sioyaki]  %></td>
+         <td class="text-center align-middle "><%= order[:flay]  %></td>
+         <td class="text-center align-middle "><%= order[:total]  %></td>
+       </tr>
+      <% end %>
+    </tbody>
+  </table>
+ <% else %> 
+   <div class="p-5 bg-secondary text-center text-white font-weight-bold">まだ売上データがありません。</div>
+ <% end %>
