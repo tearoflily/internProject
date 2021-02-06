@@ -9,7 +9,9 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: true 
   
-  validates :tellnumber, presence: true, format: {with: /\A0[5789]0[-]?\d{4}[-]?\d{4}\z/}
+  VALID_PHONE_NUMBER_REGEX = /\A0(\d{1}[-(]?\d{4}|\d{2}[-(]?\d{3}|\d{3}[-(]?\d{2}|\d{4}[-(]?\d{1})[-)]?\d{4}\z|\A0[5789]0[-]?\d{4}[-]?\d{4}\z/
+                            
+  validates :tellnumber, presence: true, format: { with: VALID_PHONE_NUMBER_REGEX }
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 8 }, allow_nil: true

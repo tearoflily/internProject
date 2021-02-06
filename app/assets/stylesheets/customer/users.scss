@@ -55,8 +55,8 @@
   }
 }
 
-//*****ユーザー情報変更*****//
-.user_info_edit{
+//*****ユーザー情報変更(customer, employee)*****//
+.user_info_edit, .employee_info_edit{
   margin: auto;
   .editform{
     padding: 40px;
@@ -112,8 +112,8 @@
   }
 }
 
-//*****お客様情報ページ*****//
-.customer_showpage,.employee_showpage{
+//*****ユーザー情報ページ(customer, employee)*****//
+.customer_showpage, .employee_showpage{
   margin: auto;
   .user_info{
     margin-top: 20px;
