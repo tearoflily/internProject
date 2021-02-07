@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       if user.employee
         redirect_to employee_users_url, success: 'ログインしました'
       else
-        redirect_to top_show_url, success: 'ログインしました'
+        redirect_to customer_user_url(user.id), success: 'ログインしました'
       end
     else
       flash.now[:danger] = '認証に失敗しました。'

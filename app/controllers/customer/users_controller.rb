@@ -6,7 +6,7 @@ class Customer::UsersController < Customer::MainController
 	end
 	
 	def show
-		@user = User.find(params[:id])
+		@user = User.where(employee: false).find(params[:id])
 	end
 
 	def new
@@ -14,12 +14,14 @@ class Customer::UsersController < Customer::MainController
 	end
 
 	def edit
-		@user = User.find(params[:id])
+    @user = User.find(params[:id])
+    
 	end
 
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       redirect_to top_show_url, success: '新規登録に成功しました。'
     else
       render :new
@@ -45,22 +47,4 @@ class Customer::UsersController < Customer::MainController
       params.require(:user).permit(:name, :name_kana, :tellnumber, :email, :password, :password_confirmation, :employee)
     end
     
-    def 
-
-		def set_user
-      @user = User.find(params[:id])
-    end
-		
-		def logged_in_user
-      unless logged_in?
-        flash[:danger] = "ログインしてください。"
-        redirect_to login_url
-      end
-		end
-
-		def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless @user == current_user
-    end
-
 end
