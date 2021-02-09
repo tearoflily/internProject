@@ -50,7 +50,9 @@ class Employee::UsersController < Employee::MainController
 	end
 
   def show
-    @user = User.where(employee: true).find(params[:id])
+    @user = User.find(params[:id])
+    redirect_to customer_user(@user) unless @user.employee?
+    #@user = User.where(employee: true).find(params[:id])
     
   end
 

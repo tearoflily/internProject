@@ -21,10 +21,10 @@ Rails.application.routes.draw do
   get '/signup', to: 'customer/users#new' 
   
   namespace :customer do
-    resources :users
+    resources :users, except:[:index, :destroy]
   end
   
-  #resources :session, only:[:new, :create,:destroy]
+  resources :session, only:[:new, :create,:destroy]
   get    '/login', to: 'sessions#new'
   post   '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

@@ -1,9 +1,4 @@
 class ApplicationController < ActionController::Base
-
-
-  def set_user
-    @user = User.find(params[:id])
-  end
   
   def logged_in_user
     unless logged_in?
