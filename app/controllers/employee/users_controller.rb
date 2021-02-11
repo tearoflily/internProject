@@ -34,7 +34,7 @@ class Employee::UsersController < Employee::MainController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to employee_users_path, success: '新規登録に成功しました。'
+      redirect_to employee_users_url, success: '新規登録に成功しました。'
     else
       render :new
     end
@@ -43,7 +43,7 @@ class Employee::UsersController < Employee::MainController
 	def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      edirect_to @user, success: "従業員情報を更新しました。"
+      redirect_to employee_users_url, success: "従業員情報を更新しました。"
     else
       render :edit      
     end
@@ -52,7 +52,6 @@ class Employee::UsersController < Employee::MainController
   def show
     @user = User.find(params[:id])
     redirect_to customer_user(@user) unless @user.employee?
-    #@user = User.where(employee: true).find(params[:id])
     
   end
 

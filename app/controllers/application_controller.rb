@@ -12,5 +12,4 @@ class ApplicationController < ActionController::Base
     redirect_to(root_url) unless @user == current_user
   end
 
-
 end
