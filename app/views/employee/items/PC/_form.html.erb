@@ -1,46 +1,50 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6 offset-3 bg-lignt p-5 shadow">
-       <%= @item.errorCheck %>
-      <%= form_with model: [:employee, item],  local: true, id:'item-form' do |f| %>
+    <div class="col-md-6 offset-3 p-5 ">
+    <%= link_to '新規複数登録', new_employee_product_multiple_path, class: 'btn btn-primary btn-lg' %>
+      <div class="bg-light shadow p-5">
+         <%= @item.errorCheck %>
+          <%= form_with model: [:employee, item],  local: true, id:'item-form' do |f| %>
 
-        <div class="form-group file-group">
-          <%= f.label Item.human_attribute_name(:path) %>
-           <div class="tooltips mb-3" id="tooltips">画像ファイルを選択してください。</div>
-          <div class="input-group">
-            <label class="input-group-btn">
-                <span class="btn btn-success">
-                  ファイル選択
-                  <%= f.file_field :image, style: 'display:none', id:'item-file-form', class: 'item-file-form' %>
-                </span>
-            </label>
-           <input type="text" class="form-control" readonly="" id="item-file-name">
-          </div>
-        </div>
-        
+            <div class="form-group file-group">
+              <%= f.label Item.human_attribute_name(:path) %>
+              <div class="tooltips mb-3" id="tooltips">画像ファイルを選択してください。</div>
+              <div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-success">
+                      ファイル選択
+                      <%= f.file_field :image, style: 'display:none', id:'item-file-form', class: 'item-file-form' %>
+                    </span>
+                </label>
+              <input type="text" class="form-control" readonly="" id="item-file-name">
+              </div>
+            </div>
+            
 
-        <div class="form-group file-group">
-          <%= f.label Item.human_attribute_name(:name) %>
-          <%= f.text_field :name, class: 'form-control' %>
-          
-        </div>
+            <div class="form-group file-group">
+              <%= f.label Item.human_attribute_name(:name) %>
+              <%= f.text_field :name, class: 'form-control' %>
+              
+            </div>
 
-        <div class="form-group">
-          <%= f.label Item.human_attribute_name(:category) %>
-          <%= f.select :category, Item.statuses.keys.map {|k| [I18n.t("enums.item.status.#{k}"), k]},{}, class: 'form-control' %>
-        </div>
+            <div class="form-group">
+              <%= f.label Item.human_attribute_name(:category) %>
+              <%= f.select :category, Item.statuses.keys.map {|k| [I18n.t("enums.item.status.#{k}"), k]},{}, class: 'form-control' %>
+            </div>
 
-        <div class="form-group">
-          <%= f.label Item.human_attribute_name(:info) %>
-          <%= f.text_area :info, rows: 5,  class: 'form-control' %>
-        </div>
+            <div class="form-group">
+              <%= f.label Item.human_attribute_name(:info) %>
+              <%= f.text_area :info, rows: 5,  class: 'form-control' %>
+            </div>
 
-        <div class="mt-5">
-          <%= f.submit nil, class: 'btn btn-primary btn-block item-submit', id:'item-submit' %>
-        </div>
+            <div class="mt-5">
+              <%= f.submit nil, class: 'btn btn-primary btn-block item-submit', id:'item-submit' %>
+            </div>
 
-      <% end %>
+          <% end %>
+      </div>
+      
     </div>
   </div>
 </div>

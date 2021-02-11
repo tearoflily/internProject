@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :orders, except: [:new, :create]
     resources :sales_managements, only: [ :index ]
     resources :product_sales_numbers, only: [ :show ]
+    resources :product_multiples, only: [ :new, :create ]
     resources :users
   end
 #####################菅野さんエリア##################################################################################
