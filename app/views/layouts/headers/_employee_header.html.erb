@@ -34,8 +34,8 @@
             会員メニュー
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">会員ページ</a>
-            <a class="dropdown-item" href="#">ログアウト</a>
+            <%= link_to '会員ページ', employee_user_path(current_user), class: "dropdown-item"%>
+            <%= link_to 'ログアウト', logout_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       </ul>

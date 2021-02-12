@@ -1,9 +1,4 @@
 class ApplicationController < ActionController::Base
-
-
-  def set_user
-    @user = User.find(params[:id])
-  end
   
   def logged_in_user
     unless logged_in?
@@ -16,6 +11,5 @@ class ApplicationController < ActionController::Base
     @user = User.find(params[:id])
     redirect_to(root_url) unless @user == current_user
   end
-
 
 end
