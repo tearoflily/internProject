@@ -3,6 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /* ログインフォーム */
 
+/**************************PC/スマートフォン切替**************************/
+.sessions-phone{
+  display: none;
+}
+/**************************スマートフォン**************************/
+@media screen and (max-width:767px){
+  .sessions-pc{
+    display: none;
+  }
+}
+/**********************************************************************/
 .loginpage{
   margin: auto;
   width: 90%;
@@ -42,13 +53,3 @@
   }
 }
 
-/**************************スマートフォン***********************************************************************************************/
-@media screen and (max-width:767px){
-  .sessionss-phone{
-      display: block;
-  }
-  .sessions-pc{
-      display: none;
-  }
-
-}

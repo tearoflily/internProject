@@ -49,34 +49,29 @@ RSpec.describe "従業員ユーザー検証", type: :system do
       end 
   end 
 
-  describe '編集画面' do
-    # before do
-    #   User.create(
-    #     name: "林 太郎", name_kana: "ハヤシ タロウ", tellnumber: "080-5555-5555", email: "hayashi@email.com", password:"password", password_confirmation: "password", employee: "true"
-    #   )
-    # end
-    it '登録内容の変更' do
-      visit login_path
-      fill_in "session_email", with: "hanako@example.com"
-      fill_in "session_password", with: "password"
-      click_button 'ログイン'
+  # describe '編集画面' do
+  #   it '登録内容の変更' do
+  #     visit login_path
+  #     fill_in "session_email", with: "hanako@example.com"
+  #     fill_in "session_password", with: "password"
+  #     click_button 'ログイン'
       
-      # User編集画面を開く
-      click_link '会員メニュー'
-      click_link '会員ページ'
-      click_on "変更する"
+  #     # User編集画面を開く
+  #     click_link '会員メニュー'
+  #     click_link '会員ページ'
+  #     click_on "変更する"
 
-      fill_in "user_tellnumber", with: "03-5555-5555"
-      fill_in "user_email", with: "flower@email.com"
-      click_on '更新'
+  #     fill_in "user_tellnumber", with: "03-5555-5555"
+  #     fill_in "user_email", with: "flower@email.com"
+  #     click_on '更新'
       
-      expect(page).to have_content '従業員情報を更新しました。'
-      expect(page).to have_content '花子'
-      expect(page).to have_content 'ハナコ'
-      expect(page).to have_content '03-5555-5555'
-      expect(page).to have_content 'flower@email.com'
-    end
-  end
+  #     expect(page).to have_content '従業員情報を更新しました。'
+  #     expect(page).to have_content '花子'
+  #     expect(page).to have_content 'ハナコ'
+  #     expect(page).to have_content '03-5555-5555'
+  #     expect(page).to have_content 'flower@email.com'
+  #   end
+  # end
   
 
 end

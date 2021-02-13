@@ -21,7 +21,33 @@
   }
 }
 
-//*****新規登録*****//
+//************************************新規登録*************************************//
+//*********スマホ切替対応*********//
+
+.signup-phone{
+  display: none;
+}  
+
+@media screen and (max-width:767px){
+  .signup-pc{
+    display: none;
+  }
+  .signup-phone{
+    display: block;
+    width: 100%;
+    .center{
+      text-align: center;
+      padding: auto;
+      .btn{
+        display:block;
+        width: 90%;
+        margin: auto;
+      }
+    }
+  }
+}
+
+//******************************//
 .new_signup{
   margin: auto;
   .newform{
@@ -55,7 +81,8 @@
   }
 }
 
-//*****ユーザー情報変更(customer, employee)*****//
+
+//******************************ユーザー情報変更(customer, employee)******************************//
 .user_info_edit, .employee_info_edit{
   margin: auto;
   .editform{
