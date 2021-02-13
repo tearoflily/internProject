@@ -27,6 +27,7 @@ gem 'ransack'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
 gem "chartkick"
+gem 'nested_form'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
