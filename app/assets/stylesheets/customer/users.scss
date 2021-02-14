@@ -83,6 +83,24 @@
 
 
 //******************************ユーザー情報変更(customer, employee)******************************//
+//*********スマホ切替対応*********//
+.userinfo_edit_phone{
+  display: none;
+}  
+
+@media screen and (max-width:767px){
+  .userinfo_edit_pc{
+    display: none;
+  }
+  .userinfo_edit_phone{
+    display: block;
+    .center_btn{
+      text-align: center;
+      margin: 20px 0px 0px 20px;
+    }
+  }
+} 
+//********************************//
 .user_info_edit, .employee_info_edit{
   margin: auto;
   .editform{
@@ -140,6 +158,23 @@
 }
 
 //*****ユーザー情報ページ(customer, employee)*****//
+//*********スマホ切替対応*********//
+.infoshow-phone{
+  display: none;
+}  
+
+@media screen and (max-width:767px){
+  .infoshow-pc{
+    display: none;
+  }
+  .infoshow-phone{
+    display: block;
+    .info_detail{
+      font-size: 12px;
+    }
+  }
+} 
+//****************************//
 .customer_showpage, .employee_showpage{
   margin: auto;
   .user_info{
