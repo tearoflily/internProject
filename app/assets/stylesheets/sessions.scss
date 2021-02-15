@@ -1,0 +1,64 @@
+// Place all the styles related to the Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/* ログインフォーム */
+
+/**************************PC/スマートフォン切替**************************/
+.sessions-phone{
+  display: none;
+}
+/**************************スマートフォン**************************/
+@media screen and (max-width:767px){
+  .sessions-pc{
+    display: none;
+  }
+  .sessions-phone{
+    display: block;
+    .row{
+      background-color: lightsteelblue;
+      margin: 10px 5px 0px 10px;
+      padding: 10px;
+      box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5); 
+    }
+  }
+}
+/**********************************************************************/
+.loginpage{
+  margin: auto;
+  width: 90%;
+  .label-login {
+    margin-top: 5px;
+  }
+  .btn-login {
+    margin-top: 10px;
+  }
+  .col{
+    background-color: lightsteelblue;
+    margin: 10px 5px 0px 10px;
+    padding: 10px;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5); 
+  }
+  label{
+    margin-bottom: 0px;
+    margin-top: 15px;
+  }
+  .center{
+    text-align: center;
+  }
+  .offset-2{
+    margin: auto;
+  }
+  .regist_btn{
+    margin-top: 60px;
+    text-align: center;
+   }
+}
+
+.checkbox-login {
+  width: auto;
+  margin-left: 25px;
+  span {
+    font-weight: normal;
+  }
+}
+

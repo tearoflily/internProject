@@ -1,4 +1,19 @@
-<%= link_to '新規登録', new_employee_item_path, class: 'btn btn-primary btn-lg mb-1' %>
+
+<div class="col-md-10 offset-1">
+<table class="item-pagination-aria">
+ <tbody>
+   <tr>
+    <td>
+      <%= link_to '新規登録', new_employee_item_path, class: 'btn btn-primary btn-lg' %>
+    </td>
+    
+      <td>
+        <%= paginate items,  theme: 'twitter-bootstrap-4' %>
+      </td>
+   </tr>
+ </tbody>
+</table>
+
 <% if items.count >0 %>  
   <table class="table table-bordered">
     <thead>
@@ -17,8 +32,8 @@
         <td class="font-weight-bold text-center align-middle"><%= I18n.t("enums.item.status.#{item.category}") %></td>
         <td class="text-center align-middle">
           <%= link_to '編集', edit_employee_item_path(item), class: 'btn btn-primary btn-lg mr-3' %>
-          <%= link_to '加工法編集', "#", class: 'btn btn-primary btn-lg mr-3' %>
-          <%= link_to '削除', "#", class: 'btn btn-danger btn-lg' %>
+          <%= link_to '加工法編集',new_employee_processing_path(params:{item_id: item}), class: 'btn btn-primary btn-lg mr-3' %>
+          <%= link_to '削除', [:employee,item], data:{confirm: '削除しますか？' }, method: :delete, id: "delete_button#{item.id}", class: 'btn btn-danger btn-lg' %>
         </td>
       </tr>
     <% end %>
@@ -27,3 +42,4 @@
  <% else %> 
    <div class="p-5 bg-secondary text-center text-white font-weight-bold">まだ登録商品がありません。</div>
  <% end %>
+ </div>

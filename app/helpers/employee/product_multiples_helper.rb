@@ -1,0 +1,2 @@
+module Employee::ProductMultiplesHelper
+end

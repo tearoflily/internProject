@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="products-new">
+      <%= form_with model: [:employee, product],  local: true do |f| %>
+        <%= product.errorCheck %>
+        <div class="form-group">
+          <%= f.label Product.human_attribute_name(:name) %><br>
+          <%= f.select :name,
+              Item.itemNames,
+              {},class: 'js-searchable',
+              id: 'product-name-select'
+          %>
+        </div>
+
+        <div class="form-group">
+           <%= f.label Product.human_attribute_name(:price) %>  
+           <%= f.number_field :price, min:0, step: 1, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+           <%= f.label Product.human_attribute_name(:stock) %>  
+           <%= f.number_field :stock, min:0, step: 1, class: 'form-control' %>
+        </div>
+
+
+        <div class="mt-5">
+          <%= f.submit nil, class: 'btn btn-primary btn-block' %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
