@@ -1,0 +1,57 @@
+<% if orders.count >0 %>  
+<div class="order-phone-info">受け取り時間が早い順に配置されてます。</div>
+  <%= paginate orders,  theme: 'twitter-bootstrap-4' %>
+  <table>
+   <tbody>
+     <% orders.each do |order| %>
+      <tr>
+        <td>
+          <h4 style="color:red"><span style="color:black">受け取り:</span><%= l order.order_time, format: :tim %></h4>
+        </td>
+      </tr>
+      <tr>
+        <table class="table table-bordered mb-3">
+          <tbody>
+            <tr>
+              <th class="bg-dark text-white font-weight-bold text-center align-middle">商品名</th>
+              <td colspan="3" class="text-center text-primary align-middle"><h4><%= order.name %></h4></td>
+            </tr>
+
+            <tr>
+              <th class="bg-dark text-white font-weight-bold text-center align-middle">お客様名</th>
+              <td colspan="3" class="text-center align-middle">
+                <%= link_to order.user.name, employee_order_path(order.user) %>
+              </td>
+            </tr>
+
+            <tr>
+              <th class="bg-dark text-white font-weight-bold text-center align-middle">価格</th>
+              <td class="text-center text-danger align-middle"><%= order.price%></td>
+              <th class="bg-dark text-white font-weight-bold text-center align-middle">注文数</th>
+              <td class="text-center align-middle"><%= order.num %></td>
+            </tr>
+
+            <tr>
+              <th class="bg-dark text-white font-weight-bold text-center align-middle">合計</th>
+              <td colspan="3" class="text-center text-danger align-middle"><%= order.total %></td>
+            </tr>
+
+            <tr>
+              <th class="bg-dark text-white font-weight-bold text-center align-middle">依頼加工</th>
+              <td colspan="3" class="text-center align-middle"><%= order.process %></td>
+            </tr>
+          </tbody>
+        </table>
+      </tr>
+      <tr>
+        <td>
+           <p class="text-success font-weight-bold">変更はこちらのボタンで。</p>
+           <%= link_to I18n.t("enums.order.status.#{order.status}"), edit_employee_order_path(order.id), class: "#{order.orderStatusView} btn-block mb-3" %>
+        </td>
+      </tr>
+     <% end %>
+   </tbody>
+  </table>
+ <% else %> 
+   <div class="p-5 bg-secondary text-center text-white font-weight-bold">まだ注文がありません。</div>
+ <% end %>

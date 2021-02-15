@@ -1,0 +1,5 @@
+<%= provide(:title, "#{@user.name}注文状況") %>
+<div class="text-center font-weight-bold mt-4 mb-5"><h2><%= "#{@user.name}注文状況確認" %></h2></div>
+
+<%= render 'table', {user: @user} %>
+<%= link_to '戻る', employee_orders_path, class: 'btn btn-secondary btn-block mb-5' %>

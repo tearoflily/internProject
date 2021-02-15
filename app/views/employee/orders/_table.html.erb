@@ -1,0 +1,40 @@
+ <% user.todayOrder.each do |order| %>
+         <div class="text-center mb-3"><h4><%="【#{order.name}】の注文状況" %></h4></div>
+
+
+         <table class="table table-bordered mb-5">
+          <tbody>
+            <tr>
+              <th class="bg-dark text-white text-center font-weight-bold">商品名</th>
+              <td class="font-weight-bold text-center w-50"><%= order.name %></td>
+            <tr>
+            <tr>
+              <th class="bg-dark text-white text-center font-weight-bold">価格(単価)</th>
+              <td class="font-weight-bold text-center w-50 text-danger"><%= order.price %></td>
+            </tr>
+
+            <tr>
+              <th class="bg-dark text-white text-center font-weight-bold">注文数</th>
+              <td class="font-weight-bold text-center w-50 text-danger"><%= order.num %></td>
+            </tr>
+
+             <tr>
+              <th class="bg-dark text-white text-center font-weight-bold">加工法</th>
+              <td class="font-weight-bold text-center w-50"><%= order.process %></td>
+            </tr>
+
+            <tr>
+              <th class="bg-dark text-white text-center font-weight-bold">受け取り時間</th>
+              <td class="font-weight-bold text-center w-50"><%= l order.order_time, format: :tim %></td>
+            </tr>
+
+             <tr>
+              <th class="bg-dark text-white text-center font-weight-bold align-middle">状況</th>
+              <td class="font-weight-bold text-center w-50 align-middle  ">
+              　<div class="<%= order.orderStatusDiv %>"><%= I18n.t("enums.order.status.#{order.status}")  %></div>
+              </td>
+            </tr>
+        
+          </tbody>
+         </table>
+        <% end %>

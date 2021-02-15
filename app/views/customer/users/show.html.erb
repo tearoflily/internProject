@@ -1,0 +1,14 @@
+<% provide(:title, @user.name) %>
+<div class="customer_showpage">
+  <!-- pcの場合-->
+  <div class="infoshow-pc">
+    <h1 class="center">お客様マイページ</h1>
+    <%= render 'customer/users/PC/show' %>
+  </div>
+
+  <!-- phoneの場合-->
+  <div class="infoshow-phone">
+    <h2 class="center">お客様マイページ</h2>
+    <%= render 'customer/users/Phone/show' %>
+  </div> 
+</div>

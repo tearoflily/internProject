@@ -1,6 +1,6 @@
 require 'rails_helper'
-
-describe "商品検証", type: :system do
+##
+RSpec.describe "商品検証", type: :system do
   let!(:item){ FactoryBot.create(:item)}   
   let!(:item2){ FactoryBot.create(:item, name: '金目鯛')}
 
@@ -86,5 +86,13 @@ describe "商品検証", type: :system do
           }
       end
    end 
-
+   ########################################################################################
+   describe "複数登録" do
+    before do
+     visit  new_employee_product_multiple_path
+    end
+    it "表示される。" do
+      expect(page).to have_content "商品複数登録" 
+    end
+ end 
 end

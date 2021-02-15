@@ -19,15 +19,27 @@ class Employee::ProductsController < Employee::MainController
        stock: product_parameters[:stock]
     )
     if @product.save
-      redirect_to employee_products_path, info: "店頭商品#{@product.name}を登録しました。"
+      redirect_to employee_products_url, info: "店頭商品#{@product.name}を登録しました。"
     else
       render :new
     end
   end
 
+  def update
+    Product.stock_price_update(status_change_parameter)
+    redirect_to employee_products_url, info: "編集しました。" 
+  end
+  
+
   def destroy
-    Product.find( params[:id] ).destroy
-    redirect_to employee_products_path, danger: "削除しました。"
+    if params[:id] == 'reset'
+      Product.destroy_all
+    elsif params[:id] == 'checklist' && params[:data].present?
+       Product.checkListDestroy(params[:data])
+    else
+      Product.find( params[:id] ).destroy
+    end
+    redirect_to employee_products_url, danger: "削除しました。" 
   end
 
 
@@ -35,6 +47,11 @@ private
   def product_parameters
     params.require(:product).permit( :name, :price, :stock )
   end
+
+  def status_change_parameter
+    params.require(:product).permit(products: [:price, :stock])[:products]
+  end
+  
   
   
 end

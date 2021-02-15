@@ -1,0 +1,24 @@
+<%= provide(:title, '注文一覧') %>
+<div class="text-center font-weight-bold mt-4"><h1>注文状況確認</h1></div>
+
+ <div id="order-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+ <div id="order-show-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+    
+      <!-- pcの場合-->
+      <div class="orders-pc">
+         <%= render 'employee/orders/PC/index',{orders: @orders} %>
+      </div>
+
+       <!-- phoneの場合-->
+       <div class="orders-phone">
+         <%= render 'employee/orders/Phone/index', {orders: @orders} %>
+      </div>
+    
+    </div>
+  </div>
+</div>

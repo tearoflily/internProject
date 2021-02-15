@@ -22,6 +22,12 @@ gem 'mini_racer'
 gem 'rails-i18n'
 gem 'enum_help'
 gem 'select2-rails'
+gem 'rmagick'
+gem 'ransack'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
+gem "chartkick"
+gem 'nested_form'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'

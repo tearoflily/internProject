@@ -68,10 +68,10 @@ class Object
   # You can access these methods using the class name instead:
   #
   #   class Phone < ActiveRecord::Base
-  #     enum phone_number_type: [home: 0, office: 1, mobile: 2]
+  #     enum tellber_type: [home: 0, office: 1, mobile: 2]
   #
   #     with_options presence: true do
-  #       validates :phone_number_type, inclusion: { in: Phone.phone_number_types.keys }
+  #       validates :tellber_type, inclusion: { in: Phone.tellber_types.keys }
   #     end
   #   end
   #

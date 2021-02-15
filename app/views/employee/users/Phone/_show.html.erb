@@ -1,0 +1,29 @@
+<div class="col-md-10">
+  <div class="user_info">
+    <h6 class="center">ご登録いただいている内容は、<br>以下の通りです。</h6>
+      <div class="col-md-10">
+        <table class="info_detail">
+          <tr>
+            <td>お名前</td>       
+            <td><%= @user.name %> 様</td>
+          </tr>
+          <tr>
+            <td>お名前（カナ）</td>
+            <td><%= @user.name_kana%> 様</td>
+          </tr>
+          <tr>
+            <td>電話番号</td>      
+            <td><%= @user.tellnumber%></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td> 
+            <td><%= @user.email%></td>
+          </tr>
+        </table>
+      </div>
+      <div class="center">
+        <%= link_to "変更する", edit_employee_user_path, class: "btn btn-info" %>
+      </div>
+  </div>
+  
+</div>

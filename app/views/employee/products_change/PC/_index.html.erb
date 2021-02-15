@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 shadow bg-light p-3">
+       <%= link_to '戻る', employee_products_path,  class: "btn btn-secondary btn-lg" %>
+       <% if products.count > 0%>
+       <%= form_with scope: :product, url: employee_products_path, local:true, method: :patch do  |f| %>
+       <table class="table table-bordered mt-1">
+        <thead>
+          <tr>
+            <th class="bg-dark text-white text-center font-weight-bold">商品名</th>
+            <th class="bg-dark text-white text-center font-weight-bold">価格</th>
+            <th class="bg-dark text-white text-center font-weight-bold">在庫</th>
+            <th class="bg-dark text-white text-center font-weight-bold">合計金額</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% products.each_with_index do |product, i| %>
+            <%= f.fields_for 'products[]', product do |af| %>
+            <tr>
+              <td class="font-weight-bold text-center">
+                <%= product.name %><br>
+              </td>
+              <td class="font-weight-bold text-center text-danger align-middle">
+                <%= af.number_field :price, min: 0, step: 1, value: product.price, class:'form-control product-price-field', id:"price#{i}" %>
+              </td>
+              <td class="font-weight-bold text-center align-middle">
+                <%= af.number_field :stock, min: 0, step: 1, value: product.stock, class:'form-control product-stock-field', id:"stock#{i}" %>
+              </td>
+              <td class="font-weight-bold text-center align-middle" id="total<%= i %>"><%= product.total %></td>
+            </tr>
+           <% end %>
+          <% end %>
+        </tbody>
+       </table>
+       <div class="text-center">
+        <%= f.submit '編集', class: 'btn btn-primary btn-lg w-50'%>
+       </div>
+       <% end %>
+      <% else %>
+        <div class="bg-secondary p-5 text-center text-white font-weight-bold">まだ店頭商品が登録されてません。</div>
+      <% end %>
+    </div>
+  </div>
+</div>

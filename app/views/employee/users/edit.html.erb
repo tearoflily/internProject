@@ -1,0 +1,13 @@
+<% provide(:title, "Edit") %>
+<% provide(:class_text, 'user--edit') %>
+<% provide(:button_text, '更新') %>
+
+ <div class="employee_info_edit">
+  <div class="employeeinfo_edit_pc">
+    <%= render 'employee/users/PC/edit' %>
+  </div>
+  
+  <div class="employeeinfo_edit_phone">
+    <%= render 'employee/users/Phone/edit' %>
+  </div>
+</div>

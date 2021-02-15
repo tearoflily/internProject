@@ -13,7 +13,11 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery
+//= require jquery_ujs
 //= require popper
+//= require jquery_nested_form
+//= require chartkick
+//= require Chart.bundle
 //= require bootstrap-sprockets
 //= require select2
 //= require turbolinks

@@ -1,0 +1,20 @@
+<%= provide(:title, '売上速報') %>
+<div class="text-center font-weight-bold mt-4"><h2>店頭商品売上推移表</h2></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+    
+      <!-- pcの場合-->
+      <div class="sales-management-pc">
+         <%= render 'employee/sales_managements/PC/index', {datas: @graph_datas} %>
+      </div>
+
+       <!-- phoneの場合-->
+       <div class="sales-management-phone">
+         <%= render 'employee/sales_managements/Phone/index', {datas: @graph_datas}  %>
+      </div>
+    
+    </div>
+  </div>
+</div>

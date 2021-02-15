@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light navbar-expand-md bg-dark">
+<nav class="navbar navbar-light navbar-expand-md bg-dark fixed-top mb-5">
   <a class="navbar-brand text-white font-weight-bold" href="./index.html">
       生鮮加工注文アプリ
   </a>
@@ -12,7 +12,7 @@
               <a class="nav-link text-white mr-3" href="./index.html">販売ページ</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link text-white mr-3" href="./Company.html">会員管理</a> 
+            <%= link_to '会員管理',  employee_users_path, class:'nav-link text-white mr-3' %>
           </li>
           <li class="nav-item">
             <%= link_to '商品一覧',  employee_items_path, class:'nav-link text-white mr-3' %>
@@ -21,7 +21,10 @@
              <%= link_to '本日店頭商品',  employee_products_path, class:'nav-link text-white mr-3' %>
           </li>
            <li class="nav-item">
-              <a class="nav-link text-white mr-3" href="./Contact.html">注文状況</a> 
+            <%= link_to '注文状況', employee_orders_path, class: 'nav-link text-white mr-3' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '売上速報', employee_sales_managements_path, class: 'nav-link text-white mr-3' %>
           </li>
       </ul>
       <!--右サイド-->
@@ -31,13 +34,13 @@
             会員メニュー
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">会員ページ</a>
-            <a class="dropdown-item" href="#">ログアウト</a>
+            <%= link_to '会員ページ', "#", class: "dropdown-item"%>
+            <%= link_to 'ログアウト', "#", method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       </ul>
   </div>
 </nav>
  <% flash.each do |message_type, message| %>
-   <div class="alert alert-<%= message_type %>"><%= message %></div>
+   <div class="alert alert-<%= message_type %> mt-5"><%= message %></div>
  <% end %>

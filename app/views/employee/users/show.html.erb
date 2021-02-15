@@ -1,0 +1,12 @@
+<% provide(:title, @user.name) %>
+
+<div class="employee_showpage">
+  <div class="employeeshow_pc">
+    <h1 class="center">従業員情報確認</h1>
+    <%= render 'employee/users/PC/show' %>
+  </div>
+  <div class="employeeshow_phone">
+    <h3 class="center">従業員情報確認</h3>
+    <%= render 'employee/users/Phone/show' %>
+  </div>
+</div>

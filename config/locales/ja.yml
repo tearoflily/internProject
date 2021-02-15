@@ -1,5 +1,12 @@
 ---
 ja:
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
   enums:
     item:
       status:
@@ -17,6 +24,11 @@ ja:
         nimono: 煮物用
         sioyaki: 塩焼き用
         flay: フライ、天ぷら用
+    order:
+      status:
+        in_order: 依頼中
+        processed: 加工済み
+        delivery: 渡し済み
   activerecord:
     errors:
       messages:
@@ -39,6 +51,14 @@ ja:
         name: 商品名
         price: 価格
         stock: 在庫
+      user:
+        id: ID
+        name: 名前
+        name_kana: 名前（カナ）
+        tellnumber: 電話番号
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
   date:
     abbr_day_names:
     - 日
@@ -236,4 +256,5 @@ ja:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
+      tim: "%H:%M"
     pm: 午後

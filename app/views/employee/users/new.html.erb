@@ -1,0 +1,13 @@
+<% provide(:title, 'Sign up') %>
+<% provide(:class_text, 'signup') %>
+<% provide(:button_text, '新規作成') %>
+
+<div class="new_signup">
+  <h1 class="center">新規登録</h1>
+  <div class="employeenew_pc">
+    <%= render 'employee/users/PC/new' %>
+  </div>
+  <div class="employeenew_phone">
+    <%= render 'employee/users/Phone/new' %>
+  </div>
+</div>

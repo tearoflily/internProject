@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-
   has_many :processings, dependent: :destroy
   validates :name, presence: true, uniqueness: true, length: {maximum: 10}
   scope  :descendingOrder,-> { order(id: :DESC)}
@@ -18,8 +17,27 @@ class Item < ApplicationRecord
   def imageSet(param)
     if param
       image = param.read
+      #rmagicによる画像サイズ等調整
+      set_image = Magick::Image.from_blob(image).first  
+      rmagick_image = set_image.resize_to_fit(300)
+      rmagick_image.auto_orient!
+      rmagick_image.strip!
+      rmagick_image.write('public/make.jpg')
+      self.image = File.open('public/make.jpg').read
     end
   end
+
+  #画像ファイル付きのupdate
+  def includeImageUpdate(params)
+    self.image = self.imageSet(params[:image]) unless params[:image].nil?
+    self.name = params[:name]
+    self.category = params[:category]
+    self.info = params[:info]
+    self.save
+  end
+
+  
+  
 
    #関連加工法名検索
    def processNames
