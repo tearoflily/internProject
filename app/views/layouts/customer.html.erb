@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>InternProject</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,10 +13,8 @@
   <body>
     <%= render 'layouts/headers/customer_header' %>
     <div class="container">
-      <% flash.each do |message_type, msg| %>
-        <div class="alert alert-<%= message_type %>"><%= msg %></div>
-      <% end %>
-      <%= yield %>
+    <%= yield %> 
+
     </div>
   </body>
 </html>
