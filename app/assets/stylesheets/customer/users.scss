@@ -20,30 +20,15 @@
     }
   }
 }
-
-//************************************新規登録*************************************//
-//*********スマホ切替対応*********//
-
-.signup-phone{
+.user_header_phone{
   display: none;
-}  
-
+}
 @media screen and (max-width:767px){
-  .signup-pc{
+  .user_header_pc{
     display: none;
   }
-  .signup-phone{
-    display: block;
-    width: 100%;
-    .center{
-      text-align: center;
-      padding: auto;
-      .btn{
-        display:block;
-        width: 90%;
-        margin: auto;
-      }
-    }
+  .user_header_phone{
+    background-color: floralwhite;
   }
 }
 
