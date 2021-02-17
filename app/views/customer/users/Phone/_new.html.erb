@@ -7,10 +7,10 @@
           <div class="col-md-10">
             <%= f.label :name, "お名前（漢字）", class: "label-#{yield(:class_text)}" %><font color="red"> ※必須項目</font>
             <%= f.text_field :name, class: "form-control" %>
-            
+
             <%= f.label :name_kana, "お名前（カナ）", class: "label-#{yield(:class_text)}" %><font color="red"> ※必須項目</font>
             <%= f.text_field :name_kana, class: "form-control" %>
-          
+
             <%= f.label :tellnumber, "電話番号", class: "label-#{yield(:class_text)}" %><font color="red"> ※必須項目</font>
             <%= f.telephone_field :tellnumber, placeholder: "090-0000-0000", class: "form-control" %>
 
@@ -22,13 +22,12 @@
 
             <%= f.label :password_confirmation, "パスワード確認", class: "label-#{yield(:class_text)}" %>
             <%= f.password_field :password_confirmation, class: "form-control" %>
-            
+
             <%= f.hidden_field :employee, value:false %>
-          
-            <div class="center">
-              <%= f.submit yield(:button_text), class: "btn btn-primary btn-lg mb-1 btn-#{yield(:class_text)} newbutt" %>
-              <%= link_to "戻る", login_path, class: "btn btn btn-success btn-lg return" %>
-            </div>
+          </div>
+          <div class="center">
+            <%= f.submit yield(:button_text), class: "btn btn-primary btn-lg btn-#{yield(:class_text)} newbutt" %>
+            <%= link_to "戻る", login_path, class: "btn btn btn-success btn-lg return" %>
           </div>
       <% end %>
     </div>

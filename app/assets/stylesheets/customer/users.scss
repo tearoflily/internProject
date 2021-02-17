@@ -13,25 +13,48 @@
   a{
     color: #fff;
   }
-  .custom_header{
-    li{
-      display: inline;
-      padding-right:10px;
-    }
+  li{
+    display: inline;
+    padding-right:10px;
   }
 }
-.user_header_phone{
+// .user_header_phone{
+//   display: none;
+// }
+// @media screen and (max-width:767px){
+//   .user_header_pc{
+//     display: none;
+//   }
+//   .user_header_phone{
+//     background-color: floralwhite;
+//   }
+// }
+
+/**************************新規登録（new)画面***************************/
+//*********スマホ切替対応*********//
+.signup-phone{
   display: none;
-}
+}  
 @media screen and (max-width:767px){
-  .user_header_pc{
+  .signup-pc{
     display: none;
   }
-  .user_header_phone{
-    background-color: floralwhite;
+  .signup-phone{
+    display: block;
+    .newform{
+      margin: 10px;
+    }
+    .center{
+      padding: auto;
+      .btn{
+        display: block;
+        width: 90%;
+        margin-top: 10px;
+        margin-left: 12px;
+      }
+    }
   }
-}
-
+} 
 //******************************//
 .new_signup{
   margin: auto;
@@ -196,4 +219,3 @@
   .center{
     text-align: center;
 }
-
