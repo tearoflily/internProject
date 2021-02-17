@@ -71,9 +71,9 @@ class Order < ApplicationRecord
         end
        end 
        child_array << day
-       child_array << total_price unless total_price == 0
-       child_array << total_num  unless total_num == 0
-       child_array << progress_sum unless  total_price ==0
+       child_array << total_price 
+       child_array << total_num  
+       child_array << progress_sum 
        array << child_array
      end
      return array

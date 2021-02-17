@@ -7,6 +7,7 @@
 <% if @month < Date.today.beginning_of_month %>
   <%= link_to '今月へ', employee_sales_managements_path, class: 'btn btn-primary w-25 ml-3 mb-3 mt-3' %>
 <% end %>
+<%= link_to "Excel出力", employee_sales_managements_path(@datas, format: :xlsx), class:"btn btn-success btn-block" %>
 
 <% if datas.count >0 %>  
   <div class="text-center mt-3"><h5><%= "【今月売上合計#{ @current_month_sales}円】" %></h5></div>
@@ -33,7 +34,7 @@
          <td class="text-center align-middle text-danger font-weight-bold "><%= order[1] %></td>
          <td class="text-center align-middle "><%= "#{order[2]}" if order[2].present? %></td>
          <td class="text-center align-middle  text-danger font-weight-bold "><%= order[3] %></td>
-         <td class="text-center align-middle "><%= "#{(order[1].to_f / @current_month_sales.to_f * 100).to_i}%" if order[1].present? %></td>
+         <td class="text-center align-middle "><%= "#{(order[1].to_f / @current_month_sales.to_f * 100).to_i}%" if order[1].to_i >0 %></td>
        </tr>
       <% end %>
     </tbody>
