@@ -30,20 +30,28 @@
 //   }
 // }
 
-//******************************//
-.userinfo_edit_phone{
+/**************************新規登録（new)画面***************************/
+//*********スマホ切替対応*********//
+.signup-phone{
   display: none;
 }  
-
 @media screen and (max-width:767px){
-  .userinfo_edit_pc{
+  .signup-pc{
     display: none;
   }
-  .userinfo_edit_phone{
+  .signup-phone{
     display: block;
-    .center_btn{
-      text-align: center;
-      margin: 20px 0px 0px 20px;
+    .newform{
+      margin: 10px;
+    }
+    .center{
+      padding: auto;
+      .btn{
+        display: block;
+        width: 90%;
+        margin-top: 10px;
+        margin-left: 12px;
+      }
     }
   }
 } 

@@ -7,10 +7,10 @@ RSpec.describe 'Users', type: :system do
       visit new_customer_user_path
     end
     it "新規登録ができること" do
-        fill_in "user_name", with: "森田 太郎"
+        fill_in "user_name", with: "田森 太郎"
         fill_in "user_name_kana", with: "モリタ タロウ"
-        fill_in "user_tellnumber", with: "050-5555-5555"
-        fill_in "user_email", with: "morita@email.com"
+        fill_in "user_tellnumber", with: "090-3355-3355"
+        fill_in "user_email", with: "tamori@email.com"
         fill_in "user_password", with: "password"
         fill_in "user_password_confirmation", with: "password"
         click_button '新規作成'
