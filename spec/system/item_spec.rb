@@ -1,5 +1,5 @@
 require 'rails_helper'
-##
+
 RSpec.describe "商品検証", type: :system do
   let!(:item){ FactoryBot.create(:item)}   
   let!(:item2){ FactoryBot.create(:item, name: '金目鯛')}
@@ -95,10 +95,23 @@ RSpec.describe "商品検証", type: :system do
       expect(page).to have_content "商品複数登録" 
     end
     context "ページ機能検証" do
-      it "＋ボタン" do
-        click_on "+"
-        expect(page).to have_content "-" 
+      it "＋ボタンでマイナスボタン出現" do
+        click_on "＋"
+        expect(page).to have_content "ー" 
       end
+      it "フォームが一つの時はーボタンは表示されない" do
+        click_on "ー"
+        expect(page).to have_no_selector ".ml-down" 
+      end
+      it "登録される" do
+        click_on "＋"
+        fill_in "form_item_collection[items_attributes][0][name]",	with: "岩魚" 
+        fill_in "form_item_collection[items_attributes][1][name]",	with: "ヤマメ" 
+        click_on '登録'
+        expect(page).to have_content  '登録しました。'
+        
+      end
+
       
     end
     
