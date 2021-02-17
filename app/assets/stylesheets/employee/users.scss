@@ -5,8 +5,6 @@
     display: none;
 }
 
-
-
 /**************************スマートフォン***********************************************************************************************/
 @media screen and (max-width:767px){
     .employee-users-phone{
@@ -19,4 +17,59 @@
     .products-new{
        padding: 10%;
     }
+}
+/**************************編集（edit）画面**************************/
+.employeeinfo_edit_phone{
+    display: none;
+}
+@media screen and (max-width:767px){
+    .employeeinfo_edit_pc{
+        display: none;
+    }
+    .employeeinfo_edit_phone{
+        display: block;
+        width: 100%;
+      .editform{
+        margin: 10px;
+      }
+    }
+}
+/**************************情報確認（show)画面**************************/
+.employeeshow_phone{
+  display: none;
+}
+@media screen and (max-width:767px){
+  .employeeshow_pc{
+      display: none;
+  }
+  .employeeshow_phone{
+      display: block;
+    tr{
+      font-size: 12px;
+    }
+  }
+}
+/**************************新規登録（new)画面***************************/
+.employeenew_phone{
+  display: none;
+}
+@media screen and (max-width:767px){
+  .employeenew_pc{
+      display: none;
+  }
+  .employeenew_phone{
+      display: block;
+    .newform{
+      margin: 10px;
+    }
+    .center{
+      padding: auto;
+      .btn{
+        display:block;
+        width: 90%;
+        margin-top: 10px;
+        margin-left: 12px;
+      }
+    }
+  }
 }

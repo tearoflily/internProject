@@ -1,10 +1,10 @@
-<div class="row">
-  <div class="col-md-10">
-    <div class="newform">
-      <%= form_with(model: @user, url: customer_users_path, local: true) do |f| %>
-        <%= render 'shared/error_messages', object: @user %>
+  <div class="row">
+    <div class="col-md-8 offset-2">
+      <div class="newform">
+        <%= form_with(model: @user, url: employee_users_path, local: true) do |f| %>
+          <%= render 'shared/error_messages', object: @user %>
 
-          <div class="col-md-10">
+          <div class="col-md-8 offset-2">
             <%= f.label :name, "お名前（漢字）", class: "label-#{yield(:class_text)}" %><font color="red"> ※必須項目</font>
             <%= f.text_field :name, class: "form-control" %>
             
@@ -23,14 +23,13 @@
             <%= f.label :password_confirmation, "パスワード確認", class: "label-#{yield(:class_text)}" %>
             <%= f.password_field :password_confirmation, class: "form-control" %>
             
-            <%= f.hidden_field :employee, value:false %>
-          
-            <div class="center">
-              <%= f.submit yield(:button_text), class: "btn btn-primary btn-lg mb-1 btn-#{yield(:class_text)} newbutt" %>
-              <%= link_to "戻る", login_path, class: "btn btn btn-success btn-lg return" %>
-            </div>
+            <%= f.hidden_field :employee, value:true %>
           </div>
-      <% end %>
+          <div class="center">
+            <%= f.submit yield(:button_text), class: "btn btn-primary btn-lg btn-#{yield(:class_text)} newbutt" %>
+            <%= link_to "戻る", employee_users_path, class: "btn btn btn-success btn-lg return" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>

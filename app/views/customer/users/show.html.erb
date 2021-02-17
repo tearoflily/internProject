@@ -1,41 +1,14 @@
 <% provide(:title, @user.name) %>
-
 <div class="customer_showpage">
-  <div class="col-md-10 offset-1">
-    <div class="user_info">
-      <h1 class="center">お客様情報確認</h1>
-      <h4 class="center">ご登録いただいている内容は、以下の通りです。</h4>
-        <div class="col-md-8 offset-2">
-          <table class="info_detail">
-            <tr>
-              <td>お名前</td>       
-              <td><%= @user.name %> 様</td>
-            </tr>
-            <tr>
-              <td>お名前（カナ）</td>
-              <td><%= @user.name_kana%> 様</td>
-            </tr>
-            <tr>
-              <td>電話番号</td>      
-              <td><%= @user.tellnumber%></td>
-            </tr>
-            <tr>
-              <td>メールアドレス</td> 
-              <td><%= @user.email%></td>
-            </tr>
-          </table>
-        </div>
-        <div class="center">
-          <%= link_to "変更する", edit_customer_user_path, class: "btn btn-info" %>
-        </div>
-    </div>
-  
-    <div class="current_orders">
-      <h1 class="center">現在受付中のご注文</h1>
-    </div>
+  <!-- pcの場合-->
+  <div class="infoshow-pc">
+    <h1 class="center">お客様マイページ</h1>
+    <%= render 'customer/users/PC/show' %>
+  </div>
 
-    <div class="history_orders">
-      <h1 class="center">ご注文履歴</h1>
-    </div>
-  <div>
+  <!-- phoneの場合-->
+  <div class="infoshow-phone">
+    <h2 class="center">お客様マイページ</h2>
+    <%= render 'customer/users/Phone/show' %>
+  </div> 
 </div>

@@ -3,7 +3,7 @@
     <div class="customer_header">
       <%= link_to "お魚屋さん", top_show_path, id: "logo" %>
     </div>
-    <nav>
+    <nav class="user_header_pc">
     <% if logged_in? %>
        <div class="customer_header">
           <ul class="custom_header">
@@ -20,5 +20,15 @@
       </div>
     <% end %>
     </nav>
-  </div>
+    <!--<nav class="user_header_phone">
+      <button class="menu-toggle"> 
+        <div></div>
+        <div></div>
+        <div></div>
+      </button>
+    </nav>
+  </div>-->
 </header>
+ <% flash.each do |message_type, message| %>
+   <div class="alert alert-<%= message_type %>"><%= message %></div>
+ <% end %>

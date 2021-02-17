@@ -3,6 +3,26 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /* ログインフォーム */
 
+/**************************PC/スマートフォン切替**************************/
+.sessions-phone{
+  display: none;
+}
+/**************************スマートフォン**************************/
+@media screen and (max-width:767px){
+  .sessions-pc{
+    display: none;
+  }
+  .sessions-phone{
+    display: block;
+    .row{
+      background-color: lightsteelblue;
+      margin: 10px 5px 0px 10px;
+      padding: 10px;
+      box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5); 
+    }
+  }
+}
+/**********************************************************************/
 .loginpage{
   margin: auto;
   width: 90%;
@@ -42,13 +62,3 @@
   }
 }
 
-/**************************スマートフォン***********************************************************************************************/
-@media screen and (max-width:767px){
-  .sessionss-phone{
-      display: block;
-  }
-  .sessions-pc{
-      display: none;
-  }
-
-}
