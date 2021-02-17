@@ -5,34 +5,34 @@
         <tr>
           <td> <%= button_to "＋", rows_employee_product_multiples_path, { method: :post, params: {plus:true}, class: "btn btn-primary"} %></td>
           <% if @number >1%>
-            <td><%= button_to "ー",rows_employee_product_multiples_path , { method: :post, params: {plus:false}, class: "btn btn-danger"} %></td>
+            <td><%= button_to "ー",rows_employee_product_multiples_path , { method: :post, params: {plus:false}, class: "btn btn-danger ml-down"} %></td>
           <% end %>
         </tr>
       </table>
         <%= form_with(model: @form, url: employee_product_multiples_path,local:true) do |f| %>
-        <table class="table table-striped table-bordered table-hover alias-table">
-                <tbody>
-                    <tr>
-                        <th>写真</th>
-                        <th>商品名</th>
-                        <th>カテゴリー</th>
-                        <th>説明</th>
-                    </tr>
-                    <%= f.fields_for :items do |af| %>
-                     <tr>
+          <table class="table table-striped table-bordered table-hover alias-table">
+                  <tbody>
+                      <tr>
+                          <th>写真</th>
+                          <th>商品名</th>
+                          <th>カテゴリー</th>
+                          <th>説明</th>
+                      </tr>
+                      <%= f.fields_for :items do |af| %>
+                      <tr>
 
-                          <td class="align-middle"><%= af.file_field :image, class: "form-control" %></td>
-                          <td class="align-middle"><%= af.text_field :name, class:"form-control" %></td>
-                          <td class="align-middle">
-                            <%= af.select :category, Item.statuses.keys.map {|k| [I18n.t("enums.item.status.#{k}"), k]},{}, class: 'form-control' %>
+                            <td class="align-middle"><%= af.file_field :image, class: "form-control" %></td>
+                            <td class="align-middle"><%= af.text_field :name, class:"form-control" %></td>
+                            <td class="align-middle">
+                              <%= af.select :category, Item.statuses.keys.map {|k| [I18n.t("enums.item.status.#{k}"), k]},{}, class: 'form-control' %>
+                            </td>
+                              <td>
+                            <%= af.text_area :info, rows: 4, class: "form-control" %>
                           </td>
-                            <td>
-                           <%= af.text_area :info, rows: 4, class: "form-control" %>
-                         </td>
-                     </tr>
-                   <% end %>
-                </tbody>
-            </table>
+                      </tr>
+                    <% end %>
+                  </tbody>
+          </table>
             <div class="text-center">
               <%= f.submit '登録' ,class: "btn btn-primary w-50 m-3"%>
             </div>
