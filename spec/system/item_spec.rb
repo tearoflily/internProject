@@ -94,5 +94,13 @@ RSpec.describe "商品検証", type: :system do
     it "表示される。" do
       expect(page).to have_content "商品複数登録" 
     end
+    context "ページ機能検証" do
+      it "＋ボタン" do
+        click_on "+"
+        expect(page).to have_content "-" 
+      end
+      
+    end
+    
  end 
 end
