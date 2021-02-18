@@ -7,7 +7,7 @@
 <% if @month < Date.today.beginning_of_month %>
   <%= link_to '今月へ', employee_sales_managements_path, class: 'btn btn-primary w-25 ml-3 mb-3 mt-3' %>
 <% end %>
-<%= link_to "Excel出力", employee_sales_managements_path(@datas, format: :xlsx), class:"btn btn-success" %>
+<%= link_to "Excel出力", employee_sales_managements_path(@datas, format: :xlsx), class:"btn btn-success excel" %>
 
 <% if datas.count >0 %>  
   <div class="text-center mt-3"><h5><%= "【今月売上合計#{ @current_month_sales}円】" %></h5></div>

@@ -8,7 +8,7 @@ class Employee::SalesManagementsController < Employee::MainController
     respond_to do |format|
       format.html
       format.xlsx do
-        response.headers['Content-Disposition'] = "attachment; filename=#{Date.today.strftime('%Y年/%-m/%d')}売上.xlsx"
+        response.headers['Content-Disposition'] = "attachment; filename=売上.xlsx"
       end
     end
   end
