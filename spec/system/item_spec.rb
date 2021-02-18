@@ -111,9 +111,8 @@ RSpec.describe "商品検証", type: :system do
         expect(page).to have_content  '登録しました。'
         
       end
-
-      
     end
+  end 
+###################################################################################################
     
- end 
 end
