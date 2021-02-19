@@ -32,4 +32,6 @@ Rails.application.routes.draw do
   post   '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  #####################杉浦さんエリア##################################################################################
+
 end

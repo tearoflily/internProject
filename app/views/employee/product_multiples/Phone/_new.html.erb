@@ -5,7 +5,7 @@
         <tr>
           <td> <%= button_to "＋", rows_employee_product_multiples_path, { method: :post, params: {plus:true}, class: "btn btn-primary btn-block"} %></td>
           <% if @number >1%>
-            <td><%= button_to "ー",rows_employee_product_multiples_path , { method: :post, params: {plus:false}, class: "btn btn-danger btn-block"} %></td>
+            <td><%= button_to "ー",rows_employee_product_multiples_path , { method: :post, params: {plus:false}, class: "btn btn-danger btn-block ml-down"} %></td>
           <% end %>
         </tr>
       </table>

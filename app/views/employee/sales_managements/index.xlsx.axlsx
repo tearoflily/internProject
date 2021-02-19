@@ -1,0 +1,14 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "売上実績") do |sheet|
+  sheet.add_row [ "日付", "曜日", "日割売上", "売上点数", "売上累計", "構成比"]
+    @graph_datas.each_with_index do |order, index|
+      sheet.add_row [ 
+        order[0],  
+        Order.week_set(order[0]), 
+        order[1].present? ?order[1] : 0,  
+        "#{ order[2].present? ?order[2] : 0}点", 
+        order[3], 
+       "#{(order[1].to_f / @current_month_sales.to_f * 100).to_i}%"]
+    end
+end

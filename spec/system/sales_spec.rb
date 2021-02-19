@@ -108,7 +108,8 @@ RSpec.describe "売上検証", type: :system do
             expect(page).to have_content '今月へ' 
         end
     end
-    
   end
-
+  ###############################################################################################
+ 
 end
+
