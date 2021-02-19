@@ -2,6 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//****************************** TOP画面 ******************************//
+//*********スマホ切替対応*********//
+.top_show_phone{
+  display: none;
+}
+
+@media screen and (max-width:767px){
+
+}
+//******************************//
 .top_page{
   .center{
     text-align: center;
@@ -11,14 +21,19 @@
     margin-top: 20px;
     text-align: center;
     padding: auto;
-    background-color: mediumblue;
+    background-color: rgb(145, 145, 197);
+    table{
+      width: 32%;
+      // float: left;
+    }
   }
   .item_box{
-    width: 32%;
+    width: 30px;
     height: 100px;
     margin: auto;
     background-color:greenyellow;
-    border: medium solid #ff00ff;
+    border: 1px solid #ff00ff;
     display: inline-block;
-  }
+
+    }
 }
