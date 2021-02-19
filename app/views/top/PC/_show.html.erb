@@ -1,0 +1,17 @@
+<h1 class="center">お魚屋さん</h1>
+<h2 class="center">本日の商品</h2>
+<div class="top_items">
+
+  <% if @products.count > 0 %>
+    <% @products.each do |product| %>
+      <table class="item_box"> 
+        <tr>
+          <td><%= product.name %></td>
+        </tr>
+    <% end %>
+      </table>
+  <% else %>
+    <p>本日商品はありません</p>
+  <% end %>
+    
+</div>
