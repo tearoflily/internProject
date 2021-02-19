@@ -1,22 +1,12 @@
 <% provide(:title, "top") %>
-<div class="top_page">
-    <h1 class="center">お魚屋さん</h1>
-    <h2 class="center">本日の商品</h2>
-    <div class="top_items">
 
-      <div class="item_box">
-        <div class="item_name_box">さんま</div>
-      </div>
-      <div class="item_box"><div class="item_name_box">いわし</div></div>
-     
-      <div class="item_box"><div class="item_name_box">あじ</div></div>
-      
-      <div class="item_box"><div class="item_name_box">さば</div></div>
-      
-      <div class="item_box"><div class="item_name_box">ひらめ</div></div>
-      
-      <div class="item_box"><div class="item_name_box">たい</div></div>
-     
-    </div>
+<div class="top_page">
+  <div class="top_show_pc">
+    <%= render 'top/PC/show' %>
+  </div>
+  <div class="top_show_phone">
+    
+  </div>
+
 </div>
 
