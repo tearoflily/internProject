@@ -19,7 +19,9 @@ module ItemDecorator
     return self.image.variant(resize: '300x300').processed
   end
   
-  
+  def topImage(name)
+    Item.find_by(name: name)
+  end
 
 
       

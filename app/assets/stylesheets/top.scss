@@ -21,17 +21,20 @@
     margin-top: 20px;
     text-align: center;
     padding: auto;
-    background-color: rgb(145, 145, 197);
     table{
       width: 32%;
+      td{
+        width: 32%;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
   }
   .item_box{
     width: 30px;
-    height: 100px;
     margin: auto;
-    background-color:greenyellow;
-    border: 1px solid #ff00ff;
     display: inline-block;
     }
 }
