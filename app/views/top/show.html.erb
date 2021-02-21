@@ -1,12 +1,15 @@
 <% provide(:title, "top") %>
 
 <div class="top_page">
+
+  <!-- pcの場合-->
   <div class="top_show_pc">
     <%= render 'top/PC/show' %>
   </div>
-  <div class="top_show_phone">
-    
+
+  <!-- phoneの場合-->
+  <div id="top_show_phone">
+    <%= render 'top/Phone/show' %>
   </div>
 
 </div>
-

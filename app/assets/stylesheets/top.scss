@@ -9,6 +9,16 @@
 }
 
 @media screen and (max-width:767px){
+  .top_show_pc{
+    display: none;
+  }
+  .top_show_phone{
+    display: block;    
+  }
+
+  .top-items-phone{
+    margin-top: 100px;
+  }
 
 }
 //******************************//
