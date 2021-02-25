@@ -6,6 +6,8 @@
 //*****ヘッダー*****//
 
 .customer_header{
+  margin: auto;
+  width:90%;
   #logo{
     color: #ffffff;
     font-weight: bold;
@@ -17,18 +19,20 @@
     display: inline;
     padding-right:10px;
   }
+  #responsiveMenu{
+    float: right;
+  }
+  .navbar-toggler{
+    float: right;
+  }
+  @media screen and (max-width:767px){
+    #responsiveMenu{
+      float: left;
+      clear: both;
+    }
+  }
 }
-// .user_header_phone{
-//   display: none;
-// }
-// @media screen and (max-width:767px){
-//   .user_header_pc{
-//     display: none;
-//   }
-//   .user_header_phone{
-//     background-color: floralwhite;
-//   }
-// }
+
 
 /**************************新規登録（new)画面***************************/
 //*********スマホ切替対応*********//
