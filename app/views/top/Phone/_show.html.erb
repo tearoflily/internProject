@@ -1,0 +1,29 @@
+
+<div class="container mx-auto"> 
+  <div class="row top-items-phone">
+    <div class="col-12 mb-3 mx-auto">
+      <h1 class="text-center phone-title">お魚屋さん</h1>
+      <h2 class="text-center">本日の商品</h2>
+    </div>
+    <% if @products.count > 0 %>
+      <% @products.each do |product| %>
+        <div class="col-8 col-offset2 mb-5 mx-auto">
+            <% if product.stock == 0 %>
+                <%= image_tag(employee_item_image_path(product.productIntoItemImage), width:'100%') %>
+                <%= product.name %>
+            <% else %>
+              <%= link_to "/customer/products/#{product.id}#", class:'text-dark' do %>
+                <%= image_tag(employee_item_image_path(product.productIntoItemImage), width:'100%') %>
+                <%= product.name %>
+              <% end %>
+            <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="col-8 col-offset2 mb-5 mx-auto">
+        <p class="text-center">本日商品はありません</p>
+      </div>
+    <% end %>
+  </div>
+</div>
+

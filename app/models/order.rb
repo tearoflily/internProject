@@ -49,7 +49,7 @@ class Order < ApplicationRecord
   #グラフデータ(商品別)
 
    def self.dayTotal(datas,params)
-    first_day = params.present? ?Date.parse(params).beginning_of_month : Date.today.beginning_of_month
+    first_day = params.present? ? Date.parse(params).beginning_of_month : Date.today.beginning_of_month
     last_day =  last_day = first_day.end_of_month
 
      list_days = []                              #=>日付配列

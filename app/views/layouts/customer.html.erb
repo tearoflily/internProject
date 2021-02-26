@@ -11,10 +11,14 @@
   </head>
 
   <body>
-    <%= render 'layouts/headers/customer_header' %>
-    <div class="container">
-    <%= yield %> 
+    <header class="mb-5">
+      <%= render 'layouts/headers/customer_header' %>
+    </header>
 
-    </div>
+    <main class="customer-main">
+      <%= yield %> 
+    </main>
+
+
   </body>
 </html>
