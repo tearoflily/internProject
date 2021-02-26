@@ -1,10 +1,7 @@
-// Place all the styles related to the top controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-//****************************** TOP画面 ******************************//
 //*********スマホ切替対応*********//
-
+.top_show_phone{
+  display: none;
+}
 
 @media screen and (max-width:767px){
   .top_show_pc{
@@ -21,40 +18,51 @@
   .phone-title {
     font-size: 6vw;
   }
-
+  .pagi_nate{
+    margin-left: auto;
+    margin-right: auto;
+    width: 8em
+  }
 }
 //******************************//
 
-@media screen and (min-width:768px){
-
-  .top_show_phone{
-    display: none;
-  }
-
-  .top_page{
-    .center{
-      text-align: center;
+.top_page{
+  margin: auto;
+  .top_show_pc{
+    width: 90%;
+    margin: auto;
+    .pagi_nate{
+      margin-left: auto;
+      margin-right: auto;
+      width: 8em
     }
     .top_items{
       margin: auto;
       margin-top: 20px;
       text-align: center;
       padding: auto;
-      background-color: rgb(145, 145, 197);
+      background-color: #b0c4de;
       table{
         width: 32%;
-        // float: left;
+        text-align: center;
       }
     }
     .item_box{
-      width: 30px;
-      height: 100px;
-      margin: auto;
-      background-color:greenyellow;
-      border: 1px solid #ff00ff;
-      display: inline-block;
-
+    width: 32%;
+    margin: auto;
+    //background-color:greenyellow;
+    display: inline-block;
+      img{
+        width: 350px; 
+        height: 300px;
+        object-fit: cover;
+        clear: both;
+        margin-left: auto;
+        margin-right: auto;
       }
+      a{
+        color: #000;
+      }
+    }
   }
 }
-
