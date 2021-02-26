@@ -1,10 +1,12 @@
-
 <div class="container mx-auto"> 
   <div class="row top-items-phone">
     <div class="col-12 mb-3 mx-auto">
       <h1 class="text-center phone-title">お魚屋さん</h1>
+      <p>商品の予約は、午前10時までです。<br>
+          それぞれの加工商品詳細は、下記商品の写真をクリックして下さい。</p>
       <h2 class="text-center">本日の商品</h2>
     </div>
+    
     <% if @products.count > 0 %>
       <% @products.each do |product| %>
         <div class="col-8 col-offset2 mb-5 mx-auto">
@@ -24,6 +26,9 @@
         <p class="text-center">本日商品はありません</p>
       </div>
     <% end %>
+  </div>
+  <div class="pagi_nate">
+    <%= paginate @items %>
   </div>
 </div>
 
