@@ -18,4 +18,6 @@ module ItemDecorator
   def thumbnail
     return self.image.variant(resize: '300x300').processed
   end
+  
+      
 end
