@@ -7,13 +7,15 @@
 
 .customer_header{
   margin: auto;
-  width:90%;
+  width: 90%;
   #logo{
     color: #ffffff;
-    font-weight: bold;
+    font-weight: 900;
+    font-size: x-large;
   }
   a{
     color: #fff;
+    text-decoration: none;
   }
   li{
     display: inline;
@@ -25,11 +27,24 @@
   .navbar-toggler{
     float: right;
   }
+  .navbar-nav{
+    float: right;
+    font-size: large;
+    margin-top: 5px;
+    a{
+      padding: 10px; 
+    }
+  }
   @media screen and (max-width:767px){
     #responsiveMenu{
       float: left;
       clear: both;
     }
+  }
+
+  /* トグルボタンを白色に変更する */
+  .navbar-toggler-icon{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='3' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
   }
 }
 

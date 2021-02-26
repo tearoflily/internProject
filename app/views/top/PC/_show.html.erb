@@ -9,12 +9,17 @@
     <% @products.each do |product| %>
         <table class="item_box"> 
           <tr>
-            <td><%= link_to image_tag(employee_item_image_path(Item.find_by(name: product.name).id),size:'300'), "#" %> <br> <%= product.name %></td>
+            <td>
+              <%= link_to image_tag(employee_item_image_path(product.productIntoItemImage)), "#" %> <br> 
+              <%= link_to product.name, "#" %>
+            </td>
           </tr> 
     <% end %>
         </table>
   <% else %>
     <p>本日の商品はありません</p>
   <% end %>
-    
+  <div class="pagi_nate">
+    <%= paginate @items %>
+  </div>
 </div>
