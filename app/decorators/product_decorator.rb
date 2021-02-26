@@ -38,4 +38,10 @@ module ProductDecorator
       return html.html_safe
     end
   end
+
+  #画像表示のためproduct.nameを使ってitem.idに変換する処理
+  def productIntoItemImage
+      item = Item.find_by(name: name)
+      return item.id
+  end
 end

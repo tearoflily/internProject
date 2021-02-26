@@ -11,9 +11,12 @@
   </head>
 
   <body>
-    <%= render 'layouts/headers/sessions_header' %>
-    <div class="container">
+    <header class="mb-5">
+      <%= render 'layouts/headers/sessions_header' %>
+    </header>
+
+    <main class="application-main">
       <%= yield %>
-    </div>
+    </main>
   </body>
 </html>

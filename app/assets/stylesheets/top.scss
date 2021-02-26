@@ -4,36 +4,57 @@
 
 //****************************** TOP画面 ******************************//
 //*********スマホ切替対応*********//
-.top_show_phone{
-  display: none;
-}
+
 
 @media screen and (max-width:767px){
+  .top_show_pc{
+    display: none;
+  }
+  .top_show_phone{
+    display: block;    
+  }
+
+  .top-items-phone{
+    margin-top: 100px;
+  }
+
+  .phone-title {
+    font-size: 6vw;
+  }
 
 }
 //******************************//
-.top_page{
-  .center{
-    text-align: center;
-  }
-  .top_items{
-    margin: auto;
-    margin-top: 20px;
-    text-align: center;
-    padding: auto;
-    background-color: rgb(145, 145, 197);
-    table{
-      width: 32%;
-      // float: left;
-    }
-  }
-  .item_box{
-    width: 30px;
-    height: 100px;
-    margin: auto;
-    background-color:greenyellow;
-    border: 1px solid #ff00ff;
-    display: inline-block;
 
+@media screen and (min-width:768px){
+
+  .top_show_phone{
+    display: none;
+  }
+
+  .top_page{
+    .center{
+      text-align: center;
     }
+    .top_items{
+      margin: auto;
+      margin-top: 20px;
+      text-align: center;
+      padding: auto;
+      background-color: rgb(145, 145, 197);
+      table{
+        width: 32%;
+        // float: left;
+      }
+    }
+    .item_box{
+      width: 30px;
+      height: 100px;
+      margin: auto;
+      background-color:greenyellow;
+      border: 1px solid #ff00ff;
+      display: inline-block;
+
+      }
+  }
 }
+
