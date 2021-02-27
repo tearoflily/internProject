@@ -13,6 +13,21 @@ RSpec.describe 'Users', type: :system do
     end
   end
 
+  describe "ログアウト" do
+    @user = User.create(name:"森 太郎", name_kana:"モリ タロウ",tellnumber: "050-5555-5555", email:"mori@email.com",password:"password", password_confirmation: "password", employee: "false")
+    it "ログインできること。" do
+      visit login_path
+      fill_in "session_email", with: "mori@email.com"
+      fill_in "session_password", with: "password"
+      click_button 'ログイン'
+      expect(page).to have_content "ログインしました"
+
+      click_link 'ログアウト'
+      expect(page).to have_content "ログアウトしました"
+
+    end
+  end
+
   describe "ログイン" do
     before do
       visit new_customer_user_path
