@@ -5,7 +5,13 @@ class Customer::UsersController < Customer::MainController
   def show
     @user = User.find(params[:id])
     redirect_to employee_user(@user) if @user.employee?
-    
+
+    # あとでstatusを"2"に直すこと！！！
+    # order_time(受け取り日時)でグループ化/注文日時が昇順(古い注文分が上。下に行く程新しい注文分。)
+    @order_in_order = Order.where(user_id: @user.id).where(status: 2).order(created_at: "ASC").group_by(&:order_time)
+
+
+
 	end
 
 	def new

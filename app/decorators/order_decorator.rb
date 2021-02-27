@@ -21,6 +21,15 @@ module OrderDecorator
     end
   end
 
+  def orderShowProductSum
+    return price * num
+  end
+
+  def orderShowIntoItemImage
+    item = Item.find_by(name: name)
+    return item.id
+  end
+
  
   
 end
