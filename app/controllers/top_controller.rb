@@ -3,4 +3,5 @@ class TopController < ApplicationController
     @products = Product.all.datasort
     @items = Item.all.descendingOrder.page(params[:page]).per(6)
   end
+  
 end
