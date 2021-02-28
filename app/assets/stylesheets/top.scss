@@ -10,18 +10,45 @@
   .top_show_phone{
     display: block;    
   }
-
   .top-items-phone{
-    margin-top: 100px;
-  }
-
-  .phone-title {
-    font-size: 6vw;
-  }
-  .pagi_nate{
-    margin-left: auto;
-    margin-right: auto;
-    width: 8em
+    margin-top: 80px;
+    img{
+      width: 220px; 
+      height: 150px;
+      object-fit: cover;
+      clear: both;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .phone-title {
+      font-size: 6vw;
+    }
+    .soldout{
+      position: relative;/*相対配置*/
+      img{
+        opacity : 0.4;
+      }
+      .p_red{
+        position: absolute;/*絶対配置*/
+        color: red;/*赤*/
+        font-weight: bold;
+        font-size: 1em;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+        margin:0;
+        padding:0;
+      }
+    }  
+    .pagi_nate{
+      margin:auto;
+      ul {
+        margin-top: 10px;
+        justify-content: center;
+      }
+    }
   }
 }
 //******************************//
@@ -32,9 +59,11 @@
     width: 90%;
     margin: auto;
     .pagi_nate{
-      margin-left: auto;
-      margin-right: auto;
-      width: 8em
+      margin:auto;
+      ul {
+        margin-top: 10px;
+        justify-content: center;
+      }
     }
     .top_items{
       margin: auto;
@@ -48,21 +77,42 @@
       }
     }
     .item_box{
-    width: 32%;
-    margin: auto;
-    //background-color:greenyellow;
-    display: inline-block;
-      img{
-        width: 350px; 
-        height: 300px;
-        object-fit: cover;
-        clear: both;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      a{
-        color: #000;
-      }
+      width: 32%;
+      margin: auto;
+      padding: 0px 10px 0px 10px;
+      margin-bottom: 15px;
+      display: inline-block;
+      text-align: center;
+        img{
+          width: 390px; 
+          height: 300px;
+          object-fit: cover;
+          clear: both;
+          margin: 0 auto;
+          vertical-align: middle;
+        }
+        a{
+          color: #343a40;
+        }
+        .soldout{
+          position: relative;/*相対配置*/
+          img{
+            opacity : 0.4;
+          }
+          p {
+            position: absolute;/*絶対配置*/
+            color: red;/*赤*/
+            font-weight: bold;
+            font-size: 2em;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%,-50%);
+            -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+            margin:0;
+            padding:0;
+          }
+        }  
     }
   }
 }

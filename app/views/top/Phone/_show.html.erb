@@ -2,33 +2,43 @@
   <div class="row top-items-phone">
     <div class="col-12 mb-3 mx-auto">
       <h1 class="text-center phone-title">お魚屋さん</h1>
+
       <p>商品の予約は、午前10時までです。<br>
           それぞれの加工商品詳細は、下記商品の写真をクリックして下さい。</p>
       <h2 class="text-center">本日の商品</h2>
+      <div class="pagi_nate">
+        <%= paginate @products, theme: 'twitter-bootstrap-4' %>
+      </div> 
     </div>
-    
-    <% if @products.count > 0 %>
-      <% @products.each do |product| %>
-        <div class="col-8 col-offset2 mb-5 mx-auto">
-            <% if product.stock == 0 %>
-                <%= image_tag(employee_item_image_path(product.productIntoItemImage), width:'100%') %>
-                <%= product.name %>
-            <% else %>
+    <% if Time.current.hour >= 10 && Time.current.hour <= 14 %>
+      <p>ただいま準備中です。もうしばらくお待ちください。</p>
+    <% else %>   
+      <% if @products.count > 0 %>
+        <% @products.each do |product| %>
+          <div class="col-8 col-offset2 mb-5 mx-auto">
+            <% if product.stock > 0 %>
               <%= link_to "/customer/products/#{product.id}#", class:'text-dark' do %>
                 <%= image_tag(employee_item_image_path(product.productIntoItemImage), width:'100%') %>
-                <%= product.name %>
-              <% end %>
+                <p class="center"><%= product.name %></p> 
+              <% end %>       
+            <% else %>    
+              <div class="soldout">
+                <%= image_tag(employee_item_image_path(product.productIntoItemImage), width:'100%') %>
+                <p class="p_red">売り切れ</p>
+                <p class="center"><%= product.name %></p>
+              </div>    
             <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="col-8 col-offset2 mb-5 mx-auto">
+          <p class="text-center">本日商品はありません</p>
         </div>
       <% end %>
-    <% else %>
-      <div class="col-8 col-offset2 mb-5 mx-auto">
-        <p class="text-center">本日商品はありません</p>
-      </div>
     <% end %>
   </div>
-  <div class="pagi_nate">
-    <%= paginate @items %>
-  </div>
+  
+
+
 </div>
 
