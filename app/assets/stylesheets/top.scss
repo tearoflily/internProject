@@ -23,6 +23,16 @@
     .phone-title {
       font-size: 6vw;
     }
+    .closetime{
+      background-color: #4682b4;
+      color: #fff;
+      font-size: 1em;
+      height: 70px;
+      width: 90%;
+      margin: auto;
+      padding-top: 10px;
+      text-align: center;
+    }
     .soldout{
       position: relative;/*相対配置*/
       img{
@@ -70,10 +80,16 @@
       margin-top: 20px;
       text-align: center;
       padding: auto;
-      background-color: #b0c4de;
       table{
         width: 32%;
         text-align: center;
+      }
+      .closetime{
+        background-color: #4682b4;
+        color: #fff;
+        font-size: 2em;
+        height: 100px;
+        padding-top: 22px;
       }
     }
     .item_box{

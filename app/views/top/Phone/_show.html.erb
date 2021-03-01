@@ -10,8 +10,8 @@
         <%= paginate @products, theme: 'twitter-bootstrap-4' %>
       </div> 
     </div>
-    <% if Time.current.hour >= 10 && Time.current.hour <= 14 %>
-      <p>ただいま準備中です。もうしばらくお待ちください。</p>
+    <% if Time.current.hour >= 10 && Time.current.hour <= 16 %>
+      <p class="closetime">ただいま準備中です。<br>もうしばらくお待ちください。</p>
     <% else %>   
       <% if @products.count > 0 %>
         <% @products.each do |product| %>
@@ -31,9 +31,7 @@
           </div>
         <% end %>
       <% else %>
-        <div class="col-8 col-offset2 mb-5 mx-auto">
-          <p class="text-center">本日商品はありません</p>
-        </div>
+        <p class="closetime">本日商品はありません</p>
       <% end %>
     <% end %>
   </div>

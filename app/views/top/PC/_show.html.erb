@@ -8,8 +8,8 @@
   </div>
 <div class="top_items">
   
-  <% if Time.current.hour >= 10 && Time.current.hour <= 14 %>
-    <p>ただいま準備中です。もうしばらくお待ちください。</p>
+  <% if Time.current.hour >= 10 && Time.current.hour <= 16 %>
+    <p class="closetime">ただいま準備中です。もうしばらくお待ちください。</p>
   <% else %>
     <% if @products.count > 0 %>
       <% @products.each do |product| %>
@@ -35,7 +35,7 @@
       <% end %>
           </table>
     <% else %>
-      <p>本日の商品はありません</p>
+      <p class="closetime">本日商品はありません</p>
     <% end %>
   <% end %>
  
