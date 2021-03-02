@@ -30,6 +30,23 @@ module OrderDecorator
     return item.id
   end
 
+  def orderShowProductProcessing
+    case process
+    when 'sasimi'
+      return '刺身'
+    when 'kirimi'
+      return '切り身'
+    when 'nimono'
+      return '煮物'
+    when 'sioyaki'
+      return '塩焼き'
+    when 'flay'
+      return 'フライ'
+    else
+      return '-'
+    end
+  end
+
  
   
 end

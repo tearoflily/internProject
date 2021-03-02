@@ -231,22 +231,30 @@
 
     margin-top: 80px;
 
-
   }
 
-
-
-
-
-
-
+  .current_orders_table td{
+    text-align: center;
+    vertical-align: middle;
+  }
 
   .history_orders{
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #e6e6fa;
-    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);    
+    // margin-top: 20px;
+    // padding: 20px;
+    // background-color: #e6e6fa;
+    // box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);   
+    
+    margin-bottom:100px;
   }
+
+  .card_body_history_orders {
+    padding: 0px;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+  }
+
   .center{
     text-align: center;
 }

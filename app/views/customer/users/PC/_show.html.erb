@@ -30,11 +30,12 @@
   <div class="current_orders">
     <h1 class="center">現在受付中のご注文</h1>
     
-    <% @order_in_order.each do |key, orders| %>
+    <% @in_unfinished_order.each do |key, orders| %>
     <% total_sum = 0 %>
       <h2><%= key.strftime('%Y年%-m月%-d日') %></h2>
-      <div>希望の受け取り時間： <%= key.strftime('%-H:%-M') %>
-        <table class="table">
+      <div><span class="text-danger">希望の受け取り時間：</span><%= key.strftime('%-H:%-M') %></div>
+      <div>ご注文の商品</div>
+        <table class="table current_orders_table">
               <thead>
                 <tr>
                   <td colspan="2">商品名</td>
@@ -47,23 +48,84 @@
               <% orders.each do |order| %>
                 <tr>
                   <td><%= image_tag(employee_item_image_path(order.orderShowIntoItemImage), width:'40px') %></td>
-                  <td><%= order.name %></td>
-                  <td><%= order.price %></td>
+                  <td class="text-left"><%= order.name %>(<%= order.orderShowProductProcessing %>)</td>
+                  <td><%= order.price.to_s(:delimited) %></td>
                   <td><%= order.num %></td>
-                  <td><%= product_sum = order.orderShowProductSum %></td>
+                  <% product_sum = order.orderShowProductSum %>
+                  <td><%= product_sum.to_s(:delimited) %></td>
                 </tr>
                 <% total_sum += product_sum %>
               <% end %>
               <tr>
-                <td colspan="5"><div class="text-right">ご請求小計： <%= total_sum %> 円</td>
+                <td colspan="5"><div class="text-right">ご請求小計： <%= total_sum.to_s(:delimited) %> 円</td>
               </tr>
             </tbody>
           </table>
     <% end %>
-
   </div>
 
   <div class="history_orders">
     <h1 class="center">ご注文履歴</h1>
+
+    <% @in_finished_order.each do |key, orders| %> 
+      <%= key.strftime('%Y年%-m月%-d日') %>
+    <% end %>
+
+    <div class="accordion" id="accordion-order-show-5">
+      <div class="card">
+        <div class="card-header" id="header-order-show-5a">
+          <button class="btn btn-link" type="button"
+              data-toggle="collapse" data-target="#card-order-show-5a"
+              aria-expanded="true" aria-controls="card-order-show-5a">
+            ご注文履歴はこちらから
+          </button>
+        </div>
+        <div id="card-order-show-5a" class="collapse"
+            aria-labelledby="header-order-show-5a" data-parent="#accordion-order-show-5">
+          <div class="">
+
+                  <div class="accordion" id="accordion-4">
+                    <div class="card card_body_history_orders">
+                      <div class="card-header" id="header-4a">
+                        <button class="btn btn-link" type="button"
+                            data-toggle="collapse" data-target="#card-4a"
+                            aria-expanded="true" aria-controls="card-4a">
+                          Header A
+                        </button>
+                      </div>
+                      <div id="card-4a" class="collapse"
+                          aria-labelledby="header-4a" data-parent="#accordion-4">
+                        <div class="card-body">
+                          Card A
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card card_body_history_orders">
+                      <div class="card-header" id="header-4b">
+                        <button class="btn btn-link" type="button"
+                            data-toggle="collapse" data-target="#card-4b"
+                            aria-expanded="false" aria-controls="card-4b">
+                          Header B
+                        </button>
+                      </div>
+                      <div id="card-4b" class="collapse"
+                          aria-labelledby="header-4b" data-parent="#accordion-4">
+                        <div class="card-body">
+                          Card B
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
