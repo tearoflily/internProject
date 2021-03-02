@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  add_flash_types :success, :info, :warning, :danger
   def new
     
   end
@@ -8,9 +9,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(session_params[:password])
       session[:user_id] = user.id
       if user.employee
-        redirect_to employee_users_url, success: 'ログインしました'
+        redirect_to employee_users_url, success: "ログインしました"
       else
-        redirect_to top_show_url, success: 'ログインしました'
+        redirect_to top_show_url, success: "ログインしました"
       end
     else
       flash.now[:danger] = '認証に失敗しました。'
@@ -20,7 +21,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to top_show_url, success: 'ログアウトしました。'
+    redirect_to top_show_url, success: "ログアウトしました"
   end
 
   private

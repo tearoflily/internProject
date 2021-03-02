@@ -1,26 +1,43 @@
 
 <h1 class="center">お魚屋さん</h1>
-
 <p>商品の予約は、午前10時までです。<br>
 それぞれの加工商品詳細は、下記商品の写真をクリックして下さい。</p>
+
 <h2 class="center">本日の商品</h2>
+ <div class="pagi_nate">
+    <%= paginate @products, theme: 'twitter-bootstrap-4'%>
+  </div>
 <div class="top_items">
   
-  <% if @products.count > 0 %>
-    <% @products.each do |product| %>
-        <table class="item_box"> 
-          <tr>
-            <td>
-              <%= link_to image_tag(employee_item_image_path(product.productIntoItemImage)), "#" %> <br> 
-              <%= link_to product.name, "#" %>
-            </td>
-          </tr> 
-    <% end %>
-        </table>
+  <% if Time.current.hour >= 10 && Time.current.hour <= 16 %>
+    <p class="closetime">ただいま準備中です。もうしばらくお待ちください。</p>
   <% else %>
-    <p>本日の商品はありません</p>
+    <% if @products.count > 0 %>
+      <% @products.each do |product| %>
+
+        <% if product.stock > 0 %>
+          <table class="item_box"> 
+            <tr>
+              <td>
+                <%= link_to image_tag(employee_item_image_path(product.productIntoItemImage)), "#" %> <br> 
+                <%= link_to product.name, "#" %>
+              </td>
+            </tr> 
+        <% else %> 
+          <table class="item_box"> 
+            <tr>
+              <td class="soldout">
+                <%= image_tag(employee_item_image_path(product.productIntoItemImage)) %> <br> 
+                <p>売り切れ</p>
+                <%= product.name %>
+              </td>
+            </tr>
+        <% end %>   
+      <% end %>
+          </table>
+    <% else %>
+      <p class="closetime">本日商品はありません</p>
+    <% end %>
   <% end %>
-  <div class="pagi_nate">
-    <%= paginate @items %>
-  </div>
+ 
 </div>
