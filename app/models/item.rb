@@ -24,6 +24,8 @@ class Item < ApplicationRecord
       rmagick_image.strip!
       rmagick_image.write('public/make.jpg')
       self.image = File.open('public/make.jpg').read
+    else
+      self.image = File.open('public/noimage.png').read
     end
   end
 
