@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   add_flash_types :success, :info, :warning, :danger
   def new
+    
   end
 
   def create
