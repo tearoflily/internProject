@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   
   namespace :customer do
     resources :users, except:[:index, :destroy]
+    resources :orders
   end
   
   resources :session, only:[:new, :create,:destroy]
