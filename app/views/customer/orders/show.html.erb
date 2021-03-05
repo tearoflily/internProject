@@ -1,0 +1,12 @@
+<% provide(:title, @user.name) %>
+<div class="order_decided_show">
+  <!-- pcの場合-->
+  <div class="decidedshow-pc">
+    <%= render 'customer/orders/PC/show' %>
+  </div>
+
+  <!-- phoneの場合-->
+  <div class="decidedshow-phone">
+    <%= render 'customer/orders/Phone/show' %>
+  </div>
+</div>
