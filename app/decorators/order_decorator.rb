@@ -46,7 +46,5 @@ module OrderDecorator
       return '-'
     end
   end
-
- 
-  
+    
 end

@@ -10,11 +10,9 @@ class Customer::UsersController < Customer::MainController
     unfinished_order = Order.where(user_id: @user.id).where(status: 2).group_by(&:order_time)
     @in_unfinished_order = unfinished_order.sort
 
-    # 注文日基準/group_by(&:created_at)からgroup_by(&:order_date)に変更する事！！！！
-  
-    finieshed_order = Order.where(user_id: @user.id).where(status: 3).group_by(&:created_at)
+    # 注文日基準/ご注文履歴の表示のためのグループ化と並べ替え
+    finieshed_order = Order.where(user_id: @user.id).where(status: 3).group_by(&:order_date_details)
     @in_finished_order = finieshed_order.sort
-
 
 	end
 

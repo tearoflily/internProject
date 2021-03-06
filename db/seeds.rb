@@ -157,7 +157,8 @@
     ['いか', 'octopassquid', 'どんな調理方法でも美味しいイカです'],
     ['たこ', 'octopassquid', '柔らかく食べやすいタコです'],
     ['ひらめ', 'white', '採れたて新鮮なヒラメです'],
-    ['ぶり', 'bigger', '旬の脂がのったブリです']
+    ['ぶり', 'bigger', '旬の脂がのったブリです'],
+    ['さんま', 'blue', 'さんまです']
   ].each do |name, category, info|
     Item.create!(
       {
