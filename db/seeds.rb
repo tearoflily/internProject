@@ -150,38 +150,21 @@
       user_id: 6
     )
 
-  name_sugi = [
-    'たい',
-    'ふぐ',
-    'あゆ',
-    'いか',
-    'たこ',
-    'ひらめ',
-    'ぶり'
-  ]
-  category_sugi = [
-    'white',
-    'white',
-    'white',
-    'octopassquid',
-    'octopassquid',
-    'white',
-    'bigger'
-  ]
-  info_sugi = [
-    '新鮮で身が引き締まったタイです',
-    '食べ応えがあるフグです',
-    '子供も美味しく食べられるアユです',
-    'どんな調理方法でも美味しいイカです',
-    '柔らかく食べやすいタコです',
-    '採れたて新鮮なヒラメです',
-    '旬の脂がのったブリです'
-  ]
-  name_sugi.zip(category_sugi, info_sugi).each do |item, category, info|
+  [
+    ['たい', 'white', '新鮮で身が引き締まったタイです'],
+    ['ふぐ', 'white', '食べ応えがあるフグです'],
+    ['あゆ', 'white', '子供も美味しく食べられるアユです'],
+    ['いか', 'octopassquid', 'どんな調理方法でも美味しいイカです'],
+    ['たこ', 'octopassquid', '柔らかく食べやすいタコです'],
+    ['ひらめ', 'white', '採れたて新鮮なヒラメです'],
+    ['ぶり', 'bigger', '旬の脂がのったブリです']
+  ].each do |name, category, info|
     Item.create!(
-      name: item,
+      {
+      name: name,
       category: category,
       info: info
+      }
     )
   end
   # 画像は手動で登録します
