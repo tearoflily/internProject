@@ -1,0 +1,48 @@
+<% provide(:title, @user.name) %>
+<div class="orderConfirm">
+  <div class="continer">
+    <div class="row"> 
+      <div class="col-md-8 offset-2">
+        <h1 class="center">注文内容の確認</h1>
+          受け取り時間を下記から選択してください。
+          <%= form_with(model: @user, url: customer_user_orders_path(current_user), local: true, method: :post)  do |f| %>
+            <%= f.select :order_time, orderTime, include_blank: "選択して下さい" %>                         
+          <h2 class="center">ご注文の商品</h2>
+          <table class="table table-bordered table-condensed table-hover" id="table-attendances">
+            <thead>
+              <tr>
+                <th></th>
+                <th>商品名</th>
+                <th>加工名</th>
+                <th>単価</th>
+                <th>数量</th>
+                <th>小計</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!--<%# @users.each do |user| %>-->
+              <!--<%# if user.id == current_user.id %>-->
+                <% @orders.each do |order| %>
+                  <tr>
+                    <td><%= image_tag(employee_item_image_path(order.orderItemImage),size:'80') %> </td>
+                    <td><%= f.label :name, order.name %></td>
+                    <td><%= f.label :process, order.process %></td>
+                    <td><%= f.label :price, order.price %></td>
+                    <td><%= f.label :num, order.num %></td>
+                    <td><%= f.label :total, order.total %></td>
+                    <% f.hidden_field :order_date, value: reciveDate %>
+                  </tr>
+                <% end %>
+              <!--<%# end %>-->
+              <!--<%# end %>--> 
+            </tbody>
+          </table>
+          <div class="orderRight">
+            <h3>ご請求金額  <%= @allTotal %>円</h3>
+            <%= link_to "お買い物かごに戻る", "#", class: "btn btn-outline-secondary" %> <%= f.submit "注文を確定する", data: { confirm: "注文を確定しますか?" }, class: "btn btn-info" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

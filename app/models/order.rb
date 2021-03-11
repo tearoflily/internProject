@@ -187,11 +187,16 @@ class Order < ApplicationRecord
 
 #前売上数量 saleByProduct使用
 
- def self.totalNumber(datas)
+ def self.totalNumber(datas)    
    total = 0
    datas.map{|data| total +=  data.num.to_i }
    return total
  end
   
+  def self.sumPrises(orders)
+    sum = 0
+    orders.map{|order| sum += order.total.to_i }
+    return sum.to_s(:delimited, delimiter: ',')
+  end
   
 end

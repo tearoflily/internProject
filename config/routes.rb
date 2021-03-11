@@ -24,8 +24,12 @@ Rails.application.routes.draw do
   get '/signup', to: 'customer/users#new' 
   
   namespace :customer do
-    resources :users, except:[:index, :destroy]
-    resources :orders
+    resources :users, except:[:index, :destroy] do
+      resources :orders do
+        get :confirm, on: :collection
+      end
+    end  
+    
   end
   
   resources :session, only:[:new, :create,:destroy]

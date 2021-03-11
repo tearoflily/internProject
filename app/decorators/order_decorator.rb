@@ -21,6 +21,11 @@ module OrderDecorator
     end
   end
 
+  #画像表示のためorder.nameを使ってitem.idに変換する処理
+  def orderItemImage
+    item = Item.find_by(name: name)
+    return item.id
+  end 
+
  
-  
 end
