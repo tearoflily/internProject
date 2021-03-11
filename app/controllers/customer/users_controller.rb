@@ -7,13 +7,12 @@ class Customer::UsersController < Customer::MainController
     redirect_to employee_user(@user) if @user.employee?
 
     # 受け取り時間基準/受け取り未の注文の表示のためのグループ化と並べ替え
-    unfinished_order = Order.where(user_id: @user.id).where(status: 2).group_by(&:order_time)
+    unfinished_order = Order.unfinished_order(@user.id)
     @in_unfinished_order = unfinished_order.sort
-
+    
     # 注文日基準/ご注文履歴の表示のためのグループ化と並べ替え
-    finieshed_order = Order.where(user_id: @user.id).where(status: 3).group_by(&:order_date_details)
+    finieshed_order = Order.finieshed_order(@user.id)
     @in_finished_order = finieshed_order.sort
-
 	end
 
 	def new

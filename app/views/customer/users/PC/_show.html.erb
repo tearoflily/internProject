@@ -87,13 +87,15 @@
                             aria-expanded="true" aria-controls="card-<%= orders.first.id %>">
                                 <table class="table table-noborder order-show-table">
                                     <tr class="text-left">
-                                      <td width="23%">ご注文日</td>
+                                      <td width="23%">ご注文日時</td>
                                       <td width="23%">お受け取り時間</td>
                                       <td width="30%">ご注文商品</td>
-                                      <td rowspan="2" class="font-weight-bold align-middle text-right">お受け取り済み</td>
+                                      <td rowspan="2" class="font-weight-bold align-middle text-right">
+                                      <% if orders.first.status == "delivery" %>お受け取り済み<% end %>
+                                      </td>
                                     </tr>
                                     <tr class="text-left">
-                                      <td><%= key.strftime('%Y年%-m月%-d日') %></td>
+                                      <td><%= key.strftime('%Y年%-m月%-d日%-H時%M分') %></td>
                                       <td><%= orders.first.order_time.strftime('%-H時%M分') %></td>
                                       <td><%= orders_names(orders) %></td>
                                     </tr>
