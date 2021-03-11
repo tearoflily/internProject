@@ -52,7 +52,7 @@ RSpec.describe "売上検証", type: :system do
      context "前月ボタンでページ移動できるか" do
          it "前月の表示がなされている" do
              click_on "前月"
-             expect(page).to have_content '【1月売上】' 
+             expect(page).to have_content '【2月売上】' 
          end
          
      end

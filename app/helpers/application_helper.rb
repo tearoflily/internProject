@@ -1,6 +1,6 @@
 module ApplicationHelper
   def pageTitle(title)
-    base_title = "ページ"
+    base_title = "internProject"
     if title.empty?
       base_title
     else
