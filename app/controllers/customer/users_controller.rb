@@ -9,7 +9,6 @@ class Customer::UsersController < Customer::MainController
     # 受け取り時間基準/受け取り未の注文の表示のためのグループ化と並べ替え
     unfinished_order = Order.unfinished_order(@user.id)
     @in_unfinished_order = unfinished_order.sort
-    
     # 注文日基準/ご注文履歴の表示のためのグループ化と並べ替え
     finieshed_order = Order.finieshed_order(@user.id)
     @in_finished_order = finieshed_order.sort
