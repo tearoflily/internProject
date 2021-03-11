@@ -80,6 +80,7 @@ RSpec.describe "受付中の注文・注文履歴", type: :system do
       tellnumber: '090-2021-0307', employee: false,
       password: 'password', password_confirmation: 'password'
     )}
+
     let!(:item1){ FactoryBot.create(:item, name: 'たい', category: 'white')}
     let!(:item2){ FactoryBot.create(:item, name: 'ふぐ', category: 'white')}
     let!(:item3){ FactoryBot.create(:item, name: 'ひらめ', category: 'white')}
@@ -87,6 +88,7 @@ RSpec.describe "受付中の注文・注文履歴", type: :system do
     let!(:item5){ FactoryBot.create(:item, name: 'いか', category: 'octopassquid')}
     let!(:item5){ FactoryBot.create(:item, name: 'たこ', category: 'octopassquid')}
     let!(:item6){ FactoryBot.create(:item, name: 'いわし', category: 'blue')}
+    
     let!(:order1){FactoryBot.create(
         :order, name: 'たい', price: 300, process: 'sasimi', num: 3, status: :processed,
         order_date: '2021-02-25', order_date_details: '2021-02-25 14:30:00', order_time: '2021-02-26 13:30:00', user_id: user.id
