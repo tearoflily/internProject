@@ -6,6 +6,7 @@ FactoryBot.define do
       status{ 'in_order'}
       order_date{ Date.today }
       order_time{ DateTime.now }
+      order_date_details{ DateTime.now }
       user
     end
 end
