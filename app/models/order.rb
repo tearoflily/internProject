@@ -8,6 +8,14 @@ class Order < ApplicationRecord
 
   scope :timeSort, -> { where(order_date: Date.today ).order(order_time: :asc)}
 
+  scope :unfinished_order, -> (user_id) {
+    joins(:user).where(user_id: user_id).where(status: 2).group_by(&:order_time).sort
+  }
+  
+  scope :finieshed_order, -> (user_id) {
+    joins(:user).where(user_id: user_id).where(status: 3).group_by(&:order_date_details).sort
+  }
+
   enum status:{
     in_order:        1, #依頼中
     processed:       2, #加工済み
@@ -192,6 +200,5 @@ class Order < ApplicationRecord
    datas.map{|data| total +=  data.num.to_i }
    return total
  end
-  
   
 end
