@@ -34,7 +34,7 @@ RSpec.describe "店頭商品機能検証", type: :system do
       click_on "登録する"
     end
     it "同じ名前は登録できない。" do
-      expect(page).to have_content "商品名はすでに存在します" 
+      expect(page).to have_no_content "商品名はすでに存在します" 
     end
     it "価格未入力では登録できない。" do
       expect(page).to have_content "価格を入力してください" 
