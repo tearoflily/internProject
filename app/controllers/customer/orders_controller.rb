@@ -5,12 +5,16 @@ class Customer::OrdersController < ApplicationController
   end
 
   def confirm
-    @users = User.all
     @user = User.find(params[:user_id])
     @order = Order.new
     @orders = Order.all
     @items = Item.all.descendingOrder
-    @allTotal = Order.sumPrises(@orders)
+    #@allTotal = Order.sumPrises(@orders)
+
+    buy_cart_page_parameter = []
+
+    @buyings = current_user.user_buyings(buy_cart_page_parameter)
+    @allTotal = Order.sumPrises(@buyings)
   end
 
   def create

@@ -4,8 +4,10 @@
     <div class="row"> 
       <div class="col-md-8 offset-2">
         <h1 class="center">注文内容の確認</h1>
+          お受け取り日
+          <%= reciveDate %>
           受け取り時間を下記から選択してください。
-          <%= form_with(model: @user, url: customer_user_orders_path(current_user), local: true, method: :post)  do |f| %>
+          <%= form_with(model: @user, url: customer_user_orders_path(current_user), local: true)  do |f| %>
             <%= f.select :order_time, orderTime, include_blank: "選択して下さい" %>                         
           <h2 class="center">ご注文の商品</h2>
           <table class="table table-bordered table-condensed table-hover" id="table-attendances">
@@ -20,21 +22,24 @@
               </tr>
             </thead>
             <tbody>
-              <!--<%# @users.each do |user| %>-->
-              <!--<%# if user.id == current_user.id %>-->
-                <% @orders.each do |order| %>
+              <% @eattings.each do |buy| %>
+                <%= f.field_for "orders[]", buy do |af| %>
                   <tr>
                     <td><%= image_tag(employee_item_image_path(order.orderItemImage),size:'80') %> </td>
-                    <td><%= f.label :name, order.name %></td>
-                    <td><%= f.label :process, order.process %></td>
-                    <td><%= f.label :price, order.price %></td>
-                    <td><%= f.label :num, order.num %></td>
-                    <td><%= f.label :total, order.total %></td>
-                    <% f.hidden_field :order_date, value: reciveDate %>
+                    <td><%= buy.name %></td>
+                    <td><%= buy.process %></td>
+                    <td><%= buy.price %></td>
+                    <td><%= buy.num %></td>
+                    <td><%= buy.total %></td>
+                    <% af.hidden_field :name, value: buy.name %>
+                    <% af.hidden_field :process, value: buy.process %>
+                    <% af.hidden_field :price, value: buy.price %>
+                    <% af.hidden_field :num, value: buy.num %>
+                    <% af.hidden_field :total, value: buy.total %>
+                    <% af.hidden_field :order_date, value: reciveDate %>
                   </tr>
                 <% end %>
-              <!--<%# end %>-->
-              <!--<%# end %>--> 
+              <% end %>
             </tbody>
           </table>
           <div class="orderRight">

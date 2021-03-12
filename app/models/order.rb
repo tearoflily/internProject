@@ -193,9 +193,10 @@ class Order < ApplicationRecord
    return total
  end
   
-  def self.sumPrises(orders)
+  def self.sumPrises(buyings)
     sum = 0
-    orders.map{|order| sum += order.total.to_i }
+    buyings.each do |buy| 
+      sum += buy.total.to_i
     return sum.to_s(:delimited, delimiter: ',')
   end
   
