@@ -1,9 +1,9 @@
 module Customer::OrdersHelper
   def reciveDate
     if Time.current.hour >= 15
-      Time.current.tomorrow
+      Time.current.tomorrow.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[Time.current.tomorrow.wday]})")
     else
-       Date.today
+       Date.today.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[Date.today.wday]})")
     end
   end
 
