@@ -28,6 +28,7 @@ RSpec.describe "オーダー検証", type: :system do
         num: 5,
         order_date: Date.today,
         order_time: DateTime.now,
+        order_date_details: DateTime.now,
         user_id: user.id
       )
      
@@ -39,6 +40,7 @@ RSpec.describe "オーダー検証", type: :system do
           num: 5,
           order_date: Date.today,
           order_time: DateTime.now,
+          order_date_details: DateTime.now,
           user_id: user2.id
         )
       end
@@ -49,6 +51,7 @@ RSpec.describe "オーダー検証", type: :system do
         num: 5,
         order_date: Date.today,
         order_time: DateTime.now,
+        order_date_details: DateTime.now,
         user_id: user.id
       )
       @order5 = Order.first
