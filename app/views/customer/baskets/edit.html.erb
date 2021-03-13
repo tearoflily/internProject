@@ -1,0 +1,14 @@
+<%= provide(:title, 'お買い物カゴ') %>
+
+<div class="text-center font-weight-bold mb-3">
+    <h1>お買い物カゴ</h1>
+</div>
+ <!-- pcの場合-->
+<div class="baskets-pc">
+ <%= render 'customer/baskets/PC/edit', { user: @user } %>
+</div>
+
+<!-- phoneの場合-->
+<div class="baskets-phone">
+ <%= render 'customer/baskets/Phone/edit', { user: @user } %>
+</div>
