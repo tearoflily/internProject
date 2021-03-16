@@ -196,7 +196,7 @@ class Order < ApplicationRecord
   def self.sumPrises(buyings)
     sum = 0
       buyings.each do |buy| 
-        sum += buy.total.to_i
+        sum += buy.total
         return sum.to_s(:delimited, delimiter: ',')
       end
   end

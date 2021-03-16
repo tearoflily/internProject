@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       resources :orders do
         get :confirm, on: :collection
       end
-    end  
+    end
     
   end
   
