@@ -27,7 +27,11 @@ Rails.application.routes.draw do
     resources :users, except:[:index, :destroy] do
       resources :orders do
         get :confirm, on: :collection
+        collection do
+          get :show
+        end
       end
+     
     end
     
   end

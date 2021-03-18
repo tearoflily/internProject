@@ -204,9 +204,21 @@ class Order < ApplicationRecord
   def self.sumPrises(buyings)
     sum = 0
       buyings.each do |buy| 
-        sum += buy.total
-        return sum.to_s(:delimited, delimiter: ',')
+        sum += (buy.price.to_i * buy.num.to_i)
       end
+        return sum.to_s(:delimited, delimiter: ',')
+      
   end
   
+  scope :submit_order, -> { where(user_id: user_id).where('order_time >=?', Date.current) }
+
+  def self.sumTotalPrises(submit_order)
+    sum = 0
+      submit_order.each do |so| 
+        sum += (so.price.to_i * so.num.to_i)
+      end
+        return sum.to_s(:delimited, delimiter: ',')
+      
+  end
+
 end

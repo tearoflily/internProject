@@ -25,14 +25,14 @@
               </thead>
               <tbody>
                 <% @buyings.each do |buy| %>
-                  <%= f.fields_for :orders, buy do |af| %>
+                  <%= f.fields_for "orders[]", buy do |af| %>
                     <tr>
                       <td><%= image_tag(employee_item_image_path(buy.orderItemImage),size:'80') %> </td>
                       <td><%= buy.name %></td>
                       <td><%= buy.process %></td>
                       <td><%= buy.price %></td>
                       <td><%= buy.num %></td>
-                      <td><%= buy.total %></td>
+                      <td><%= buy.price * buy.num %></td>
                       <%= af.hidden_field :name, value: buy.name %>
                       <%= af.hidden_field :process, value: buy.process %>
                       <%= af.hidden_field :price, value: buy.price %>
@@ -45,7 +45,7 @@
             <div class="orderRight">
               <h3>ご請求金額  <%= @allTotal %>円</h3>
               <%= link_to "お買い物かごに戻る", "#", class: "btn btn-outline-secondary" %>
-              <%= f.submit "注文を確定する", class: "btn btn-info" %>
+              <%= f.submit "注文を確定する", data:{confirm: '注文を確定しますか？'}, class: "btn btn-info" %>
             </div>
           <% end %>
       </div>

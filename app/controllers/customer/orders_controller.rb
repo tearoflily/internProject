@@ -1,5 +1,6 @@
 class Customer::OrdersController < ApplicationController
-  before_action :set_order, only: %i[ show index  edit update destroy  ]
+  add_flash_types :success, :info, :warning, :danger
+  before_action :set_order, only: %i[ index  edit update destroy  ]
 
   def index
   end
@@ -13,13 +14,13 @@ class Customer::OrdersController < ApplicationController
     buy_cart_page_parameter=[
       {name: "さんま",
         process: "切り身",
-        price: 100,
+        price: 150,
         num: 5
       },
       {
         name: "いか",
         process: "切り身",
-        price: 100,
+        price: 120,
         num: 2
       }
     ]
@@ -30,33 +31,30 @@ class Customer::OrdersController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
+    params[:orders].each do |param|
+      @user.orders.create(
+        name: param[:name],
+        process: param[:process],
+        price: param[:price],
+        num: param[:num],
+        order_date: params[:order_date],
+        order_time: params[:order_time].in_time_zone,
+        order_date_details: DateTime.now
+      )
+    end     
 
     if params[:order_time] == ""
       flash[:danger] = "受け取り時間を選択してください。"
       #render :confirm
       redirect_to confirm_customer_user_orders_url
-    else
-        params.each do |param|
-          @user.orders.create(
-            name: "param[:name]",
-            process: "param[:process]",
-            price: "param[:price]",
-            num: "param[:num]",
-            order_date: "param[:order_date]",
-            order_time: "param[:order_time]",
-            user_id: "params[:user_id]"
-          )
-        end        
-        # if @order.save
-           #Order.create(params)
-          
-           redirect_to customer_user_order_url(@user), success: '商品を確定しました。'
-        # else
-        #   flash[:danger] = "商品確定ができませんでした。"
-        #   #render :confirm
-        #   redirect_to confirm_customer_user_orders_url
-        # end
-       end
+      else
+      redirect_to customer_user_orders_url(@user.id), success: '商品を確定しました。' 
+      # else
+      #   flash[:danger] = "商品確定ができませんでした。"
+      #   #render :confirm
+      #   redirect_to confirm_customer_user_orders_url
+      
+    end
       
   end
 
@@ -65,8 +63,12 @@ class Customer::OrdersController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
-    @order = Order.find(params[:id])
-    @allTotal = Order.sumPrises(@orders)
+    @order = Order.find(params[:user_id])
+    @orders = Order.all
+
+    @sOrder = @orders.where(user_id: @user.id).where(order_date: Date.current).last
+    #@allTotal = Order.sumTotalPrises(submit_order)
+    
   end
 
 
@@ -76,8 +78,5 @@ class Customer::OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  #  def order_params
-  #    params.permit(:name, :process, :price, :num, :order_date, :order_time, :user_id)
-  #  end  
 
 end
