@@ -34,7 +34,7 @@
       <h2><%= key.strftime('%Y年%-m月%-d日') %></h2>
       <div><span class="text-danger">希望の受け取り時間：</span><%= key.strftime('%-H:%-M') %></div>
       <div>ご注文の商品</div>
-        <table class="table current_orders_table">
+        <table class="table baskets-edit-table">
               <thead>
                 <tr>
                   <td colspan="2">商品名</td>
@@ -56,7 +56,7 @@
                 <% total_sum += product_sum %>
               <% end %>
               <tr>
-                <td colspan="5"><div class="text-right">ご請求小計： <%= total_sum.to_s(:delimited) %> 円</td>
+                <td colspan="5"><div class="text-right">ご請求小計： <%= total_sum.to_s(:delimited) %> 円</div></td>
               </tr>
             </tbody>
           </table>

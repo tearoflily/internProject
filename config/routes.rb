@@ -34,13 +34,10 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   #####################杉浦さんエリア##################################################################################
-  resources :products, only:[:show]
-  resources :customer do
-    get '/basket/new', to: 'customer/baskets#new'
-    post '/basket/:id', to: 'customer/baskets#create'
-    get '/basket/edit', to: 'customer/baskets#edit'
-    patch '/basket/:id', to: 'customer/baskets#update'
-    delete '/basket/:id', to: 'customer/baskets#destroy'
+  
+  namespace :customer do
+    resources :baskets, except:[:show, :index]
+    get '/baskets/:id/:product_id', to: 'baskets#show'
   end
   
   

@@ -1,13 +1,22 @@
-.baskets-phone{
+.baskets-phone {
   display: none;
+}
+
+.baskets-edit {
+  margin-top: 80px;
+}
+
+.baskets-edit-table td{
+  text-align: center;
+  vertical-align: middle;
 }
 
 
 @media screen and (max-width:767px){
-  .baskets-phone{
+  .baskets-phone {
       display: block;
   }
-  .baskets-pc{
+  .baskets-pc {
       display: none;
   }
 }
