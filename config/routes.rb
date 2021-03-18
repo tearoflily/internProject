@@ -31,9 +31,7 @@ Rails.application.routes.draw do
           get :show
         end
       end
-     
     end
-    
   end
   
   resources :session, only:[:new, :create,:destroy]

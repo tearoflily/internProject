@@ -62,7 +62,44 @@
   }
 }
 //***************************** 予約確認（確定前）画面 *****************************//
-.orderConfirm{
+.orderconfirm-phone{
+  display: none;
+}
+@media screen and (max-width:767px){
+  .orderconfirm-pc{
+    display: none;
+  }
+  .orderconfirm-phone{
+    display: block;
+    .continer{
+      width: 95%;
+      margin: auto;
+    }
+    select{
+      margin-top: 5px;
+      font-size: small;
+    }
+    h3,h4{
+      margin-top: 20px;
+    }
+    text{
+      font-size: 14px;
+    }
+    th{
+      font-size: xx-small;
+      padding: 8px;
+    }
+    td{
+      font-size: 11px;
+      padding: 4px;
+    }
+    .btn{
+      font-size: small;
+      margin-top: 10px;
+    }
+  }
+}
+.orderConfirm{ 
   form{
     margin-top: 2opx;
   }
@@ -88,7 +125,6 @@
       border-left: none;
     }
   }
-
   .orderRight{
     width: 100%;
     text-align: right;

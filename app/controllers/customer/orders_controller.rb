@@ -11,25 +11,13 @@ class Customer::OrdersController < ApplicationController
     @orders = Order.all
     @items = Item.all.descendingOrder
    
-    buy_cart_page_parameter=[
-      {name: "さんま",
-        process: "切り身",
-        price: 150,
-        num: 5
-      },
-      {
-        name: "いか",
-        process: "切り身",
-        price: 120,
-        num: 2
-      }
-    ]
-
-    @buyings = @user.user_buyings(buy_cart_page_parameter)
-    @allTotal = Order.sumPrises(@buyings)
+    confirm_data(params)
   end
 
   def create
+    
+    confirm_data(params)
+
     @user = User.find(params[:user_id])
     params[:orders].each do |param|
       @user.orders.create(
@@ -45,15 +33,10 @@ class Customer::OrdersController < ApplicationController
 
     if params[:order_time] == ""
       flash[:danger] = "受け取り時間を選択してください。"
-      #render :confirm
-      redirect_to confirm_customer_user_orders_url
+      render :confirm   
       else
       redirect_to customer_user_orders_url(@user.id), success: '商品を確定しました。' 
-      # else
-      #   flash[:danger] = "商品確定ができませんでした。"
-      #   #render :confirm
-      #   redirect_to confirm_customer_user_orders_url
-      
+  
     end
       
   end
@@ -65,9 +48,8 @@ class Customer::OrdersController < ApplicationController
     @user = User.find(params[:user_id])
     @order = Order.find(params[:user_id])
     @orders = Order.all
-
-    @sOrder = @orders.where(user_id: @user.id).where(order_date: Date.current).last
-    #@allTotal = Order.sumTotalPrises(submit_order)
+    @sOrder = Order.where(user_id: @user.id).where('order_time >=?', Date.current).where(status: 1).last
+    @smOrder = Order.where(user_id: @user.id).where('order_time >=?', Date.current).where(status: 1)
     
   end
 
@@ -78,5 +60,23 @@ class Customer::OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def confirm_data(params)
+    @user = User.find(params[:user_id])
+    buy_cart_page_parameter=[
+      {name: "さんま",
+        process: "切り身",
+        price: 150,
+        num: 5
+      },
+      {
+        name: "いか",
+        process: "切り身",
+        price: 120,
+        num: 2
+      }
+    ]
+    @buyings = @user.user_buyings(buy_cart_page_parameter)
+    @allTotal = Order.sumPrises(@buyings)
+  end
 
 end
