@@ -6,9 +6,9 @@
         <% @smOrder.each do |order| %>
           <% sum +=  order.price * order.num %>
         <% end %>
-          <h2>お受け取り日：<%= l(@sOrder.order_date, format: :long) %></h2>
-          <h2>お受け取り時間：<%= l(@sOrder.order_time, format: :tim) %></h2>
-          <h2>金額：<%= sum %>円</h2>  
+          <h4>お受け取り日：<br><%= l(@sOrder.order_date, format: :long) %></h4>
+          <h4>お受け取り時間：<br><%= l(@sOrder.order_time, format: :tim) %></h4>
+          <h4>金額：<%= sum.to_s(:delimited, delimiter: ',') %>円</h4>  
       </div>
       <p class="order_com">ご注文のお品をお受け取りの際は、必ずお名前をお知らせください。<br>
         受け取り予定時間に間に合わない場合は、店舗までご連絡ください。<br>

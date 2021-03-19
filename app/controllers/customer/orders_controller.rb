@@ -48,9 +48,9 @@ class Customer::OrdersController < ApplicationController
     @user = User.find(params[:user_id])
     @order = Order.find(params[:user_id])
     @orders = Order.all
-    @sOrder = Order.where(user_id: @user.id).where('order_time >=?', Date.current).where(status: 1).last
-    @smOrder = Order.where(user_id: @user.id).where('order_time >=?', Date.current).where(status: 1)
-    
+ 
+    @sOrder = Order.where(user_id: @user.id).where('order_date >=?', Date.current).where('order_time >=?', Date.current).where(status: 1).last
+    @smOrder = Order.where(user_id: @user.id).where('order_date >=?', Date.current).where('order_time >=?', Date.current).where(status: 1)
   end
 
 

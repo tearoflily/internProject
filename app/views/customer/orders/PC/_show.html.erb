@@ -9,7 +9,9 @@
         <% end %>
           <h2>お受け取り日：<%= l(@sOrder.order_date, format: :long) %></h2>
           <h2>お受け取り時間：<%= l(@sOrder.order_time, format: :tim) %></h2>
-          <h2>金額：<%= sum %>円</h2>  
+          
+          <h2>金額：<%= sum.to_s(:delimited, delimiter: ',') %>円</h2>  
+          
       </div>
         
       <div class="col-md-8 offset-2"> 
