@@ -33,7 +33,6 @@ class Customer::BasketsController < ApplicationController
 
   def update
     @baskets = Basket.all
-
     if params[:page_next_update].present?
       basket_parameters.each do |key, item|
         basket = Basket.find_by(id: key)
@@ -43,7 +42,7 @@ class Customer::BasketsController < ApplicationController
         end
       end
       render :edit
-    elsif params[:page_save_update].present?
+    else
       basket_parameters.each do |key, item|
         basket = Basket.find_by(id: key)
         unless basket.num == item[:num]

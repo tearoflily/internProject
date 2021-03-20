@@ -19,29 +19,24 @@ RSpec.describe "商品詳細・買い物カゴ", type: :system do
     let!(:processing4){FactoryBot.create(:processing, name: 'sasimi', item_id: item2.id )} 
     let!(:processing5){FactoryBot.create(:processing, name: 'sioyaki', item_id: item3.id )} 
 
-    let!(:product1){ FactoryBot.create(:product2, name: 'ふぐ', price: 250, process: 'kirimi', seles_date: Date.today + 1, stock: 15)}
-    let!(:product2){ FactoryBot.create(:product2, name: 'ふぐ', price: 250, process: 'nimono', seles_date: Date.today + 1, stock: 7)}
-    let!(:product3){ FactoryBot.create(:product2, name: 'たこ', price: 230, process: 'sasimi', seles_date: Date.today + 1, stock: 18)}
-    let!(:product4){ FactoryBot.create(:product2, name: 'ひらめ', price: 240, process: 'sasimi', seles_date: Date.today + 1, stock: 26)}
-    let!(:product5){ FactoryBot.create(:product2, name: 'ぶり', price: 210, process: 'sioyaki', seles_date: Date.today + 1, stock: 28)}
+    let!(:product1){ FactoryBot.create(:product, name: 'ふぐ', price: 250, process: 'kirimi', seles_date: Date.today + 1, stock: 15)}
+    let!(:product2){ FactoryBot.create(:product, name: 'ふぐ', price: 250, process: 'nimono', seles_date: Date.today + 1, stock: 7)}
+    let!(:product3){ FactoryBot.create(:product, name: 'たこ', price: 230, process: 'sasimi', seles_date: Date.today + 1, stock: 18)}
+    let!(:product4){ FactoryBot.create(:product, name: 'ひらめ', price: 240, process: 'sasimi', seles_date: Date.today + 1, stock: 26)}
+    let!(:product5){ FactoryBot.create(:product, name: 'ぶり', price: 210, process: 'sioyaki', seles_date: Date.today + 1, stock: 28)}
 
-    
     let!(:basket2){FactoryBot.create(:basket, name: 'ふぐ', price: 250, process: 'nimono', num: 4, user_id: user.id, in_basket_at: '2021-02-25 14:31:00')}
     let!(:basket3){FactoryBot.create(:basket, name: 'たこ', price: 230, process: 'sasimi', num: 3, user_id: user.id, in_basket_at: '2021-02-25 14:32:00')}
     let!(:basket4){FactoryBot.create(:basket, name: 'ひらめ', price: 240, process: 'sashimi', num: 2, user_id: user.id, in_basket_at: '2021-02-25 14:33:00')}
     let!(:basket5){FactoryBot.create(:basket, name: 'ぶり', price: 210, process: 'sioyaki', num: 3, user_id: user.id, in_basket_at: '2021-02-25 14:34:00')} 
-    
-
-    before do
-      visit login_path
-      fill_in "session_email", with: "2021@example.com"
-      fill_in "session_password", with: "password"
-      click_button 'ログイン'
-    end
 
     describe "商品詳細画面" do
       before do
-        visit customer_path(user, item1.id)
+        visit login_path
+        fill_in "session_email", with: "2021@example.com"
+        fill_in "session_password", with: "password"
+        click_button 'ログイン'
+        visit customer_path(user.id, product2.id)
       end 
 
       it "表示される" do
@@ -62,19 +57,21 @@ RSpec.describe "商品詳細・買い物カゴ", type: :system do
 
       context "商品詳細の加工方法押下で買い物カゴに保存できる" do
         it "表示される" do
-          first("登録する").click
-          visit edit_customer_basket_path(user)
+          first(:link, 'お買い物カゴへ').click
+          visit edit_customer_basket_path(user.id)
           expect(page).to have_content 'ふぐ'
           expect(page).to have_content '切り身' 
         end
       end
     end
 
-
     describe "買い物カゴ画面" do
-      
       before do
-        visit edit_customer_basket_path(user)
+        visit login_path
+        fill_in "session_email", with: "2021@example.com"
+        fill_in "session_password", with: "password"
+        click_button 'ログイン'
+        visit edit_customer_basket_path(user.id)
       end 
 
       it "表示される" do
@@ -93,7 +90,7 @@ RSpec.describe "商品詳細・買い物カゴ", type: :system do
 
       context "削除ボタンがあり、買い物かごに入れた商品が削除できる" do
         it "表示される" do
-          first("削除").click
+          first(:link, '削除').click
           expect(page).not_to have_content 'ふぐ'
           expect(page).to have_content 'たこ'
           expect(page).to have_content 'ひらめ'
@@ -101,20 +98,21 @@ RSpec.describe "商品詳細・買い物カゴ", type: :system do
         end
       end
 
-      context "ふぐ、煮物の数 4 を選択することで、productの在庫数である1〜7の数が表示される。" do
+      context "数を変更すると数に合わせた金額になる" do
         it "表示される" do
-          expect(page).to have_select('4', options: %w!1 2 3 4 5 6 7!)
-        end
-        it "Productの在庫数以上の数字は表示されない" do
-          expect(page).not_to have_select('4', options: %w!1 2 3 4 5 6 7 8!)
+          select "3", from: "basket-array1"
+          click_button '変更を保存する'
+          expect(page).to have_content '2,550'
         end
       end
 
-      context "値段が表示されている。数を変更すると数に合わせた金額になる。" do
+      context "値段が表示されている" do
         it "表示される" do
-          select '3', from: '4'
-          click_button '変更を保存する'
-          expect(page).to have_content '2,550'
+          expect(page).to have_content '1,000'
+          expect(page).to have_content '690'
+          expect(page).to have_content '480'
+          expect(page).to have_content '630'
+
         end
       end
 
@@ -126,24 +124,22 @@ RSpec.describe "商品詳細・買い物カゴ", type: :system do
 
       context "お会計手続きへボタンが表示されている" do
         it "表示される" do
-          expect(page).to have_content 'お会計手続きへ'
+          expect(page).to have_button 'お会計手続きへ'
         end
       end
 
       context "変更を保存するボタンが表示されている" do
         it "表示される" do
-          expect(page).to have_content '変更を保存する'
+          expect(page).to have_button '変更を保存する'
         end
       end
 
-      context "お買い物を続けるボタンが表示されている。" do
+      context "お買い物を続けるボタンが表示されている" do
         it "表示される" do
-          expect(page).to have_content 'お買い物を続ける'
+          expect(page).to have_link 'お買い物を続ける'
         end
       end
 
-
-    
   end
 
 end

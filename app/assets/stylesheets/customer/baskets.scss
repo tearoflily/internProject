@@ -1,22 +1,24 @@
-.baskets-phone {
+// Place all the styles related to the employee::orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.baskets-phone{
+  display: block;
+}
+.baskets-phone{
   display: none;
 }
 
-.baskets-edit {
-  margin-top: 80px;
-}
-
-.baskets-edit-table td{
-  text-align: center;
-  vertical-align: middle;
-}
-
-
+/**************************スマートフォン***********************************************************************************************/
 @media screen and (max-width:767px){
-  .baskets-phone {
-      display: block;
+  .baskets-phone{
+    display: block;
   }
-  .baskets-pc {
+  .baskets-pc{
       display: none;
   }
+
 }
+
