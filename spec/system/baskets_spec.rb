@@ -55,7 +55,7 @@ RSpec.describe "商品詳細・買い物カゴ", type: :system do
         end
       end
 
-      context "商品詳細の加工方法押下で買い物カゴに保存できる" do
+      context "商品詳細の加工方法押下で買い物カゴに保存できる/商品詳細で選択した商品が表示されること" do
         it "表示される" do
           first(:link, 'お買い物カゴへ').click
           visit edit_customer_basket_path(user.id)
@@ -112,7 +112,6 @@ RSpec.describe "商品詳細・買い物カゴ", type: :system do
           expect(page).to have_content '690'
           expect(page).to have_content '480'
           expect(page).to have_content '630'
-
         end
       end
 
