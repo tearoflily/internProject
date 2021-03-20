@@ -1,10 +1,9 @@
-
-<table class="table baskets-edit-table">
+<div class="text-center font-weight-bold mt-4 mb-2"><h1>お買い物カゴ</h1></div>
+<table class="table baskets-edit-table baskets-edit-mobile">
   <tbody>
     <tr>
-      <td colspan="2">商品名</td>
-      <td>加工名</td>
-      <td>単価</td>
+      <td colspan="2" class="center">商品名</td>
+      <td class="center pr-1">単価</td>
       <td></td>
       <td>数量</td>
       <td>小計</td>
@@ -19,14 +18,13 @@
         <tr>
           <td class="align-middle">
           <%= link_to customer_path(@user.id, basket.basketPageBack) do %>
-            <%= image_tag(employee_item_image_path(basket.basketIntoItemImage), width:'40px') %>
+            <%= image_tag(employee_item_image_path(basket.basketIntoItemImage), width:'30px') %>
           <% end %>
           </td>
-          <td class="align-middle"><%= basket.name %></td>
-          <td class="align-middle"><%= basket.basketProductProcessing %></td>
-          <td class="align-middle"><%= basket.price.to_s(:delimited) %></td>
-          <td class="align-middle"><%= link_to '削除', customer_basket_path(@user.id, basket_id: basket.id), class:'btn btn-danger btn-sm', method: :delete %></td>
-          <td class="align-middle">
+          <td class="center"><%= basket.name %>(<%= basket.basketProductProcessing %>)</td>
+          <td><%= basket.price.to_s(:delimited) %></td>
+          <td><%= link_to '削除', customer_basket_path(@user.id, basket_id: basket.id), class:'btn btn-danger btn-sm', method: :delete %></td>
+          <td>
           <%= b.select :num, basket.basketStockProductNum, { selected: basket.num }, id:"basket-array#{basket_array}" %>
           </td>
           <% product_sum = basket.basketProductSum %>
@@ -42,10 +40,10 @@
     </tr>
     <tr>
       <td colspan="7" class="border-0">
-        <div class="text-right">
-          <%= link_to 'お買い物を続ける', top_show_path, class:"btn btn-outline-primary" %>
-          <%= f.submit '変更を保存する', class: 'btn btn-primary', name: 'page_save_update' %>
-          <%= f.submit 'お会計手続きへ', class: 'btn btn-primary', name: 'page_next_update' %>
+        <div class="text-center">
+          <div class="mb-2"><%= link_to 'お買い物を続ける', top_show_path, class:"btn btn-outline-primary col-6" %></div>
+          <div class="mb-2"><%= f.submit '変更を保存する', class: 'btn btn-primary col-6', name: 'page_save_update' %></div>
+          <div><%= f.submit 'お会計手続きへ', class: 'btn btn-primary col-6', name: 'page_next_update' %></div>
         </div>
       </td>
     </tr>

@@ -3,10 +3,9 @@ class Customer::UsersController < Customer::MainController
  	
 	
   def show
-    debugger
     @user = User.find(params[:id])
     redirect_to employee_user(@user) if @user.employee?
-    
+
     # 受け取り時間基準/受け取り未の注文の表示のためのグループ化と並べ替え
     unfinished_order = Order.unfinished_order(@user.id)
     @in_unfinished_order = unfinished_order.sort

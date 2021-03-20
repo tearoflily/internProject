@@ -4,20 +4,33 @@
 
 
 
-.baskets-phone{
+.baskets-phone {
   display: block;
 }
-.baskets-phone{
+.baskets-phone {
   display: none;
+}
+
+.baskets-table {
+  margin-top: 40px;
+}
+
+.baskets-table td {
+  text-align: center;
+  vertical-align: middle;
 }
 
 /**************************スマートフォン***********************************************************************************************/
 @media screen and (max-width:767px){
-  .baskets-phone{
+  .baskets-phone {
     display: block;
   }
-  .baskets-pc{
+  .baskets-pc {
       display: none;
+  }
+
+  .baskets-edit-mobile td{
+    vertical-align: middle;
   }
 
 }

@@ -32,6 +32,7 @@ class Customer::BasketsController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
     @baskets = Basket.all
     if params[:page_next_update].present?
       basket_parameters.each do |key, item|
@@ -41,7 +42,8 @@ class Customer::BasketsController < ApplicationController
           basket.save
         end
       end
-      render :edit
+      flash[:success] = "数量変更を保存しました。"
+      redirect_to edit_customer_basket_url(@user)
     else
       basket_parameters.each do |key, item|
         basket = Basket.find_by(id: key)
