@@ -11,13 +11,18 @@
     <% @process.each do |process| %>
     <tr>
       <td><%= basketProcessProcessing(process.name) %></td>
-      <td><%= link_to 'お買い物カゴへ', customer_baskets_path(id: @user.id, name: @item.name, process: process.name), class:"btn btn-outline-primary", method: :post %></td>
-    
+      <% if logged_in? %>
+        <% unless current_user.employee? %>
+          <td><%= link_to 'お買い物カゴへ', customer_baskets_path(id: current_user.id, name: @item.name, process: process.name), class:"btn btn-outline-primary", method: :post %></td>
+        <% end %>
+      <% else %>
+          <td><%= link_to 'お買い物カゴへ', login_url, class:"btn btn-outline-primary" %></td>
+      <% end %>
     </tr>
     <% end %>
     <tr>
       <td colspan="2">
-      <%= link_to '戻るボタン', customer_user_path(@user), class:"btn btn-primary mt-2" %>
+      <%= link_to '戻るボタン', top_show_path, class:"btn btn-primary mt-2" %>
       </td>
     </tr>
   </tbody>

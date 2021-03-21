@@ -36,7 +36,7 @@ RSpec.describe "商品詳細・買い物カゴ", type: :system do
         fill_in "session_email", with: "2021@example.com"
         fill_in "session_password", with: "password"
         click_button 'ログイン'
-        visit customer_path(user.id, product2.id)
+        visit customer_path(product2.id)
       end 
 
       it "表示される" do

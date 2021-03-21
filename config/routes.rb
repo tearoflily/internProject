@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   
   namespace :customer do
     resources :baskets, except:[:show, :index]
-    get '/baskets/:id/:product_id', to: 'baskets#show'
+    get '/baskets/:product_id', to: 'baskets#show'
   end
   
   

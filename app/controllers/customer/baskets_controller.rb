@@ -1,5 +1,5 @@
 class Customer::BasketsController < ApplicationController
-  before_action :setUser, only: [ :show, :create, :edit, :update, :destroy ]
+  before_action :setUser, only: [ :create, :edit, :update, :destroy ]
 
   def show
     @product = Product.find_by(id: params[:product_id])
